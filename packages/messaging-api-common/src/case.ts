@@ -1,7 +1,5 @@
 import mapObject from 'map-obj';
-import { camelCase } from 'camel-case';
-import { pascalCase } from 'pascal-case';
-import { snakeCase } from 'snake-case';
+import { camelCase, pascalCase, snakeCase } from 'change-case';
 import type {
   CamelCase,
   CamelCasedProperties,
