@@ -16,7 +16,7 @@
     "axios-error": "1.0.4",
     "image-type": "^4.1.0",
     "messaging-api-common": "1.0.4",
-    "ts-invariant": "^0.4.4",
+    "ts-invariant": "^0.10.3",
     "type-fest": "^4.10.1",
     "warning": "^4.0.3"
   },
