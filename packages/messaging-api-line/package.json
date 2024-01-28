@@ -27,6 +27,6 @@
     "messaging-apis"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=20"
   }
 }

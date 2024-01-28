@@ -17,8 +17,8 @@
     "lint:fix:md": "prettier --write **/*.md",
     "lint:staged": "lint-staged",
     "prepare": "husky install",
-    "publish": "lerna publish",
     "prepublishOnly": "yarn clean && yarn && yarn test",
+    "publish": "lerna publish",
     "test": "yarn compile && yarn lint && yarn testonly",
     "testonly": "jest",
     "testonly:cov": "jest --coverage",
@@ -59,6 +59,6 @@
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=20"
   }
 }
