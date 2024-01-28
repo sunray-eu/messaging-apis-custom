@@ -8,7 +8,8 @@ import FormData from 'form-data';
 import appendQuery from 'append-query';
 import axios, {
   AxiosInstance,
-  AxiosTransformer,
+  AxiosRequestTransformer,
+  AxiosResponseTransformer,
   AxiosError as BaseAxiosError,
 } from 'axios';
 import get from 'lodash/get';
@@ -123,18 +124,18 @@ export default class MessengerClient {
       baseURL: `${origin || 'https://graph.facebook.com'}/v${this.version}/`,
       headers: { 'Content-Type': 'application/json' },
       transformRequest: [
-        // axios use any as type of the data in AxiosTransformer
+        // axios use any as type of the data in AxiosRequestTransformer
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (data: any): any =>
           data && isPlainObject(data) ? snakecaseKeysDeep(data) : data,
-        ...(axios.defaults.transformRequest as AxiosTransformer[]),
+        ...(axios.defaults.transformRequest as AxiosRequestTransformer[]),
       ],
 
       // `transformResponse` allows changes to the response data to be made before
       // it is passed to then/catch
       transformResponse: [
-        ...(axios.defaults.transformResponse as AxiosTransformer[]),
-        // axios use any as type of the data in AxiosTransformer
+        ...(axios.defaults.transformResponse as AxiosResponseTransformer[]),
+        // axios use any as type of the data in AxiosResponseTransformer
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (data: any): any =>
           data && isPlainObject(data) ? camelcaseKeysDeep(data) : data,
@@ -178,6 +179,10 @@ export default class MessengerClient {
               }
 
               if (accessToken) {
+                if (Array.isArray(accessToken)) {
+                  accessToken = accessToken.length > 0 ? accessToken[0] : '';
+                }
+
                 const appSecretProof = crypto
                   .createHmac('sha256', appSecret)
                   .update(accessToken, 'utf8')
@@ -196,11 +201,11 @@ export default class MessengerClient {
         }
 
         const urlParts = url.parse(requestConfig.url || '', true);
-        const accessToken = get(
-          urlParts,
-          'query.access_token',
-          this.accessToken
-        );
+        let accessToken = get(urlParts, 'query.access_token', this.accessToken);
+
+        if (Array.isArray(accessToken)) {
+          accessToken = accessToken.length > 0 ? accessToken[0] : '';
+        }
 
         const appSecretProof = crypto
           .createHmac('sha256', appSecret)
@@ -474,9 +479,9 @@ export default class MessengerClient {
     MessengerTypes.MessagingFeatureReview[]
   > {
     return this.axios
-      .get<{ data: MessengerTypes.MessagingFeatureReview[] }>(
-        `/me/messaging_feature_review?access_token=${this.accessToken}`
-      )
+      .get<{
+        data: MessengerTypes.MessagingFeatureReview[];
+      }>(`/me/messaging_feature_review?access_token=${this.accessToken}`)
       .then((res) => res.data.data, handleError);
   }
 
@@ -555,10 +560,10 @@ export default class MessengerClient {
     fields: string[]
   ): Promise<MessengerTypes.MessengerProfile[]> {
     return this.axios
-      .get<{ data: MessengerTypes.MessengerProfile[] }>(
-        `/me/messenger_profile?fields=${fields.join(',')}&access_token=${
-          this.accessToken
-        }`
+      .get<{
+        data: MessengerTypes.MessengerProfile[];
+      }>(
+        `/me/messenger_profile?fields=${fields.join(',')}&access_token=${this.accessToken}`
       )
       .then((res) => res.data.data, handleError);
   }
@@ -2523,9 +2528,10 @@ export default class MessengerClient {
   ): Promise<{ name: string; id: string }> {
     const fields = options.fields ? options.fields.join(',') : 'name';
     return this.axios
-      .get<{ name: string; id: string }>(
-        `/${labelId}?fields=${fields}&access_token=${this.accessToken}`
-      )
+      .get<{
+        name: string;
+        id: string;
+      }>(`/${labelId}?fields=${fields}&access_token=${this.accessToken}`)
       .then((res) => res.data, handleError);
   }
 
@@ -2679,10 +2685,9 @@ export default class MessengerClient {
     }
 
     return this.axios
-      .post<{ attachmentId: string }>(
-        `/me/message_attachments?access_token=${this.accessToken}`,
-        ...args
-      )
+      .post<{
+        attachmentId: string;
+      }>(`/me/message_attachments?access_token=${this.accessToken}`, ...args)
       .then((res) => res.data, handleError);
   }
 
@@ -3004,7 +3009,7 @@ export default class MessengerClient {
             threadOwner: {
               appId: string;
             };
-          }
+          },
         ];
       }>(
         `/me/thread_owner?recipient=${recipientId}&access_token=${this.accessToken}`
@@ -3582,10 +3587,9 @@ export default class MessengerClient {
    */
   createPersona(persona: MessengerTypes.Persona): Promise<{ id: string }> {
     return this.axios
-      .post<{ id: string }>(
-        `/me/personas?access_token=${this.accessToken}`,
-        persona
-      )
+      .post<{
+        id: string;
+      }>(`/me/personas?access_token=${this.accessToken}`, persona)
       .then((res) => res.data, handleError);
   }
 
@@ -3754,9 +3758,9 @@ export default class MessengerClient {
    */
   deletePersona(personaId: string): Promise<{ success: true }> {
     return this.axios
-      .delete<{ success: true }>(
-        `/${personaId}?access_token=${this.accessToken}`
-      )
+      .delete<{
+        success: true;
+      }>(`/${personaId}?access_token=${this.accessToken}`)
       .then((res) => res.data, handleError);
   }
 }

@@ -10,8 +10,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@types/warning": "^3.0.0",
-    "axios": "^0.21.1",
+    "@types/warning": "^3.0.3",
+    "axios": "^1.6.7",
     "axios-error": "file:../axios-error",
     "messaging-api-common": "file:../messaging-api-common",
     "ts-invariant": "^0.4.4",

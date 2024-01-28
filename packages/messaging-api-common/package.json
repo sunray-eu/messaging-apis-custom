@@ -10,17 +10,17 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@types/debug": "^4.1.5",
-    "@types/lodash": "^4.14.156",
-    "@types/url-join": "^4.0.0",
-    "axios": "^0.21.1",
+    "@types/debug": "^4.1.12",
+    "@types/lodash": "^4.14.202",
+    "@types/url-join": "^4.0.3",
+    "axios": "^1.6.7",
     "camel-case": "^4.1.1",
-    "debug": "^4.1.1",
+    "debug": "^4.3.4",
     "lodash": "^4.17.15",
     "map-obj": "^4.1.0",
     "pascal-case": "^3.1.1",
     "snake-case": "^3.0.3",
-    "type-fest": "1.4.0",
+    "type-fest": "^4.10.1",
     "url-join": "^4.0.1"
   },
   "keywords": [

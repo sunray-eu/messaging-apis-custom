@@ -10,8 +10,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "axios": "^0.21.1",
-    "type-fest": "^0.15.1"
+    "axios": "^1.6.7",
+    "type-fest": "^4.10.1"
   },
   "keywords": [
     "axios",
