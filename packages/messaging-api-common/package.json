@@ -16,7 +16,7 @@
     "axios": "^1.6.7",
     "change-case": "^5.4.2",
     "debug": "^4.3.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "map-obj": "^5.0.2",
     "type-fest": "4.7.1",
     "url-join": "^5.0.0"
