@@ -2180,11 +2180,11 @@ export default class LineClient {
    * @param image - image
    * @returns Returns status code `200` and an empty JSON object.
    */
-  uploadRichMenuImage(
+  async uploadRichMenuImage(
     richMenuId: string,
     image: Buffer
   ): Promise<LineTypes.MutationSuccessResponse> {
-    const type = imageType(image);
+    const type = await imageType(image);
     invariant(
       type && (type.mime === 'image/jpeg' || type.mime === 'image/png'),
       'Image must be `image/jpeg` or `image/png`'
