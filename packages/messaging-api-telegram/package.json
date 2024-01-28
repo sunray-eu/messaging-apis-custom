@@ -13,9 +13,9 @@
     "@types/lodash": "^4.14.202",
     "@types/warning": "^3.0.3",
     "axios": "^1.6.7",
-    "axios-error": "file:../axios-error",
+    "axios-error": "1.0.4",
     "lodash": "^4.17.15",
-    "messaging-api-common": "file:../messaging-api-common",
+    "messaging-api-common": "1.0.4",
     "ts-invariant": "^0.4.4",
     "warning": "^4.0.3"
   },

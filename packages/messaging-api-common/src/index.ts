@@ -1,7 +1,7 @@
 import debug from 'debug';
 import omit from 'lodash/omit';
 import urlJoin from 'url-join';
-import { AxiosRequestConfig, Method } from 'axios';
+import type { InternalAxiosRequestConfig, Method } from 'axios';
 
 const debugRequest = debug('messaging-api:request');
 
@@ -29,13 +29,15 @@ function defaultOnRequest(request: RequestPayload): void {
 function createRequestInterceptor({
   onRequest = defaultOnRequest,
 }: { onRequest?: OnRequestFunction } = {}) {
-  return (config: AxiosRequestConfig): AxiosRequestConfig => {
+  return (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     onRequest({
       method: config.method as Method,
       url: urlJoin(config.baseURL || '', config.url || '/'),
       headers: {
-        ...config.headers.common,
-        ...(config.method ? config.headers[config.method] : {}),
+        ...config.headers?.common,
+        ...(config.method && config.headers
+          ? config.headers[config.method]
+          : {}),
         ...omit(config.headers, [
           'common',
           'get',
