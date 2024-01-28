@@ -31,7 +31,7 @@ function createRequestInterceptor({
 }: { onRequest?: OnRequestFunction } = {}) {
   return (config: AxiosRequestConfig): AxiosRequestConfig => {
     onRequest({
-      method: config.method,
+      method: config.method as Method,
       url: urlJoin(config.baseURL || '', config.url || '/'),
       headers: {
         ...config.headers.common,
