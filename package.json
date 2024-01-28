@@ -11,7 +11,7 @@
     "clean": "git clean -dfqX -- ./node_modules **/{dist,node_modules}/ ./packages/*/tsconfig*tsbuildinfo",
     "compile": "tsc --build tsconfig.build.json",
     "compile:clean": "tsc --build tsconfig.build.json --clean",
-    "postinstall": "yarn compile",
+    "postinstall": "lerna run prepare && yarn compile",
     "lint": "eslint packages examples --ext=js,ts",
     "lint:fix": "yarn lint:fix:md && yarn lint --fix",
     "lint:fix:md": "prettier --write **/*.md",
