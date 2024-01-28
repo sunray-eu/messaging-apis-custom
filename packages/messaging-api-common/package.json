@@ -14,13 +14,13 @@
     "@types/lodash": "^4.14.202",
     "@types/url-join": "^4.0.3",
     "axios": "^1.6.7",
-    "camel-case": "^4.1.1",
+    "camel-case": "^4.1.2",
     "debug": "^4.3.4",
     "lodash": "^4.17.15",
     "map-obj": "^4.1.0",
-    "pascal-case": "^3.1.1",
-    "snake-case": "^3.0.3",
-    "type-fest": "^4.10.1",
+    "pascal-case": "^3.1.2",
+    "snake-case": "^3.0.4",
+    "type-fest": "4.7.0",
     "url-join": "^4.0.1"
   },
   "keywords": [

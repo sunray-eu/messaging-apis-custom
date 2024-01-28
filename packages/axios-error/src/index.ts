@@ -10,7 +10,7 @@ function indent(str: string): string {
     .join('\n');
 }
 
-function json(data: JsonValue): string {
+function json(data: JsonValue | object): string {
   return JSON.stringify(data, null, 2);
 }
 
@@ -98,8 +98,8 @@ ${indent(json(data))}`;
       requestMessage = `
 Request -
   ${this.config.method ? this.config.method.toUpperCase() : ''} ${
-        this.config.url
-      }
+    this.config.url
+  }
 ${requestData}`;
     }
 
