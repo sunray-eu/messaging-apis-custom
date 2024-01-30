@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "description": "Gracefully batching facebook requests.",
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/Yoctol/messaging-apis.git"
@@ -11,7 +12,7 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "messaging-api-messenger": "1.1.0",
-    "type-fest": "^4.10.1"
+    "type-fest": "4.7.1"
   },
   "keywords": [
     "batch",

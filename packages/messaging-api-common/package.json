@@ -3,6 +3,7 @@
   "version": "1.0.4",
   "description": "Helpers for common usages in Messaging API clients",
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/Yoctol/messaging-apis.git"

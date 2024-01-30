@@ -131,4 +131,4 @@ ${responseMessage}
   }
 }
 
-export = AxiosError;
+export default AxiosError;

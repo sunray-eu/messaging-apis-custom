@@ -6,7 +6,6 @@
     "type": "git",
     "url": "https://github.com/Yoctol/messaging-apis.git"
   },
-  "type": "module",
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "clean": "git clean -dfqX -- ./node_modules **/{dist,node_modules}/ ./packages/*/tsconfig*tsbuildinfo",

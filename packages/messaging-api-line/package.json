@@ -7,6 +7,7 @@
     "type": "git",
     "url": "https://github.com/Yoctol/messaging-apis.git"
   },
+  "type": "module",
   "main": "dist/index.js",
   "browser": "lib/browser.js",
   "types": "dist/index.d.ts",
@@ -17,7 +18,7 @@
     "image-type": "^5.2.0",
     "messaging-api-common": "1.0.4",
     "ts-invariant": "^0.10.3",
-    "type-fest": "^4.7.1",
+    "type-fest": "4.7.1",
     "warning": "^4.0.3"
   },
   "keywords": [
