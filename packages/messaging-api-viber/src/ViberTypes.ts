@@ -1,4 +1,4 @@
-import { OnRequestFunction } from 'messaging-api-common';
+import { MaxLengthArray, OnRequestFunction } from 'messaging-api-common';
 
 export type ClientConfig = {
   accessToken: string;
@@ -105,11 +105,11 @@ export type Failed = FailedResponseData<{ receiver: string }>;
 
 export type ResponseData<T extends object> =
   | SucceededResponseData<T>
-  | FailedResponseData<{}>;
+  | FailedResponseData<Record<string, never>>;
 
 export type BroadcastResponseData =
   | SucceededBroadcastResponseData
-  | FailedResponseData<{}>;
+  | FailedResponseData<Record<string, never>>;
 
 export enum EventType {
   Delivered = 'delivered',
@@ -148,9 +148,40 @@ export type TextMessage = {
   text: string;
 } & MessageOptions;
 
+/**
+ * Represents a picture object, which includes details and links to an image and its thumbnail.
+ * This type is designed to encapsulate information about an image, including a textual description,
+ * the main image URL, and an optional thumbnail URL. It ensures that images are handled efficiently
+ * within a system, with support for JPEG format and considerations for file sizes and dimensions.
+ */
 export type Picture = {
+  /**
+   * Description of the photo. This can be an empty string if the description is irrelevant.
+   * The description provides context or details about the image, with a maximum length of 120 characters.
+   *
+   * @remarks
+   * It's recommended to keep the description concise to enhance readability and user experience.
+   */
   text: string;
+
+  /**
+   * URL of the image in JPEG format. This property specifies the location of the main image.
+   * The image size is limited to a maximum of 1 MB to ensure efficient loading and bandwidth usage.
+   * Only JPEG format is supported for this image URL, catering to compatibility and standardization.
+   *
+   * @remarks
+   * For other image formats or animated GIFs, consider using URL messages or file messages.
+   */
   media: string;
+
+  /**
+   * Optional URL of a reduced size image in JPEG format, serving as a thumbnail for the main image.
+   * The thumbnail's maximum size is 100 KB, supporting quicker load times and reduced data usage.
+   * A recommended dimension for thumbnails is 400x400, optimizing for visibility and quality.
+   *
+   * @remarks
+   * Similar to the main image, only JPEG format is supported for thumbnails to maintain consistency.
+   */
   thumbnail?: string;
 };
 
@@ -212,12 +243,43 @@ export type StickerMessage = {
   stickerId: number;
 } & MessageOptions;
 
+/**
+ * Defines a rich media message format used for creating interactive content blocks.
+ * This type includes configurations for the layout and appearance of buttons within a carousel.
+ */
 export type RichMedia = {
+  /**
+   * Specifies the type of the message, always 'rich_media' for this format.
+   */
   type: 'rich_media';
-  buttonsGroupColumns: number;
-  buttonsGroupRows: number;
+
+  /**
+   * Number of columns per carousel content block.
+   * Default is 6 columns. Possible values range from 1 to 6.
+   *
+   * @remarks
+   * Ensure the value is between 1 and 6 through runtime validation.
+   */
+  buttonsGroupColumns?: 1 | 2 | 3 | 4 | 5 | 6;
+
+  /**
+   * Number of rows per carousel content block.
+   * Default is 7 rows. Possible values range from 1 to 7.
+   *
+   * @remarks
+   * Ensure the value is between 1 and 7 through runtime validation.
+   */
+  buttonsGroupRows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+
+  /**
+   * The background color of the rich media message in hexadecimal format.
+   */
   bgColor: string;
-  buttons: RichMediaButton[];
+
+  /**
+   * An array of buttons that are included within the rich media message, providing interactive elements for the user.
+   */
+  buttons: MaxLengthArray<RichMediaButton, 5>;
 };
 
 export type RichMediaButton = {
@@ -285,6 +347,18 @@ export type UserOnlineStatus = {
   onlineStatusMessage: 'online';
 };
 
+export type FavoritesMetadata = {
+  type: 'gif' | 'link' | 'video';
+  url: string;
+  title?: string;
+  thumbnail?: string;
+  domain?: string;
+  width?: number;
+  height?: number;
+  alternativeUrl?: string;
+  alternativeText?: string;
+};
+
 export type Keyboard = {
   type: 'keyboard';
   buttons: KeyboardButton[];
@@ -295,7 +369,7 @@ export type Keyboard = {
   buttonsGroupColumns?: number;
   buttonsGroupRows?: number;
   inputFieldState?: 'regular' | 'minimized' | 'hidden';
-  favoritesMetadata?: any;
+  favoritesMetadata?: FavoritesMetadata;
 };
 
 export type KeyboardButton = {

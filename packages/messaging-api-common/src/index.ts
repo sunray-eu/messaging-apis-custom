@@ -57,5 +57,6 @@ function createRequestInterceptor({
 }
 
 export * from './case';
+export * from './types';
 
 export { defaultOnRequest as onRequest, createRequestInterceptor };

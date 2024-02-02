@@ -265,6 +265,42 @@ export function sendOneTimeNotifReqTemplate(
   );
 }
 
+export function sendCouponTemplate(
+  psidOrRecipient: MessengerTypes.PsidOrRecipient,
+  attrs: MessengerTypes.CouponAttributes,
+  options?: MessengerTypes.SendOption & MessengerTypes.BatchRequestOptions
+): MessengerTypes.BatchItem {
+  return sendMessage(
+    psidOrRecipient,
+    Messenger.createCouponTemplate(attrs, options),
+    options
+  );
+}
+
+export function sendCustomerFeedbackTemplate(
+  psidOrRecipient: MessengerTypes.PsidOrRecipient,
+  attrs: MessengerTypes.CustomerFeedbackAttributes,
+  options?: MessengerTypes.SendOption & MessengerTypes.BatchRequestOptions
+): MessengerTypes.BatchItem {
+  return sendMessage(
+    psidOrRecipient,
+    Messenger.createCustomerFeedbackTemplate(attrs, options),
+    options
+  );
+}
+
+export function sendProductTemplate(
+  psidOrRecipient: MessengerTypes.PsidOrRecipient,
+  attrs: MessengerTypes.ProductAttributes,
+  options?: MessengerTypes.SendOption & MessengerTypes.BatchRequestOptions
+): MessengerTypes.BatchItem {
+  return sendMessage(
+    psidOrRecipient,
+    Messenger.createProductTemplate(attrs, options),
+    options
+  );
+}
+
 export function getUserProfile(
   userId: string,
   options: {

@@ -3,7 +3,6 @@ import fs from 'fs';
 import AxiosError from 'axios-error';
 import FormData from 'form-data';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import invariant from 'ts-invariant';
 import warning from 'warning';
 import {
   OnRequestFunction,
@@ -12,6 +11,7 @@ import {
   onRequest,
   snakecaseKeys,
 } from 'messaging-api-common';
+import { invariant } from 'ts-invariant';
 
 import * as WechatTypes from './WechatTypes';
 
@@ -132,11 +132,10 @@ export default class WechatClient {
         `/token?grant_type=client_credential&appid=${this.appId}&secret=${this.appSecret}`
       )
       .then(throwErrorIfAny)
-      .then(
-        (res) =>
-          camelcaseKeys(res.data, {
-            deep: true,
-          }) as any
+      .then((res) =>
+        camelcaseKeys(res.data, {
+          deep: true,
+        })
       );
   }
 
@@ -193,11 +192,10 @@ export default class WechatClient {
         headers: form.getHeaders(),
       })
       .then(throwErrorIfAny)
-      .then(
-        (res) =>
-          camelcaseKeys(res.data, {
-            deep: true,
-          }) as any
+      .then((res) =>
+        camelcaseKeys(res.data, {
+          deep: true,
+        })
       );
   }
 
@@ -226,11 +224,10 @@ export default class WechatClient {
         `/media/get?access_token=${this.accessToken}&media_id=${mediaId}`
       )
       .then(throwErrorIfAny)
-      .then(
-        (res) =>
-          camelcaseKeys(res.data, {
-            deep: true,
-          }) as any
+      .then((res) =>
+        camelcaseKeys(res.data, {
+          deep: true,
+        })
       );
   }
 
@@ -306,11 +303,10 @@ export default class WechatClient {
         snakecaseKeys(body, { deep: true })
       )
       .then(throwErrorIfAny)
-      .then(
-        (res) =>
-          camelcaseKeys(res.data, {
-            deep: true,
-          }) as any
+      .then((res) =>
+        camelcaseKeys(res.data, {
+          deep: true,
+        })
       );
   }
 

@@ -99,7 +99,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -130,7 +130,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -158,7 +158,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -192,7 +192,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -228,7 +228,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -260,7 +260,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -295,7 +295,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -327,7 +327,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -362,7 +362,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -396,7 +396,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -424,7 +424,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       mock
@@ -452,7 +452,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       const richMedia = {
@@ -649,7 +649,7 @@ describe('send message', () => {
       const reply = {
         status: 0,
         statusMessage: 'ok',
-        messageToken: 5098034272017990000,
+        messageToken: 5098034272017990000n,
       };
 
       const richMedia = {
@@ -765,7 +765,7 @@ describe('keyboards', () => {
     const reply = {
       status: 0,
       statusMessage: 'ok',
-      messageToken: 5098034272017990000,
+      messageToken: 5098034272017990000n,
     };
 
     const keyboard = {
@@ -820,7 +820,7 @@ describe('keyboards', () => {
     const reply = {
       status: 0,
       statusMessage: 'ok',
-      messageToken: 5098034272017990000,
+      messageToken: 5098034272017990000n,
     };
 
     const keyboard = {
@@ -922,7 +922,7 @@ describe('get user details', () => {
       const reply = {
         status: 0,
         status_message: 'ok',
-        message_token: 4912661846655238145,
+        message_token: 4912661846655238145n,
         user,
       };
 

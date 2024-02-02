@@ -1,7 +1,6 @@
 import AxiosError from 'axios-error';
 import axios, { AxiosInstance } from 'axios';
 import difference from 'lodash/difference';
-import invariant from 'ts-invariant';
 import isPlainObject from 'lodash/isPlainObject';
 import pick from 'lodash/pick';
 import warning from 'warning';
@@ -12,6 +11,7 @@ import {
   snakecase,
   snakecaseKeysDeep,
 } from 'messaging-api-common';
+import { invariant } from 'ts-invariant';
 
 import * as TelegramTypes from './TelegramTypes';
 
@@ -68,7 +68,7 @@ export default class TelegramClient {
     );
   }
 
-  private async request(path: string, body: Record<string, any> = {}) {
+  private async request(path: string, body: Record<string, unknown> = {}) {
     try {
       const response = await this.axios.post(path, snakecaseKeysDeep(body));
 
@@ -86,21 +86,25 @@ export default class TelegramClient {
         return camelcaseKeysDeep(data.result);
       }
       return data.result;
-    } catch (err: any) {
-      if (err.response && err.response.data) {
-        const { error_code, description } = err.response.data;
+    } catch (err) {
+      const errObj = err as AxiosError;
+      if (errObj.response && errObj.response.data) {
+        const { error_code, description } = errObj.response.data as Record<
+          string,
+          unknown
+        >;
         const msg = `Telegram API - ${error_code} ${description || ''}`;
 
-        throw new AxiosError(msg, err);
+        throw new AxiosError(msg, errObj);
       }
-      throw new AxiosError(err.message, err);
+      throw new AxiosError(errObj.message, errObj);
     }
   }
 
   private optionWithoutKeys(
-    option: any,
+    option: Record<string, unknown>,
     removeKeys: string[]
-  ): Record<string, any> {
+  ): Record<string, unknown> {
     let keys = Object.keys(option);
     keys = difference(keys, removeKeys);
     keys = difference(

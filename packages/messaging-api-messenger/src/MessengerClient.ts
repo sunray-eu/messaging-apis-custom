@@ -13,7 +13,6 @@ import axios, {
   AxiosError as BaseAxiosError,
 } from 'axios';
 import get from 'lodash/get';
-import invariant from 'ts-invariant';
 import isPlainObject from 'lodash/isPlainObject';
 import omit from 'lodash/omit';
 import warning from 'warning';
@@ -23,6 +22,7 @@ import {
   createRequestInterceptor,
   snakecaseKeysDeep,
 } from 'messaging-api-common';
+import { invariant } from 'ts-invariant';
 
 import * as Messenger from './Messenger';
 import * as MessengerTypes from './MessengerTypes';
@@ -109,7 +109,7 @@ export default class MessengerClient {
 
     this.appId = config.appId;
     this.appSecret = config.appSecret;
-    this.version = extractVersion(config.version || '6.0');
+    this.version = extractVersion(config.version || '18.0');
     this.onRequest = config.onRequest;
     const { origin } = config;
 
@@ -162,7 +162,7 @@ export default class MessengerClient {
         if (isBatch) {
           // eslint-disable-next-line no-param-reassign
           requestConfig.data.batch = requestConfig.data.batch.map(
-            (item: any) => {
+            (item: { relativeUrl: string; body: string }) => {
               const urlParts = url.parse(item.relativeUrl, true);
               let accessToken = get(urlParts, 'query.access_token');
               if (!accessToken && item.body) {
@@ -1222,7 +1222,7 @@ export default class MessengerClient {
    * ```
    */
   sendRawBody(
-    body: Record<string, any>
+    body: Record<string, unknown>
   ): Promise<MessengerTypes.SendMessageSuccessResponse> {
     return this.axios
       .post<MessengerTypes.SendMessageSuccessResponse>(
@@ -2161,6 +2161,54 @@ export default class MessengerClient {
     );
   }
 
+  sendCouponTemplate(
+    psidOrRecipient: MessengerTypes.PsidOrRecipient,
+    attrs: MessengerTypes.CouponAttributes,
+    options?: MessengerTypes.SendOption
+  ): Promise<MessengerTypes.SendMessageSuccessResponse> {
+    return this.sendMessage(
+      psidOrRecipient,
+      Messenger.createCouponTemplate(attrs, options),
+      options
+    );
+  }
+
+  sendCustomerFeedbackTemplate(
+    psidOrRecipient: MessengerTypes.PsidOrRecipient,
+    attrs: MessengerTypes.CustomerFeedbackAttributes,
+    options?: MessengerTypes.SendOption
+  ): Promise<MessengerTypes.SendMessageSuccessResponse> {
+    return this.sendMessage(
+      psidOrRecipient,
+      Messenger.createCustomerFeedbackTemplate(attrs, options),
+      options
+    );
+  }
+
+  sendProductTemplate(
+    psidOrRecipient: MessengerTypes.PsidOrRecipient,
+    attrs: MessengerTypes.ProductAttributes,
+    options?: MessengerTypes.SendOption
+  ): Promise<MessengerTypes.SendMessageSuccessResponse> {
+    return this.sendMessage(
+      psidOrRecipient,
+      Messenger.createProductTemplate(attrs, options),
+      options
+    );
+  }
+
+  sendStructuredInformationTemplate(
+    psidOrRecipient: MessengerTypes.PsidOrRecipient,
+    attrs: MessengerTypes.StructuredInformationAttributes,
+    options?: MessengerTypes.SendOption
+  ): Promise<MessengerTypes.SendMessageSuccessResponse> {
+    return this.sendMessage(
+      psidOrRecipient,
+      Messenger.createStructuredInformationTemplate(attrs, options),
+      options
+    );
+  }
+
   /**
    * Sends sender actions to specified user using the Send API, to let users know you are processing their requests.
    *
@@ -2297,7 +2345,7 @@ export default class MessengerClient {
     {
       code: number;
       headers?: { name: string; value: string }[];
-      body: Record<string, any>;
+      body: Record<string, unknown>;
     }[]
   > {
     invariant(
@@ -2311,7 +2359,7 @@ export default class MessengerClient {
       .map((item) => omit(item, 'responseAccessPath'))
       .map((item) => {
         if (item.body) {
-          const body = snakecaseKeysDeep(item.body) as Record<string, any>;
+          const body = snakecaseKeysDeep(item.body as Record<string, unknown>);
           return {
             ...item,
             body: Object.keys(body)
@@ -2338,7 +2386,7 @@ export default class MessengerClient {
           res.data.map(
             (item: { code: number; body: string }, index: number) => {
               const responseAccessPath = responseAccessPaths[index];
-              const datum = camelcaseKeysDeep(item) as Record<string, any>;
+              const datum = camelcaseKeysDeep(item);
               if (datum.body) {
                 const parsedBody = camelcaseKeysDeep(JSON.parse(datum.body));
                 return {
@@ -3263,7 +3311,7 @@ export default class MessengerClient {
           snakecaseKeysDeep({
             ...config,
             accessToken: this.accessToken,
-          }) as Record<string, any>
+          })
         )}`
       )
       .then((res) => res.data, handleError);
@@ -3343,10 +3391,10 @@ export default class MessengerClient {
     appId: number;
     pageId: number;
     pageScopedUserId: string;
-    events: Record<string, any>[];
-  }): Promise<any> {
+    events: Record<string, unknown>[];
+  }) {
     return this.axios
-      .post<any>(`/${appId}/activities`, {
+      .post(`/${appId}/activities`, {
         event: 'CUSTOM_APP_EVENTS',
         customEvents: JSON.stringify(events),
         advertiserTrackingEnabled: 0,

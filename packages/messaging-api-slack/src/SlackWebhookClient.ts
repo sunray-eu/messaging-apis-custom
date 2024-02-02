@@ -1,11 +1,11 @@
 import axios, { AxiosInstance } from 'axios';
-import invariant from 'ts-invariant';
 import warning from 'warning';
 import {
   OnRequestFunction,
   createRequestInterceptor,
   snakecaseKeysDeep,
 } from 'messaging-api-common';
+import { invariant } from 'ts-invariant';
 
 import * as SlackTypes from './SlackTypes';
 
@@ -70,7 +70,7 @@ export default class SlackWebhookClient {
    * ```
    */
   sendRawBody(
-    body: Record<string, any>
+    body: Record<string, unknown>
   ): Promise<SlackTypes.SendMessageSuccessResponse> {
     return this.axios.post('', snakecaseKeysDeep(body)).then((res) => res.data);
   }

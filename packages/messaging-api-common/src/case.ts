@@ -13,8 +13,7 @@ import type {
 } from 'type-fest';
 import type { Options as MapOptions } from 'map-obj';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type PlainObject = Record<string, any>;
+type PlainObject = Record<string, unknown>;
 
 function isLastCharNumber(key: string): boolean {
   return /^\d$/.test(key[key.length - 1]);
@@ -248,4 +247,5 @@ export {
   pascalcase,
   pascalcaseKeys,
   pascalcaseKeysDeep,
+  PlainObject,
 };

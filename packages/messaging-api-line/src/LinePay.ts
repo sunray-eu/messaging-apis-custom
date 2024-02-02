@@ -6,8 +6,8 @@ import axios, {
   AxiosResponse,
   AxiosError as BaseAxiosError,
 } from 'axios';
-import invariant from 'ts-invariant';
 import warning from 'warning';
+import { invariant } from 'ts-invariant';
 
 import * as LineTypes from './LineTypes';
 
@@ -165,7 +165,7 @@ export default class LinePay {
     payType?: 'NORMAL' | 'PREAPPROVED';
     langCd?: 'ja' | 'ko' | 'en' | 'zh-Hans' | 'zh-Hant' | 'th';
     capture?: boolean;
-    extras?: Record<string, any>;
+    extras?: Record<string, unknown>;
   }) {
     return this.axios
       .post('/payments/request', {

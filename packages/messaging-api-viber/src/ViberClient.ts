@@ -1,6 +1,5 @@
 import AxiosError from 'axios-error';
 import axios, { AxiosInstance } from 'axios';
-import invariant from 'ts-invariant';
 import warning from 'warning';
 import {
   OnRequestFunction,
@@ -11,11 +10,14 @@ import {
   snakecaseKeys,
   snakecaseKeysDeep,
 } from 'messaging-api-common';
+import { invariant } from 'ts-invariant';
 
 import * as ViberTypes from './ViberTypes';
 
-function transformMessageCase(message: ViberTypes.Message): any {
-  const { keyboard, richMedia, ...others } = message as any;
+function transformMessageCase(message: ViberTypes.Message) {
+  const { keyboard, ...others } = message;
+
+  const richMedia = others.type === 'rich_media' ? others : undefined;
 
   return {
     ...snakecaseKeysDeep(others),
@@ -25,7 +27,7 @@ function transformMessageCase(message: ViberTypes.Message): any {
           richMedia: pascalcaseKeysDeep(richMedia),
         }
       : undefined),
-  } as any;
+  };
 }
 
 /**
@@ -89,7 +91,7 @@ export default class ViberClient {
 
   private async callAPI<R extends object>(
     path: string,
-    body: Record<string, any> = {}
+    body: Record<string, unknown> = {}
   ): Promise<ViberTypes.SucceededResponseData<R>> {
     try {
       const response = await this.axios.post(
@@ -104,7 +106,7 @@ export default class ViberClient {
 
       const data = camelcaseKeysDeep(
         response.data
-      ) as any as ViberTypes.ResponseData<R>;
+      ) as ViberTypes.ResponseData<R>;
 
       if (data.status !== 0) {
         throw new AxiosError(`Viber API - ${data.statusMessage}`, {
@@ -115,8 +117,9 @@ export default class ViberClient {
       }
 
       return data;
-    } catch (err: any) {
-      throw new AxiosError(err.message, err);
+    } catch (err) {
+      const errObj = err as AxiosError;
+      throw new AxiosError(errObj.message, errObj);
     }
   }
 
@@ -694,9 +697,6 @@ export default class ViberClient {
    *
    * @param broadcastList - This mandatory parameter defines the recipients for the message. Every user must be subscribed and have a valid user id. The maximum list length is 300 receivers.
    * @param picture - The picture of the message.
-   * @param picture.text - Description of the photo. Can be an empty string if irrelevant. Max 120 characters.
-   * @param picture.media - URL of the image (JPEG). Max size 1 MB. Only JPEG format is supported. Other image formats as well as animated GIFs can be sent as URL messages or file messages.
-   * @param picture.thumbnail - URL of a reduced size image (JPEG). Max size 100 kb. Recommended: 400x400. Only JPEG format is supported.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -736,10 +736,6 @@ export default class ViberClient {
    *
    * @param broadcastList - This mandatory parameter defines the recipients for the message. Every user must be subscribed and have a valid user id. The maximum list length is 300 receivers.
    * @param video - The video of the message.
-   * @param video.media - URL of the video (MP4, H264). Max size 50 MB. Only MP4 and H264 are supported.
-   * @param video.size - Size of the video in bytes.
-   * @param video.duration - Video duration in seconds; will be displayed to the receiver. Max 180 seconds.
-   * @param video.thumbnail - URL of a reduced size image (JPEG). Max size 100 kb. Recommended: 400x400. Only JPEG format is supported.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -963,9 +959,6 @@ export default class ViberClient {
    *
    * @param broadcastList - This mandatory parameter defines the recipients for the message. Every user must be subscribed and have a valid user id. The maximum list length is 300 receivers.
    * @param richMedia - The rich media of the message.
-   * @param richMedia.buttonsGroupColumns - Number of columns per carousel content block. Default 6 columns. Possible values: 1 - 6.
-   * @param richMedia.buttonsGroupRows - Number of rows per carousel content block. Default 7 rows. Possible values: 1 - 7.
-   * @param richMedia.buttons - Array of buttons.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *

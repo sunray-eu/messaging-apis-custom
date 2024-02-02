@@ -359,3 +359,55 @@ export function createOneTimeNotifReqTemplate(
     options
   );
 }
+
+export function createCouponTemplate(
+  attrs: MessengerTypes.CouponAttributes,
+  options?: { quickReplies?: MessengerTypes.QuickReply[] }
+): MessengerTypes.Message {
+  return createTemplate(
+    {
+      templateType: 'coupon',
+      ...attrs,
+    },
+    options
+  );
+}
+
+export function createCustomerFeedbackTemplate(
+  attrs: MessengerTypes.CustomerFeedbackAttributes,
+  options?: { quickReplies?: MessengerTypes.QuickReply[] }
+): MessengerTypes.Message {
+  return createTemplate(
+    {
+      templateType: 'customer_feedback',
+      ...attrs,
+    },
+    options
+  );
+}
+
+export function createProductTemplate(
+  attrs: MessengerTypes.ProductAttributes,
+  options?: { quickReplies?: MessengerTypes.QuickReply[] }
+): MessengerTypes.Message {
+  return createTemplate(
+    {
+      templateType: 'product',
+      ...attrs,
+    },
+    options
+  );
+}
+
+export function createStructuredInformationTemplate(
+  attrs: MessengerTypes.StructuredInformationAttributes,
+  options?: { quickReplies?: MessengerTypes.QuickReply[] }
+): MessengerTypes.Message {
+  return createTemplate(
+    {
+      templateType: 'customer_information',
+      ...attrs,
+    },
+    options
+  );
+}

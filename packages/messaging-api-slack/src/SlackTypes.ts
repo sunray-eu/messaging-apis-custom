@@ -99,6 +99,16 @@ export type BlockElement =
   | RadioButtonsElement
   | SelectElement;
 
+// TODO: Convert whole api and use official node library: https://github.com/slackapi/node-slack-sdk - here the block types are missing
+export type Block =
+  | ActionsBlock
+  | ContextBlock
+  | DividerBlock
+  | FileBlock
+  | HeaderBlock
+  | ImageBlock
+  | SectionBlock;
+
 export type ButtonElement = {
   type: 'button';
   text: PlainTextObject;
@@ -337,6 +347,12 @@ export type SectionBlock = {
   accessory?: BlockElement;
 };
 
+export type HeaderBlock = {
+  type: 'header';
+  text: TextObject;
+  blockId?: string;
+};
+
 // View
 // https://api.slack.com/reference/surfaces/views
 export type ViewCommon = {
@@ -364,9 +380,121 @@ export type View = ModalView | HomeView;
 
 export type SendMessageSuccessResponse = 'ok';
 
-export type OAuthAPIResponse = Record<string, any> & {
+export type OAuthAPIError =
+  | 'bad_client_secret'
+  | 'bad_redirect_uri'
+  | 'cannot_install_an_org_installed_app'
+  | 'invalid_client_id'
+  | 'invalid_code'
+  | 'invalid_grant_type'
+  | 'invalid_refresh_token'
+  | 'no_scopes'
+  | 'oauth_authorization_url_mismatch'
+  | 'preview_feature_not_available'
+  | 'accesslimited'
+  | 'fatal_error'
+  | 'internal_error'
+  | 'invalid_arg_name'
+  | 'invalid_arguments'
+  | 'invalid_array_arg'
+  | 'invalid_charset'
+  | 'invalid_form_data'
+  | 'invalid_post_type'
+  | 'missing_post_type'
+  | 'ratelimited'
+  | 'request_timeout'
+  | 'service_unavailable'
+  | 'team_added_to_org';
+
+export type OAuthAPIWarning = 'missing_charset' | 'superfluous_charset';
+
+/**
+ * Represents the response from Slack's OAuth API. This type includes both successful responses
+ * and common error responses, covering various scenarios such as successful token requests,
+ * errors, and warnings related to OAuth operations.
+ */
+export type OAuthAPIResponse = {
+  /**
+   * Indicates whether the API call was successful. `true` for successful calls; `false` for calls
+   * that resulted in an error.
+   */
   ok: boolean;
-};
+
+  /**
+   * The warning code indicating the specific warning encountered during the API call.
+   */
+  warning?: OAuthAPIWarning[];
+} & (
+  | {
+      /**
+       * The access token issued by the Slack API. In the case of bot tokens, this will be prefixed
+       * with "xoxb-"; for user tokens, it may begin with "xoxp-" or "xoxe-".
+       */
+      accessToken: string;
+      /**
+       * The type of token issued. Typically "bot" for bot tokens and "user" for user tokens.
+       */
+      tokenType: 'bot' | 'user';
+      /**
+       * A space-separated list of scopes associated with the token. These define the permissions
+       * granted to the token.
+       */
+      scope: string;
+      /**
+       * (Optional) The user ID associated with the issued token. Present in bot and user token responses.
+       */
+      botUserId?: string;
+      /**
+       * The application ID associated with the token.
+       */
+      appId: string;
+      /**
+       * (Optional) Information about the team associated with the token, including the team name and ID.
+       */
+      team?: {
+        name: string;
+        id: string;
+      };
+      /**
+       * (Optional) Information about the enterprise organization associated with the token, if applicable,
+       * including the enterprise name and ID.
+       */
+      enterprise?: {
+        name: string;
+        id: string;
+      };
+      /**
+       * Information about the authenticated user associated with the token, including user ID, scope,
+       * and a user-specific access token.
+       */
+      authed_user: {
+        id: string;
+        scope: string;
+        access_token: string;
+        token_type: 'user';
+      };
+      /**
+       * (Optional) Time in seconds until the token expires. Present if token rotation is enabled.
+       */
+      expiresIn?: number;
+      /**
+       * (Optional) The refresh token used to obtain a new access token when the current token expires.
+       * Present if token rotation is enabled.
+       */
+      refreshToken?: string;
+      /**
+       * (Optional) Indicates whether the installation is an enterprise installation.
+       */
+      isEnterpriseInstall?: boolean;
+    }
+  | {
+      /**
+       * The error code indicating the specific error encountered during the API call.
+       */
+      error: OAuthAPIError;
+    }
+  | any
+);
 
 export type AvailableMethod =
   | 'api.test'
@@ -603,7 +731,7 @@ export type UpdateMessageOptions = Message & {
   /**
    * A JSON-based array of structured blocks, presented as a URL-encoded string. If you don't include this field, the message's previous blocks will be retained. To remove previous blocks, include an empty array for this field.
    */
-  blocks?: any; // FIXME
+  blocks?: Block[]; // FIXME
   /**
    * Find and link channel names and usernames. Defaults to none. If you do not specify a value for this field, the original value set for the message will be overwritten with the default, none.
    */
@@ -792,7 +920,7 @@ export type UnfurlOptions = {
   /**
    * URL-encoded JSON map with keys set to URLs featured in the the message, pointing to their unfurl blocks or message attachments.
    */
-  unfurls: Record<string, any>;
+  unfurls: Record<string, unknown>;
   /**
    * Provide a simply-formatted string to send as an ephemeral message to the user as invitation to authenticate further and enable full unfurling behavior
    */

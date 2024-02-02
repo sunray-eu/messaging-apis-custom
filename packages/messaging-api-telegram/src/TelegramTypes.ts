@@ -112,21 +112,24 @@ export type User = {
 };
 
 // TODO: separate different type because some fields returned only in getChat.
-export type Chat = {
+export interface Chat {
   id: number;
   type: 'private' | 'group' | 'supergroup' | 'channel';
   title?: string;
   username?: string;
   firstName?: string;
   lastName?: string;
+  permissions?: ChatPermissions;
+}
+
+export interface GetChat extends Chat {
   photo?: ChatPhoto;
   description?: string;
   inviteLink?: string;
   pinnedMessage?: Message;
-  permissions?: ChatPermissions;
   stickerSetName?: string;
   canSetStickerSet?: boolean;
-};
+}
 
 export type Message = {
   messageId: number;
@@ -642,7 +645,7 @@ export type ChatPhoto = {
   bigFileId: string;
 };
 
-export type ChatMember = any;
+export type ChatMember = Record<string, unknown>;
 
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
@@ -689,7 +692,7 @@ export type ChatPermissions = {
   canPinMessages?: boolean;
 };
 
-export type ResponseParameters = any;
+export type ResponseParameters = Record<string, unknown>;
 
 export type InputMedia =
   | InputMediaAnimation
@@ -1413,7 +1416,7 @@ export type Game = {
  *
  * - https://core.telegram.org/bots/api#callbackgame
  */
-export type CallbackGame = any;
+export type CallbackGame = Record<string, unknown>;
 
 export type GameHighScore = {
   position: number;

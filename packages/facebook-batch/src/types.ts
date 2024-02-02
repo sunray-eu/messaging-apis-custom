@@ -9,7 +9,7 @@ export type BatchRequest = {
   method: string;
   relativeUrl: string;
   name?: string;
-  body?: JsonObject;
+  body?: Record<string, unknown> | object | string;
   responseAccessPath?: string;
 } & BatchRequestOptions;
 

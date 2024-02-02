@@ -2,27 +2,30 @@ import querystring from 'querystring';
 
 import AxiosError from 'axios-error';
 import axios, { AxiosInstance } from 'axios';
-import invariant from 'ts-invariant';
 import warning from 'warning';
 import {
   OnRequestFunction,
+  PlainObject,
   camelcaseKeysDeep,
   createRequestInterceptor,
   snakecaseKeysDeep,
 } from 'messaging-api-common';
+import { invariant } from 'ts-invariant';
 
 import * as SlackTypes from './SlackTypes';
 
 const DEFAULT_PAYLOAD_FIELDS_TO_STRINGIFY = ['attachments', 'blocks'];
 
 function stringifyPayloadFields(
-  payload: Record<string, any> = {},
+  payload: Record<string, unknown> = {},
   fields: Array<string> = DEFAULT_PAYLOAD_FIELDS_TO_STRINGIFY
 ): object {
   fields.forEach((field) => {
     if (payload[field] && typeof payload[field] !== 'string') {
       // eslint-disable-next-line no-param-reassign
-      payload[field] = JSON.stringify(snakecaseKeysDeep(payload[field]));
+      payload[field] = JSON.stringify(
+        snakecaseKeysDeep(payload[field] as PlainObject)
+      );
     }
   });
 
