@@ -676,7 +676,7 @@ export default class SlackOAuthClient {
 
   async callMethod(
     method: SlackTypes.AvailableMethod,
-    inputBody: Record<string, any> = {}
+    inputBody: Record<string, unknown> | object = {}
   ): Promise<SlackTypes.OAuthAPIResponse> {
     try {
       const body = {
@@ -686,7 +686,7 @@ export default class SlackOAuthClient {
 
       const response = await this.axios.post(
         method,
-        querystring.stringify(snakecaseKeysDeep(body) as any)
+        querystring.stringify(snakecaseKeysDeep(body))
       );
 
       const data = camelcaseKeysDeep(

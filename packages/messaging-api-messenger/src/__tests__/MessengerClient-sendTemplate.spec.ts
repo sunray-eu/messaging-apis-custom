@@ -960,14 +960,14 @@ describe('#sendAirlineItineraryTemplate', () => {
             departureTime: '2016-01-02T19:45',
             arrivalTime: '2016-01-02T21:20',
           },
-          travelClass: 'business' as any,
+          travelClass: 'business',
         },
         {
           connectionId: 'c002',
           segmentId: 's002',
           flightNumber: 'KL321',
           aircraftType: 'Boeing 747-200',
-          travelClass: 'business' as any,
+          travelClass: 'business',
           departureAirport: {
             airportCode: 'SLC',
             city: 'Salt Lake City',

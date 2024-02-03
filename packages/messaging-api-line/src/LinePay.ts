@@ -25,7 +25,7 @@ function handleError(
   throw new AxiosError(err.message, err);
 }
 
-function throwWhenNotSuccess<T = any>(
+function throwWhenNotSuccess<T>(
   res: AxiosResponse<{
     returnCode: string;
     returnMessage: string;
