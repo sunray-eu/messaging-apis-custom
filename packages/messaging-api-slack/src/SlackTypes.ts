@@ -424,6 +424,10 @@ export type OAuthAPIResponse = {
    * The warning code indicating the specific warning encountered during the API call.
    */
   warning?: OAuthAPIWarning[];
+
+  responseMetadata?: {
+    nextCursor: string;
+  };
 } & (
   | {
       /**
@@ -488,12 +492,26 @@ export type OAuthAPIResponse = {
       isEnterpriseInstall?: boolean;
     }
   | {
+      channel: Channel;
+    }
+  | {
+      channels: Channel[];
+    }
+  | {
+      user: User;
+    }
+  | {
+      members: User[];
+    }
+  | {
+      members: string[];
+    }
+  | {
       /**
        * The error code indicating the specific error encountered during the API call.
        */
       error: OAuthAPIError;
     }
-  | any
 );
 
 export type AvailableMethod =

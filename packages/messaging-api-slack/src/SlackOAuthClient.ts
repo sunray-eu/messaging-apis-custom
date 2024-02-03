@@ -691,9 +691,9 @@ export default class SlackOAuthClient {
 
       const data = camelcaseKeysDeep(
         response.data
-      ) as any as SlackTypes.OAuthAPIResponse;
+      ) as SlackTypes.OAuthAPIResponse;
 
-      if (!data.ok) {
+      if (!data.ok && 'error' in data) {
         const { config, request } = response;
 
         throw new AxiosError(`Slack API - ${data.error}`, {
@@ -735,7 +735,9 @@ export default class SlackOAuthClient {
     return this.callMethod('channels.info', {
       channel: channelId,
       ...options,
-    }).then((data) => data.channel);
+    }).then((data) =>
+      'channel' in data ? data.channel : ({} as SlackTypes.Channel)
+    );
   }
 
   /**
@@ -764,7 +766,9 @@ export default class SlackOAuthClient {
     return this.callMethod('conversations.info', {
       channel: channelId,
       ...options,
-    }).then((data) => data.channel);
+    }).then((data) =>
+      'channel' in data ? data.channel : ({} as SlackTypes.Channel)
+    );
   }
 
   /**
@@ -796,10 +800,14 @@ export default class SlackOAuthClient {
     return this.callMethod('conversations.members', {
       channel: channelId,
       ...options,
-    }).then((data) => ({
-      members: data.members,
-      next: data.responseMetadata && data.responseMetadata.nextCursor,
-    }));
+    }).then((data) =>
+      'members' in data
+        ? {
+            members: data.members as string[],
+            next: data.responseMetadata && data.responseMetadata.nextCursor,
+          }
+        : { members: [] }
+    );
   }
 
   /**
@@ -877,10 +885,16 @@ export default class SlackOAuthClient {
     channels: SlackTypes.Channel[];
     next?: string;
   }> {
-    return this.callMethod('conversations.list', options).then((data) => ({
-      channels: data.channels,
-      next: data.responseMetadata && data.responseMetadata.nextCursor,
-    }));
+    return this.callMethod('conversations.list', options).then((data) =>
+      'channels' in data
+        ? {
+            channels: data.channels,
+            next: data.responseMetadata && data.responseMetadata.nextCursor,
+          }
+        : {
+            channels: [],
+          }
+    );
   }
 
   /**
@@ -1194,7 +1208,7 @@ export default class SlackOAuthClient {
     options?: SlackTypes.UserInfoOptions
   ): Promise<SlackTypes.User> {
     return this.callMethod('users.info', { user: userId, ...options }).then(
-      (data) => data.user
+      (data) => ('user' in data ? data.user : ({} as SlackTypes.User))
     );
   }
 
@@ -1224,7 +1238,7 @@ export default class SlackOAuthClient {
     next?: string;
   }> {
     return this.callMethod('users.list', options).then((data) => ({
-      members: data.members,
+      members: 'members' in data ? (data.members as SlackTypes.User[]) : [],
       next: data.responseMetadata && data.responseMetadata.nextCursor,
     }));
   }
