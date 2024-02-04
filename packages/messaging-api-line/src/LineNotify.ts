@@ -26,7 +26,7 @@ function handleError(
   throw new AxiosError(err.message, err);
 }
 
-function throwWhenNotSuccess<T extends JsonObject = {}>(
+function throwWhenNotSuccess<T extends JsonObject = JsonObject>(
   res: AxiosResponse<
     {
       status: number;

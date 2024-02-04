@@ -120,10 +120,10 @@ export default class TelegramClient {
    * - In order to avoid getting duplicate updates, recalculate offset after each server response.
    *
    * @param options - Optional parameters.
-   * @param options.offset - Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned.
-   * @param options.limit - Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100.
-   * @param options.timeout - Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only.
-   * @param options.allowedUpdates - A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types.
+   *                  - `offset`: Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned.
+   *                  - `limit`: Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100.
+   *                  - `timeout`: Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only.
+   *                  - `allowedUpdates`: A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types.
    * @returns An array of [Update](https://core.telegram.org/bots/api#update) objects is returned.
    *
    * @see https://core.telegram.org/bots/api#getupdates
@@ -196,9 +196,9 @@ export default class TelegramClient {
    *
    * @param url - HTTPS url to send updates to. Use an empty string to remove webhook integration.
    * @param options - Optional parameters.
-   * @param options.certificate - not supported yet.
-   * @param options.maxConnections - Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40.
-   * @param options.allowedUpdates - List the types of updates you want your bot to receive.
+   *                  - `certificate`: not supported yet.
+   *                  - `maxConnections`: Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40.
+   *                  - `allowedUpdates`: List the types of updates you want your bot to receive.
    * @returns True on success.
    *
    * @see https://core.telegram.org/bots/api#setwebhook
@@ -299,7 +299,7 @@ export default class TelegramClient {
    * @param fromChatId - Unique identifier for the chat where the original message was sent (or channel username in the format `@channelusername`)
    * @param messageId - Message identifier in the chat specified in fromChatId
    * @param options - Options for other optional parameters.
-   * @param options.disableNotification - Sends the message silently. Users will receive a notification with no sound
+   *                  - `disableNotification`: Sends the message silently. Users will receive a notification with no sound
    * @returns On success, the sent Message is returned.
    *
    * @see https://core.telegram.org/bots/api#forwardmessage
@@ -480,10 +480,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#sendanimation
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   sendAnimation(
     chatId: string | number,
@@ -601,8 +597,8 @@ export default class TelegramClient {
    *
    * @param chatId - Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
    * @param location - Object contains latitude and longitude.
-   * @param location.latitude - Latitude of the location.
-   * @param location.longitude - Longitude of the location.
+   *                   - `latitude`: Latitude of the location.
+   *                   - `longitude`: Longitude of the location.
    * @param options - Options for other optional parameters.
    * @returns On success, the sent Message is returned.
    *
@@ -640,13 +636,13 @@ export default class TelegramClient {
    * Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.
    *
    * @param location - Object contains new latitude and longitude.
-   * @param location.latitude - Latitude of new location
-   * @param location.longitude - Longitude of new location
+   *                   - `latitude`: Latitude of new location
+   *                   - `longitude`: Longitude of new location
    * @param options - One of chatId, messageId or inlineMessageId is required.
-   * @param options.chatId - Required if inlineMessageId is not specified. Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
-   * @param options.messageId - Required if inlineMessageId is not specified. Identifier of the message to edit
-   * @param options.inlineMessageId - Required if chatId and messageId are not specified. Identifier of the inline message
-   * @param options.replyMarkup - A JSON-serialized object for a new inline keyboard.
+   *                  - `chatId`: Required if inlineMessageId is not specified. Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
+   *                  - `messageId`: Required if inlineMessageId is not specified. Identifier of the message to edit
+   *                  - `inlineMessageId`: Required if chatId and messageId are not specified. Identifier of the inline message
+   *                  - `replyMarkup`: A JSON-serialized object for a new inline keyboard.
    *
    * @see https://core.telegram.org/bots/api#editmessagelivelocation
    *
@@ -679,10 +675,10 @@ export default class TelegramClient {
    * Use this method to stop updating a live location message before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.
    *
    * @param options - One of chatId, messageId or inlineMessageId is required.
-   * @param options.chatId - Required if inlineMessageId is not specified. Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
-   * @param options.messageId - Required if inlineMessageId is not specified. Identifier of the message to edit
-   * @param options.inlineMessageId - Required if chatId and messageId are not specified. Identifier of the inline message
-   * @param options.replyMarkup - A JSON-serialized object for a new inline keyboard.
+   *                  - `chatId`: Required if inlineMessageId is not specified. Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
+   *                  - `messageId`: Required if inlineMessageId is not specified. Identifier of the message to edit
+   *                  - `inlineMessageId`: Required if chatId and messageId are not specified. Identifier of the inline message
+   *                  - `replyMarkup`: A JSON-serialized object for a new inline keyboard.
    *
    * @see https://core.telegram.org/bots/api#stopmessagelivelocation
    *
@@ -705,10 +701,10 @@ export default class TelegramClient {
    *
    * @param chatId - Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
    * @param venue - Object contains information of the venue.
-   * @param venue.latitude - Latitude of the venue
-   * @param venue.longitude - Longitude of the venue
-   * @param venue.title - Name of the venue
-   * @param venue.address - Address of the venue
+   *                - `latitude`: Latitude of the venue
+   *                - `longitude`: Longitude of the venue
+   *                - `title`: Name of the venue
+   *                - `address`: Address of the venue
    * @param options - Optional parameters for other parameters.
    * @returns On success, the sent Message is returned.
    *
@@ -747,8 +743,9 @@ export default class TelegramClient {
    * Use this method to send phone contacts.
    *
    * @param chatId - Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
-   * @param requiredOption.phoneNumber - Contact's phone number
-   * @param requiredOption.firstName - Contact's first name
+   * @param requiredOption - Required options
+   *                         - `phoneNumber`: Contact's phone number
+   *                         - `firstName`: Contact's first name
    * @param options - Optional parameters for other parameters.
    * @returns On success, the sent Message is returned.
    *
@@ -790,10 +787,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#sendpoll
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   sendPoll(
     chatId: string | number,
@@ -816,7 +809,7 @@ export default class TelegramClient {
    *
    * @param chatId - Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
    * @param action - Types of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_audio or upload_audio for audio files, upload_document for general files, find_location for location data, record_video_note or upload_video_note for video notes.
-   * @param Returns True on success.
+   * @returns True on success.
    *
    * @see https://core.telegram.org/bots/api#sendchataction
    *
@@ -943,7 +936,6 @@ export default class TelegramClient {
    *
    * @param chatId - Unique identifier for the target group or username of the target supergroup or channel (in the format `@channelusername`)
    * @param userId - Unique identifier of the target user
-   * @param options.untilDate - Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever
    * @returns Returns True on success.
    *
    * @see https://core.telegram.org/bots/api#kickchatmember

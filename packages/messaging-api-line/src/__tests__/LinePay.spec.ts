@@ -135,14 +135,14 @@ describe('#getPayments', () => {
     returnMessage: 'success',
     info: [
       {
-        transactionId: 1020140728100001997,
+        transactionId: 1020140728100001997n,
         transactionDate: '2014-07-28T09:48:43Z',
         transactionType: 'PARTIAL_REFUND',
         amount: -5,
         productName: '',
         currency: 'USD',
         orderId: '20140101123123123',
-        originalTransactionId: 1020140728100001999,
+        originalTransactionId: 1020140728100001999n,
       },
     ],
   };
@@ -216,7 +216,7 @@ describe('#getAuthorizations', () => {
     returnMessage: 'success',
     info: [
       {
-        transactionId: 201612312312333401,
+        transactionId: 201612312312333401n,
         transactionDate: '2014-07-28T09:48:43Z',
         transactionType: 'PAYMENT',
         payInfo: [
@@ -462,7 +462,7 @@ describe('#confirm', () => {
       returnMessage: 'OK',
       info: {
         orderId: 'order_210124213',
-        transactionId: 20140101123123123,
+        transactionId: 20140101123123123n,
         payInfo: [
           {
             method: 'BALANCE',
@@ -490,7 +490,7 @@ describe('#confirm', () => {
 
     expect(result).toEqual({
       orderId: 'order_210124213',
-      transactionId: 20140101123123123,
+      transactionId: 20140101123123123n,
       payInfo: [
         {
           method: 'BALANCE',
@@ -512,7 +512,7 @@ describe('#confirm', () => {
       returnMessage: 'merchant not found',
       info: {
         orderId: 'order_210124213',
-        transactionId: 20140101123123123,
+        transactionId: 20140101123123123n,
         payInfo: [
           {
             method: 'BALANCE',
@@ -550,7 +550,7 @@ describe('#capture', () => {
       returnCode: '0000',
       returnMessage: 'OK',
       info: {
-        transactionId: 20140101123123123,
+        transactionId: 20140101123123123n,
         orderId: 'order_210124213',
         payInfo: [
           {
@@ -578,7 +578,7 @@ describe('#capture', () => {
     });
 
     expect(result).toEqual({
-      transactionId: 20140101123123123,
+      transactionId: 20140101123123123n,
       orderId: 'order_210124213',
       payInfo: [
         {
@@ -600,7 +600,7 @@ describe('#capture', () => {
       returnCode: '1104',
       returnMessage: 'merchant not found',
       info: {
-        transactionId: 20140101123123123,
+        transactionId: 20140101123123123n,
         orderId: 'order_210124213',
         payInfo: [
           {

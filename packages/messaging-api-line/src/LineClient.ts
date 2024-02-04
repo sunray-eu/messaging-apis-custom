@@ -199,9 +199,9 @@ export default class LineClient {
    *
    * [Official document](https://developers.line.biz/en/reference/messaging-api/#send-reply-message)
    *
-   * @param body - Request body
-   * @param body.replyToken - Reply token received via webhook
-   * @param body.messages - Messages to send (Max: 5)
+   * @param body - The request body object containing the following properties:
+   *               - `replyToken`: Reply token received via webhook.
+   *               - `messages`: Messages to send (Max: 5).
    *
    * @returns Returns status code `200` and an empty JSON object.
    */
@@ -290,23 +290,15 @@ export default class LineClient {
   /**
    * Reply Image Message
    *
+   * Sends an image message in response to an event from a user, group, or room. The image is specified by a URL.
+   *
    * [Official document - image message](https://developers.line.biz/en/reference/messaging-api/#image-message)
    *
-   * @param replyToken - Reply token received via webhook
-   * @param image - Image
-   * @param options - Common properties for messages
-   * @param image.originalContentUrl - Image URL
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 4096 x 4096
-   * - Max: 1 MB
-   * @param image.previewImageUrl - Preview image URL
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 240 x 240
-   * - Max: 1 MB
+   * @param replyToken - Reply token received via webhook.
+   * @param image - The image object containing:
+   *                - `originalContentUrl`: Image URL. Max character limit: 1000. HTTPS over TLS 1.2 or later. JPEG format. Max size: 4096 x 4096. Max file size: 1 MB.
+   *                - `previewImageUrl`: Optional. Preview image URL. Max character limit: 1000. HTTPS over TLS 1.2 or later. JPEG format. Max size: 240 x 240. Max file size: 1 MB.
+   * @param options - Common properties for messages.
    * @returns Returns status code `200` and an empty JSON object.
    */
   replyImage(
@@ -323,26 +315,15 @@ export default class LineClient {
   /**
    * Reply Video Message
    *
+   * Sends a video message in response to an event from a user, group, or room. The video and its preview image are specified by URLs.
+   *
    * [Official document - video message](https://developers.line.biz/en/reference/messaging-api/#video-message)
    *
-   * @param replyToken - Reply token received via webhook
-   * @param video - Video
-   * @param options - Common properties for messages
-   * @param video.originalContentUrl - URL of video file
-   *
-   * A very wide or tall video may be cropped when played in some environments.
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - mp4
-   * - Max: 1 minute
-   * - Max: 10 MB
-   *
-   * @param video.previewImageUrl - URL of preview image
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 240 x 240
-   * - Max: 1 MB
+   * @param replyToken - Reply token received via webhook.
+   * @param video - The video object containing:
+   *                - `originalContentUrl`: URL of the video file. Max character limit: 1000. HTTPS over TLS 1.2 or later. MP4 format. Max duration: 1 minute. Max file size: 10 MB.
+   *                - `previewImageUrl`: URL of the preview image. Max character limit: 1000. HTTPS over TLS 1.2 or later. JPEG format. Max size: 240 x 240. Max file size: 1 MB.
+   * @param options - Common properties for messages.
    * @returns Returns status code `200` and an empty JSON object.
    */
   replyVideo(
@@ -359,18 +340,15 @@ export default class LineClient {
   /**
    * Reply Audio Message
    *
+   * Sends an audio message in response to an event from a user, group, or room. The audio is specified by a URL, along with its duration.
+   *
    * [Official document - audio message](https://developers.line.biz/en/reference/messaging-api/#audio-message)
    *
-   * @param replyToken - Reply token received via webhook
-   * @param audio - Audio
-   * @param options - Common properties for messages
-   * @param audio.originalContentUrl - URL of audio file
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - m4a
-   * - Max: 1 minute
-   * - Max: 10 MB
-   * @param audio.duration - Length of audio file (milliseconds)
+   * @param replyToken - Reply token received via webhook.
+   * @param audio - The audio object containing:
+   *                - `originalContentUrl`: URL of the audio file. Max character limit: 1000. HTTPS over TLS 1.2 or later. M4A format. Max duration: 1 minute. Max file size: 10 MB.
+   *                - `duration`: Length of the audio file in milliseconds.
+   * @param options - Common properties for messages.
    * @returns Returns status code `200` and an empty JSON object.
    */
   replyAudio(
@@ -656,9 +634,9 @@ export default class LineClient {
    *
    * [Official document - send push message](https://developers.line.biz/en/reference/messaging-api/#send-push-message)
    *
-   * @param body - Request body
-   * @param body.to - ID of the target recipient. Use a userId, groupId, or roomId value returned in a [webhook event object](https://developers.line.biz/en/reference/messaging-api/#common-properties). Do not use the LINE ID found on LINE.
-   * @param body.messages - Messages to send (Max: 5)
+   * @param body - The request body object containing:
+   *               - `to`: ID of the target recipient. Use a userId, groupId, or roomId value returned in a webhook event object. Do not use the LINE ID found on LINE.
+   *               - `messages`: Messages to send (Max: 5).
    * @returns Returns status code `200` and an empty JSON object.
    */
   pushRawBody(body: {
@@ -738,23 +716,15 @@ export default class LineClient {
   /**
    * Push Image Message
    *
+   * Sends an image message to a user, group, or room at any time.
+   *
    * [Official document - image message](https://developers.line.biz/en/reference/messaging-api/#image-message)
    *
-   * @param to - ID of the target recipient. Use a userId, groupId, or roomId value returned in a [webhook event object](https://developers.line.biz/en/reference/messaging-api/#common-properties). Do not use the LINE ID found on LINE.
-   * @param image - Image
-   * @param options - Common properties for messages
-   * @param image.originalContentUrl - Image URL
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 4096 x 4096
-   * - Max: 1 MB
-   * @param image.previewImageUrl - Preview image URL
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 240 x 240
-   * - Max: 1 MB
+   * @param to - ID of the target recipient. Use a userId, groupId, or roomId value returned in a webhook event object. Do not use the LINE ID found on LINE.
+   * @param image - The image object containing:
+   *                - `originalContentUrl`: The URL of the image (Max character limit: 1000, HTTPS over TLS 1.2 or later, JPEG format, Max size: 4096 x 4096, Max file size: 1 MB).
+   *                - `previewImageUrl`: The URL of the preview image (Max character limit: 1000, HTTPS over TLS 1.2 or later, JPEG format, Max size: 240 x 240, Max file size: 1 MB). Optional.
+   * @param options - Common properties for messages.
    * @returns Returns status code `200` and an empty JSON object.
    */
   pushImage(
@@ -771,26 +741,15 @@ export default class LineClient {
   /**
    * Push Video Message
    *
+   * Sends a video message to a user, group, or room at any time.
+   *
    * [Official document - video message](https://developers.line.biz/en/reference/messaging-api/#video-message)
    *
-   * @param to - ID of the target recipient. Use a userId, groupId, or roomId value returned in a [webhook event object](https://developers.line.biz/en/reference/messaging-api/#common-properties). Do not use the LINE ID found on LINE.
-   * @param video - Video
-   * @param options - Common properties for messages
-   * @param video.originalContentUrl - URL of video file
-   *
-   * A very wide or tall video may be cropped when played in some environments.
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - mp4
-   * - Max: 1 minute
-   * - Max: 10 MB
-   *
-   * @param video.previewImageUrl - URL of preview image
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 240 x 240
-   * - Max: 1 MB
+   * @param to - ID of the target recipient. Use a userId, groupId, or roomId value returned in a webhook event object. Do not use the LINE ID found on LINE.
+   * @param video - The video object containing:
+   *                - `originalContentUrl`: The URL of the video file (Max character limit: 1000, HTTPS over TLS 1.2 or later, MP4 format, Max duration: 1 minute, Max file size: 10 MB).
+   *                - `previewImageUrl`: The URL of the preview image (Max character limit: 1000, HTTPS over TLS 1.2 or later, JPEG format, Max size: 240 x 240, Max file size: 1 MB).
+   * @param options - Common properties for messages. Optional.
    * @returns Returns status code `200` and an empty JSON object.
    */
   pushVideo(
@@ -807,18 +766,15 @@ export default class LineClient {
   /**
    * Push Audio Message
    *
+   * Sends an audio message to a user, group, or room at any time.
+   *
    * [Official document - audio message](https://developers.line.biz/en/reference/messaging-api/#audio-message)
    *
-   * @param to - ID of the target recipient. Use a userId, groupId, or roomId value returned in a [webhook event object](https://developers.line.biz/en/reference/messaging-api/#common-properties). Do not use the LINE ID found on LINE.
-   * @param audio - Audio
-   * @param options - Common properties for messages
-   * @param audio.originalContentUrl - URL of audio file
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - m4a
-   * - Max: 1 minute
-   * - Max: 10 MB
-   * @param audio.duration - Length of audio file (milliseconds)
+   * @param to - ID of the target recipient. Use a userId, groupId, or roomId value returned in a webhook event object. Do not use the LINE ID found on LINE.
+   * @param audio - The audio object containing:
+   *                - `originalContentUrl`: The URL of the audio file (Max character limit: 1000, HTTPS over TLS 1.2 or later, M4A format, Max duration: 1 minute, Max file size: 10 MB).
+   *                - `duration`: Length of the audio file in milliseconds.
+   * @param options - Common properties for messages. Optional.
    * @returns Returns status code `200` and an empty JSON object.
    */
   pushAudio(
@@ -1095,10 +1051,9 @@ export default class LineClient {
    *
    * [Official document - send multicast message](https://developers.line.biz/en/reference/messaging-api/#send-multicast-message)
    *
-   * @param body - Request body
-   * @param body.to - Array of user IDs. Use userId values which are returned in [webhook event objects](https://developers.line.biz/en/reference/messaging-api/#common-properties). Do not use LINE IDs found on LINE.
-   * - Max: 150 user IDs
-   * @param body.messages - Messages to send (Max: 5)
+   * @param body - The request body object containing:
+   *               - `to`: An array of user IDs. Use userId values which are returned in webhook event objects. Do not use LINE IDs found on LINE. (Max: 150 user IDs)
+   *               - `messages`: Messages to send (Max: 5).
    * @returns Returns status code `200` and an empty JSON object.
    */
   multicastRawBody(body: {
@@ -1184,24 +1139,15 @@ export default class LineClient {
   /**
    * Multicast Image Message
    *
+   * Sends an image message to multiple users at any time. Messages cannot be sent to groups or rooms.
+   *
    * [Official document - image message](https://developers.line.biz/en/reference/messaging-api/#image-message)
    *
-   * @param to - Array of user IDs. Use userId values which are returned in [webhook event objects](https://developers.line.biz/en/reference/messaging-api/#common-properties). Do not use LINE IDs found on LINE.
-   * - Max: 150 user IDs
-   * @param image - Image
-   * @param options - Common properties for messages
-   * @param image.originalContentUrl - Image URL
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 4096 x 4096
-   * - Max: 1 MB
-   * @param image.previewImageUrl - Preview image URL
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 240 x 240
-   * - Max: 1 MB
+   * @param to - Array of user IDs. Use userId values which are returned in webhook event objects. Do not use LINE IDs found on LINE. Max: 150 user IDs.
+   * @param image - The image object containing:
+   *                - `originalContentUrl`: The URL of the image (Max character limit: 1000, HTTPS over TLS 1.2 or later, JPEG format, Max size: 4096 x 4096, Max file size: 1 MB).
+   *                - `previewImageUrl`: The URL of the preview image (optional) (Max character limit: 1000, HTTPS over TLS 1.2 or later, JPEG format, Max size: 240 x 240, Max file size: 1 MB).
+   * @param options - Common properties for messages. Optional.
    * @returns Returns status code `200` and an empty JSON object.
    */
   multicastImage(
@@ -1218,27 +1164,15 @@ export default class LineClient {
   /**
    * Multicast Video Message
    *
+   * Sends a video message to multiple users at any time. Messages cannot be sent to groups or rooms.
+   *
    * [Official document - video message](https://developers.line.biz/en/reference/messaging-api/#video-message)
    *
-   * @param to - Array of user IDs. Use userId values which are returned in [webhook event objects](https://developers.line.biz/en/reference/messaging-api/#common-properties). Do not use LINE IDs found on LINE.
-   * - Max: 150 user IDs
-   * @param video - Video
-   * @param options - Common properties for messages
-   * @param video.originalContentUrl - URL of video file
-   *
-   * A very wide or tall video may be cropped when played in some environments.
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - mp4
-   * - Max: 1 minute
-   * - Max: 10 MB
-   *
-   * @param video.previewImageUrl - URL of preview image
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - JPEG
-   * - Max: 240 x 240
-   * - Max: 1 MB
+   * @param to - Array of user IDs. Use userId values which are returned in webhook event objects. Do not use LINE IDs found on LINE. Max: 150 user IDs.
+   * @param video - The video object containing:
+   *                - `originalContentUrl`: The URL of the video file (Max character limit: 1000, HTTPS over TLS 1.2 or later, MP4 format, Max duration: 1 minute, Max file size: 10 MB).
+   *                - `previewImageUrl`: The URL of the preview image (Max character limit: 1000, HTTPS over TLS 1.2 or later, JPEG format, Max size: 240 x 240, Max file size: 1 MB).
+   * @param options - Common properties for messages. Optional.
    * @returns Returns status code `200` and an empty JSON object.
    */
   multicastVideo(
@@ -1255,19 +1189,15 @@ export default class LineClient {
   /**
    * Multicast Audio Message
    *
+   * Sends an audio message to multiple users at any time. Messages cannot be sent to groups or rooms.
+   *
    * [Official document - audio message](https://developers.line.biz/en/reference/messaging-api/#audio-message)
    *
-   * @param to - Array of user IDs. Use userId values which are returned in [webhook event objects](https://developers.line.biz/en/reference/messaging-api/#common-properties). Do not use LINE IDs found on LINE.
-   * - Max: 150 user IDs
-   * @param audio - Audio
-   * @param options - Common properties for messages
-   * @param audio.originalContentUrl - URL of audio file
-   * - Max character limit: 1000
-   * - HTTPS over TLS 1.2 or later
-   * - m4a
-   * - Max: 1 minute
-   * - Max: 10 MB
-   * @param audio.duration - Length of audio file (milliseconds)
+   * @param to - Array of user IDs. Use userId values which are returned in webhook event objects. Do not use LINE IDs found on LINE. Max: 150 user IDs.
+   * @param audio - The audio object containing:
+   *                - `originalContentUrl`: The URL of the audio file (Max character limit: 1000, HTTPS over TLS 1.2 or later, M4A format, Max duration: 1 minute, Max file size: 10 MB).
+   *                - `duration`: Length of the audio file in milliseconds.
+   * @param options - Common properties for messages. Optional.
    * @returns Returns status code `200` and an empty JSON object.
    */
   multicastAudio(
@@ -1552,14 +1482,14 @@ export default class LineClient {
   /**
    * Broadcast Message
    *
-   * Sends push messages to multiple users at any time.
+   * Sends push messages to all users at any time. This is a powerful feature for sending a common message to all the users who have interacted with the bot.
    *
    * [Official document](https://developers.line.biz/en/reference/messaging-api/#send-broadcast-message)
    *
-   * @param body - Request body
-   * @param body.messages - Messages to send (Max: 5)
+   * @param body - The request body object containing:
+   *               - `messages`: Array of message objects to send. Each message object must comply with specific message types supported by LINE Messaging API (e.g., text, image, video, etc.). Max: 5 messages can be sent at once.
    *
-   * @returns Returns status code `200` and an empty JSON object.
+   * @returns Returns status code `200` and an empty JSON object, indicating the broadcast message was sent successfully.
    */
   broadcastRawBody(body: {
     messages: LineTypes.Message[];
@@ -2601,41 +2531,21 @@ export default class LineClient {
   }
 
   /**
-   * Narrowcast Message
-   */
-
-  /**
    * Send Narrowcast Message
    *
    * Sends a push message to multiple users. You can specify recipients using attributes (such as age, gender, OS, and region) or by retargeting (audiences). Messages cannot be sent to groups or rooms.
    *
-   *  LINE Official Account migration
-   *
-   * You can't call this API with a LINE\@ account or LINE Official Account that hasn't been migrated to the account plans implemented on April 18, 2019. Please migrate your account first. For more information, see [Migration of LINE\@ accounts](https://developers.line.biz/en/docs/messaging-api/migrating-line-at/).
+   * Note: You can't call this API with a LINE\@ account or LINE Official Account that hasn't been migrated to the account plans implemented on April 18, 2019. Please migrate your account first. For more information, see [Migration of LINE\@ accounts](https://developers.line.biz/en/docs/messaging-api/migrating-line-at/).
    *
    * [Official document - send narrowcast message](https://developers.line.biz/en/reference/messaging-api/#send-narrowcast-message)
    *
-   * @param body - Request body
-   * @param body.messages - Messages to send
-   * - Max: 5
-   * @param body.recipient - [[RecipientObject]]. You can specify recipients of the message using up to 10 audiences.
+   * @param body - The request body object containing:
+   *               - `messages`: Array of message objects to send. You can send up to 5 messages.
+   *               - `recipient`: Optional. Recipient object. You can specify recipients of the message using up to 10 audiences. If omitted, messages will be sent to all users who have added your LINE Official Account as a friend.
+   *               - `filter`: Optional. Demographic filter object. You can use friends' attributes to filter the list of recipients. If omitted, messages are sent to everyone—including users with attribute values of "unknown".
+   *               - `limit`: Optional. Object containing `max`: The maximum number of narrowcast messages to send. Use this parameter to limit the number of narrowcast messages sent. The recipients will be chosen at random.
    *
-   * If this is omitted, messages will be sent to all users who have added your LINE Official Account as a friend.
-   * @param body.filter - demographic:
-   * - [[DemographicFilterObject]].
-   * - You can use friends' attributes to filter the list of recipients.
-   *
-   * If this is omitted, messages are sent to everyone—including users with attribute values of "unknown".
-   * @param body.limit - max:
-   * - The maximum number of narrowcast messages to send.
-   * - Use this parameter to limit the number of narrowcast messages sent. The recipients will be chosen at random.
-   *
-   * @returns Returns the `202` HTTP status code and a JSON object with the following information.
-   *
-   * requestId: string
-   * - The narrowcast message's request ID
-   *
-   * For more information on how to check the status of a narrowcast message, see [Get narrowcast message status](https://developers.line.biz/en/reference/messaging-api/#get-narrowcast-progress-status).
+   * @returns Returns the `202` HTTP status code and a JSON object with the request ID for the narrowcast message. This ID can be used to check the status of the narrowcast message.
    */
   narrowcastRawBody(body: {
     messages: LineTypes.Message[];

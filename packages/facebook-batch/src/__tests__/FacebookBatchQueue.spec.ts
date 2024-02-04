@@ -1,5 +1,4 @@
 import { MessengerClient } from 'messaging-api-messenger';
-import { mocked } from 'ts-jest/utils';
 
 import BatchRequestError from '../BatchRequestError';
 import FacebookBatchQueue from '../FacebookBatchQueue';
@@ -31,7 +30,7 @@ function setup(options = {}): {
     ref: () => timeout,
     unref: () => timeout,
   };
-  mocked(setTimeout).mockReturnValue(timeout);
+  jest.mocked(setTimeout).mockReturnValue(timeout);
 
   queue = new FacebookBatchQueue(
     {
@@ -41,7 +40,7 @@ function setup(options = {}): {
     options
   );
 
-  const client = mocked(MessengerClient).mock.instances[0];
+  const client = jest.mocked(MessengerClient).mock.instances[0];
 
   return {
     client,
@@ -71,7 +70,7 @@ it('should flush when length >= 50', async () => {
       body: { data: [] },
     }));
 
-  mocked(client.sendBatch).mockResolvedValue(responses);
+  jest.mocked(client.sendBatch).mockResolvedValue(responses);
 
   for (let i = 0; i < 49; i++) {
     queue.push(MessengerBatch.sendText('1412611362105802', 'hello'));
@@ -80,9 +79,9 @@ it('should flush when length >= 50', async () => {
   queue.push(MessengerBatch.sendMessage('1412611362105802', image));
 
   expect(client.sendBatch).toHaveBeenCalledTimes(1);
-  expect(mocked(client.sendBatch).mock.calls[0][0]).toHaveLength(50);
+  expect(jest.mocked(client.sendBatch).mock.calls[0][0]).toHaveLength(50);
 
-  expect(mocked(client.sendBatch).mock.calls[0][0][49]).toEqual({
+  expect(jest.mocked(client.sendBatch).mock.calls[0][0][49]).toEqual({
     body: {
       message: {
         attachment: {
@@ -112,7 +111,7 @@ it('should flush with 1000 timeout', async () => {
     },
   ];
 
-  mocked(client.sendBatch).mockResolvedValue(responses);
+  jest.mocked(client.sendBatch).mockResolvedValue(responses);
 
   expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
@@ -121,12 +120,12 @@ it('should flush with 1000 timeout', async () => {
 
   expect(queue.queue).toHaveLength(1);
 
-  const fn = mocked(setTimeout).mock.calls[0][0];
+  const fn = jest.mocked(setTimeout).mock.calls[0][0];
 
   await fn();
 
   expect(client.sendBatch).toHaveBeenCalledTimes(1);
-  expect(mocked(client.sendBatch).mock.calls[0][0]).toEqual([
+  expect(jest.mocked(client.sendBatch).mock.calls[0][0]).toEqual([
     {
       body: {
         message: {
@@ -156,12 +155,12 @@ it('should not send batch when with empty array', async () => {
     },
   ];
 
-  mocked(client.sendBatch).mockResolvedValue(responses);
+  jest.mocked(client.sendBatch).mockResolvedValue(responses);
 
   expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 
-  const fn = mocked(setTimeout).mock.calls[0][0];
+  const fn = jest.mocked(setTimeout).mock.calls[0][0];
 
   await fn();
 
@@ -178,7 +177,7 @@ it('should reset timeout when flush', async () => {
       body: { data: [] },
     }));
 
-  mocked(client.sendBatch).mockResolvedValue(responses);
+  jest.mocked(client.sendBatch).mockResolvedValue(responses);
 
   expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
@@ -210,7 +209,7 @@ it('should throw request and response', async () => {
     },
   ];
 
-  mocked(client.sendBatch).mockResolvedValue(responses);
+  jest.mocked(client.sendBatch).mockResolvedValue(responses);
 
   let error: BatchRequestError | undefined;
 
@@ -223,7 +222,7 @@ it('should throw request and response', async () => {
   expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 
-  const fn = mocked(setTimeout).mock.calls[0][0];
+  const fn = jest.mocked(setTimeout).mock.calls[0][0];
 
   await fn();
 
@@ -265,7 +264,7 @@ it('should support delay option', async () => {
     },
   ];
 
-  mocked(client.sendBatch).mockResolvedValue(responses);
+  jest.mocked(client.sendBatch).mockResolvedValue(responses);
 
   expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 500);
@@ -286,7 +285,7 @@ it('should support retryTimes option', async () => {
     },
   ];
 
-  mocked(client.sendBatch).mockResolvedValue(responses);
+  jest.mocked(client.sendBatch).mockResolvedValue(responses);
 
   let error: BatchRequestError | undefined;
   queue
@@ -295,7 +294,7 @@ it('should support retryTimes option', async () => {
       error = err;
     });
 
-  const fn = mocked(setTimeout).mock.calls[0][0];
+  const fn = jest.mocked(setTimeout).mock.calls[0][0];
 
   await fn();
   expect(error).not.toBeDefined();
@@ -336,7 +335,7 @@ it('should support shouldRetry option', async () => {
     },
   ];
 
-  mocked(client.sendBatch).mockResolvedValue(responses);
+  jest.mocked(client.sendBatch).mockResolvedValue(responses);
 
   let error1: BatchRequestError | undefined;
   const request1 = MessengerBatch.sendMessage('1412611362105802', image);
@@ -354,23 +353,23 @@ it('should support shouldRetry option', async () => {
 
   expect(queue.queue).toHaveLength(2);
 
-  const fn = mocked(setTimeout).mock.calls[0][0];
+  const fn = jest.mocked(setTimeout).mock.calls[0][0];
 
   await fn();
 
   expect(queue.queue).toHaveLength(1);
   expect(client.sendBatch).toHaveBeenCalledTimes(1);
-  expect(mocked(client.sendBatch).mock.calls[0][0]).toHaveLength(2);
-  expect(mocked(client.sendBatch).mock.calls[0][0][0]).toBe(request1);
-  expect(mocked(client.sendBatch).mock.calls[0][0][1]).toBe(request2);
+  expect(jest.mocked(client.sendBatch).mock.calls[0][0]).toHaveLength(2);
+  expect(jest.mocked(client.sendBatch).mock.calls[0][0][0]).toBe(request1);
+  expect(jest.mocked(client.sendBatch).mock.calls[0][0][1]).toBe(request2);
   expect(error1).toBeDefined();
   expect(error2).not.toBeDefined();
 
   await fn();
   expect(queue.queue).toHaveLength(0);
   expect(client.sendBatch).toHaveBeenCalledTimes(2);
-  expect(mocked(client.sendBatch).mock.calls[1][0]).toHaveLength(1);
-  expect(mocked(client.sendBatch).mock.calls[1][0][0]).toBe(request2);
+  expect(jest.mocked(client.sendBatch).mock.calls[1][0]).toHaveLength(1);
+  expect(jest.mocked(client.sendBatch).mock.calls[1][0][0]).toBe(request2);
 
   expect(error2).toBeDefined();
 });
@@ -378,7 +377,7 @@ it('should support shouldRetry option', async () => {
 it('should reject every promise when call batch failed', async () => {
   const { client } = setup();
 
-  mocked(client.sendBatch).mockImplementation(() => {
+  jest.mocked(client.sendBatch).mockImplementation(() => {
     throw new Error('boom');
   });
 
@@ -396,7 +395,7 @@ it('should reject every promise when call batch failed', async () => {
     error2 = err;
   });
 
-  const fn = mocked(setTimeout).mock.calls[0][0];
+  const fn = jest.mocked(setTimeout).mock.calls[0][0];
 
   await fn();
 

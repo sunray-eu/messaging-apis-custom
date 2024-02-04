@@ -157,7 +157,10 @@ describe('#version', () => {
     ).toEqual('2.6');
     expect(() => {
       // eslint-disable-next-line no-new
-      new MessengerClient({ accessToken: ACCESS_TOKEN, version: 2.6 } as any);
+      new MessengerClient({
+        accessToken: ACCESS_TOKEN,
+        version: 2.6,
+      } as never);
     }).toThrow('Type of `version` must be string.');
   });
 });

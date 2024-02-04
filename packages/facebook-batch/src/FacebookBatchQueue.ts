@@ -148,9 +148,12 @@ export default class FacebookBatchQueue {
           reject(new BatchRequestError(err));
         }
       });
-    } catch (err: any) {
+    } catch (err) {
       items.forEach(({ request, resolve, reject, retry = 0 }) => {
-        if (retry < this.retryTimes && this.shouldRetry(err)) {
+        if (
+          retry < this.retryTimes &&
+          this.shouldRetry(err as BatchRequestErrorInfo)
+        ) {
           this.queue.push({ request, resolve, reject, retry: retry + 1 });
         } else {
           reject(err);

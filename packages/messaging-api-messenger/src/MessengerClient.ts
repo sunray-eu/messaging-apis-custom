@@ -293,33 +293,25 @@ export default class MessengerClient {
   /**
    * Create new Webhooks subscriptions.
    *
-   * @param subscription - Subscription parameters.
-   * @param subscription.accessToken - App access token.
-   * @param subscription.callbackUrl - The URL to receive the POST request when an update is triggered, and a GET request when attempting this publish operation.
-   * @param subscription.verifyToken - An arbitrary string that can be used to confirm to your server that the request is valid.
-   * @param subscription.fields - One or more of the set of valid fields in this object to subscribe to. Default Fields: `messages`, `messaging_postbacks`, `messaging_optins`, `messaging_referrals`, `messaging_handovers` and `messaging_policy_enforcement`.
-   * @param subscription.object - Indicates the object type that this subscription applies to. Defaults to `page`.
-   * @param subscription.includeValues - Indicates if change notifications should include the new values.
-   * @returns Success status
+   * Sets up subscriptions to Webhooks for receiving callbacks on specified events.
    *
-   * @see https://developers.facebook.com/docs/graph-api/reference/app/subscriptions
+   * @param subscription - The subscription parameters object containing:
+   *                       - `accessToken`: App access token.
+   *                       - `callbackUrl`: The URL to receive the POST request when an update is triggered, and a GET request when attempting this publish operation.
+   *                       - `verifyToken`: An arbitrary string that can be used to confirm to your server that the request is valid.
+   *                       - `fields`: An array of one or more valid fields to subscribe to. Default fields include: `messages`, `messaging_postbacks`, `messaging_optins`, `messaging_referrals`, `messaging_handovers`, and `messaging_policy_enforcement`.
+   *                       - `object`: Indicates the object type that this subscription applies to. Defaults to `page`.
+   *                       - `includeValues`: Indicates if change notifications should include the new values.
+   * @returns A Promise that resolves to an object indicating success status.
+   * @see https://developers.facebook.com/docs/graph-api/reference/app/subscriptions for more details.
    *
    * @example
-   *
    * ```js
    * await client.createSubscription({
-   *   accessToken: APP_ACCESS_TOKEN,
+   *   accessToken: 'APP_ACCESS_TOKEN',
    *   callbackUrl: 'https://mycallback.com',
    *   fields: ['messages', 'messaging_postbacks', 'messaging_referrals'],
-   *   verifyToken: VERIFY_TOKEN,
-   * });
-   *
-   * // Or provide app id and app secret instead of app access token:
-   * client.createSubscription({
-   *   accessToken: `${APP_ID}|${APP_SECRET}`,
-   *   callbackUrl: 'https://mycallback.com',
-   *   fields: ['messages', 'messaging_postbacks', 'messaging_referrals'],
-   *   verifyToken: VERIFY_TOKEN,
+   *   verifyToken: 'VERIFY_TOKEN',
    * });
    * ```
    */
@@ -369,11 +361,12 @@ export default class MessengerClient {
   /**
    * Gets the current Webhook subscriptions set up on your app.
    *
-   * @param options - The other parameters.
-   * @param options.accessToken - App access token.
-   * @returns An array of subscriptions.
+   * Retrieves a list of all subscriptions for the app.
    *
-   * @see https://developers.facebook.com/docs/graph-api/reference/app/subscriptions
+   * @param options - Optional parameters object containing:
+   *                  - `accessToken`: App access token.
+   * @returns A Promise that resolves to an array of subscription objects.
+   * @see https://developers.facebook.com/docs/graph-api/reference/app/subscriptions for documentation.
    *
    * @example
    *
@@ -416,11 +409,12 @@ export default class MessengerClient {
   /**
    * Get the current page subscription set up on your app.
    *
-   * @param options - The other parameters.
-   * @param options.accessToken - App access token.
-   * @returns The current page subscription
+   * Retrieves the subscription details specifically for the 'page' object.
    *
-   * @see https://developers.facebook.com/docs/graph-api/reference/app/subscriptions
+   * @param options - Optional parameters object containing:
+   *                  - `accessToken`: App access token.
+   * @returns A Promise that resolves to the current page subscription object.
+   * @see https://developers.facebook.com/docs/graph-api/reference/app/subscriptions for more details.
    *
    * @example
    *
@@ -474,6 +468,7 @@ export default class MessengerClient {
    * //   "feature": "subscription_messaging",
    * //   "status": "<pending|rejected|approved|limited>"
    * // }]
+   * ```
    */
   getMessagingFeatureReview(): Promise<
     MessengerTypes.MessagingFeatureReview[]
@@ -489,9 +484,9 @@ export default class MessengerClient {
    * Retrieves a person's profile.
    *
    * @param userId - Facebook page-scoped user ID.
-   * @param options - Other optional parameters.
-   * @param options.fields - Value must be among `id`, `name`, `first_name`, `last_name`, `profile_pic`, `locale`, `timezone` and `gender`, default with `id`, `name`, `first_name`, `last_name` and `profile_pic`.
-   * @returns Profile of the user.
+   * @param options - The options object containing:
+   *                  - `fields`: Optional. Specifies the fields to return. Valid values are `id`, `name`, `first_name`, `last_name`, `profile_pic`, `locale`, `timezone`, and `gender`. Defaults to `id`, `name`, `first_name`, `last_name`, and `profile_pic`.
+   * @returns Promise object representing the profile of the user.
    *
    * @see https://www.quora.com/How-connect-Facebook-user-id-to-sender-id-in-the-Facebook-messenger-platform
    *
@@ -781,7 +776,7 @@ export default class MessengerClient {
    * ]);
    * ```
    *
-   * @note You must set a get started button to use the persistent menu.
+   * @remarks You must set a get started button to use the persistent menu.
    */
   setPersistentMenu(
     menuItems: MessengerTypes.MenuItem[] | MessengerTypes.PersistentMenuItem[],
@@ -835,10 +830,6 @@ export default class MessengerClient {
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages/persistent-menu#user_level_menu
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   getUserPersistentMenu(
     userId: string
@@ -857,13 +848,6 @@ export default class MessengerClient {
       );
   }
 
-  /**
-   *
-   * @example
-   *
-   * ```js
-   * ```
-   */
   setUserPersistentMenu(
     userId: string,
     menuItems: MessengerTypes.MenuItem[] | MessengerTypes.PersistentMenuItem[],
@@ -906,13 +890,6 @@ export default class MessengerClient {
       .then((res) => res.data, handleError);
   }
 
-  /**
-   *
-   * @example
-   *
-   * ```js
-   * ```
-   */
   deleteUserPersistentMenu(
     userId: string
   ): Promise<MessengerTypes.MutationSuccessResponse> {
@@ -1401,7 +1378,7 @@ export default class MessengerClient {
    * @param psidOrRecipient - A facebook page-scoped ID of the recipient or a recipient object
    * @param audio - The audio to be sent.
    * @param options - Other optional parameters. For example, [messaging types](https://developers.facebook.com/docs/messenger-platform/send-messages#messaging_types) or [tags](https://developers.facebook.com/docs/messenger-platform/message-tags).
-   * @param options.filename - Required when upload from a buffer.
+   *                  - `filename`: Required when upload from a buffer.
    * @returns An object includes recipientId and messageId.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages#types
@@ -1446,7 +1423,7 @@ export default class MessengerClient {
    * @param psidOrRecipient - A facebook page-scoped ID of the recipient or a recipient object
    * @param image - The image to be sent.
    * @param options - Other optional parameters. For example, [messaging types](https://developers.facebook.com/docs/messenger-platform/send-messages#messaging_types) or [tags](https://developers.facebook.com/docs/messenger-platform/message-tags).
-   * @param options.filename - Required when upload from a buffer.
+   *                  - `filename`: Required when upload from a buffer.
    * @returns An object includes recipientId and messageId.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages#types
@@ -1491,7 +1468,7 @@ export default class MessengerClient {
    * @param psidOrRecipient - A facebook page-scoped ID of the recipient or a recipient object
    * @param video - The video to be sent.
    * @param options - Other optional parameters. For example, [messaging types](https://developers.facebook.com/docs/messenger-platform/send-messages#messaging_types) or [tags](https://developers.facebook.com/docs/messenger-platform/message-tags).
-   * @param options.filename - Required when upload from a buffer.
+   *                  - `filename`: Required when upload from a buffer.
    * @returns An object includes recipientId and messageId.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages#types
@@ -1536,7 +1513,7 @@ export default class MessengerClient {
    * @param psidOrRecipient - A facebook page-scoped ID of the recipient or a recipient object
    * @param file - The file to be sent.
    * @param options - Other optional parameters. For example, [messaging types](https://developers.facebook.com/docs/messenger-platform/send-messages#messaging_types) or [tags](https://developers.facebook.com/docs/messenger-platform/message-tags).
-   * @param options.filename - Required when upload from a buffer.
+   *                  - `filename`: Required when upload from a buffer.
    * @returns An object includes recipientId and messageId.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages#types
@@ -1696,6 +1673,7 @@ export default class MessengerClient {
    *   ],
    *   { imageAspectRatio: 'square' }
    * );
+   * ```
    */
   sendGenericTemplate(
     psidOrRecipient: MessengerTypes.PsidOrRecipient,
@@ -2215,7 +2193,7 @@ export default class MessengerClient {
    * @param psidOrRecipient - A facebook page-scoped ID of the recipient or a recipient object
    * @param senderAction - Message state to display to the user. One of `typing_on`, `typing_off` or `mark_seen`
    * @param options - Other optional parameters.
-   * @param options.personaId - ID of the persona.
+   *                  - `personaId`: ID of the persona.
    * @returns An object includes recipientId
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages/sender-actions
@@ -2272,7 +2250,7 @@ export default class MessengerClient {
    *
    * @param psidOrRecipient - A facebook page-scoped ID of the recipient or a recipient object
    * @param options - Other optional parameters.
-   * @param options.personaId - ID of the persona.
+   *                  - `personaId`: ID of the persona.
    * @returns An object includes recipientId
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages/sender-actions#supported_actions
@@ -2298,7 +2276,7 @@ export default class MessengerClient {
    *
    * @param psidOrRecipient - A facebook page-scoped ID of the recipient or a recipient object
    * @param options - Other optional parameters.
-   * @param options.personaId - ID of the persona.
+   *                  - `personaId`: ID of the persona.
    * @returns An object includes recipientId
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages/sender-actions#supported_actions
@@ -2337,6 +2315,7 @@ export default class MessengerClient {
    *   MessengerBatch.sendText(USER_ID, '2'),
    *   MessengerBatch.sendText(USER_ID, '3'),
    * ]);
+   * ```
    */
   sendBatch(
     batch: MessengerTypes.BatchItem[],
@@ -2556,7 +2535,7 @@ export default class MessengerClient {
    *
    * @param labelId - ID of the custom label
    * @param options - Other optional parameters.
-   * @param options.fields - Fields to retrieve with its ID.
+   *                  - `fields`: Fields to retrieve with its ID.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/identity/custom-labels#get_label_details
    *
@@ -2665,8 +2644,8 @@ export default class MessengerClient {
    * @param type - Must be one of `image`, `video`, `audio` or `file`.
    * @param attachment - Attachment to be uploaded.
    * @param options - Other optional parameters.
-   * @param options.isReusable - Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
-   * @param options.filename - Required when upload from buffer.
+   *                  – `isReusable`: Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
+   *                  - `filename`: Required when upload from buffer.
    * @returns An object includes attachment ID
    *
    * @see https://developers.facebook.com/docs/messenger-platform/reference/attachment-upload-api
@@ -2743,8 +2722,8 @@ export default class MessengerClient {
    *
    * @param audio - Audio to be uploaded.
    * @param options - Other optional parameters.
-   * @param options.isReusable - Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
-   * @param options.filename - Required when upload from buffer.
+   *                  - `isReusable`: Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
+   *                  - `filename`: Required when upload from buffer.
    * @returns An object includes attachment ID
    *
    * @example
@@ -2775,8 +2754,8 @@ export default class MessengerClient {
    *
    * @param image - Image to be uploaded.
    * @param options - Other optional parameters.
-   * @param options.isReusable - Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
-   * @param options.filename - Required when upload from buffer.
+   *                  - `isReusable`: Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
+   *                  - `filename`: Required when upload from buffer.
    * @returns An object includes attachment ID
    *
    * @example
@@ -2807,8 +2786,8 @@ export default class MessengerClient {
    *
    * @param video - Video to be uploaded.
    * @param options - Other optional parameters.
-   * @param options.isReusable - Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
-   * @param options.filename - Required when upload from buffer.
+   *                  - `isReusable`: Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
+   *                  - `filename`: Required when upload from buffer.
    * @returns An object includes attachment ID
    *
    * @example
@@ -2839,8 +2818,8 @@ export default class MessengerClient {
    *
    * @param file - File to be uploaded.
    * @param options - Other optional parameters.
-   * @param options.isReusable - Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
-   * @param options.filename - Required when upload from buffer.
+   *                  - `isReusable`: Set to `true` to make the saved asset sendable to other message recipients. Defaults to `false`.
+   *                  - `filename`: Required when upload from buffer.
    * @returns An object includes attachment ID
    *
    * @example
@@ -3070,8 +3049,8 @@ export default class MessengerClient {
    *
    * @param metrics - [The metrics](https://developers.facebook.com/docs/messenger-platform/reference/messaging-insights-api/#metrics) you want to check.
    * @param options - Optional arguments.
-   * @param options.since - Optional. UNIX timestamp of the start time to get the metric for.
-   * @param options.until - Optional. UNIX timestamp of the end time to get the metric for.
+   *                  - `since`: Optional. UNIX timestamp of the start time to get the metric for.
+   *                  - `until`: Optional. UNIX timestamp of the end time to get the metric for.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/reference/messaging-insights-api
    *
@@ -3116,8 +3095,8 @@ export default class MessengerClient {
    * Retrieves the number of conversations with the Page that have been blocked.
    *
    * @param options - Optional arguments.
-   * @param options.since - Optional. UNIX timestamp of the start time to get the metric for.
-   * @param options.until - Optional. UNIX timestamp of the end time to get the metric for.
+   *                  - `since`: Optional. UNIX timestamp of the start time to get the metric for.
+   *                  - `until`: Optional. UNIX timestamp of the end time to get the metric for.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/reference/messaging-insights-api#metrics
    *
@@ -3159,8 +3138,8 @@ export default class MessengerClient {
    * Retrieves the number of conversations from your Page that have been reported by people for reasons such as spam, or containing inappropriate content.
    *
    * @param options - Optional arguments.
-   * @param options.since - Optional. UNIX timestamp of the start time to get the metric for.
-   * @param options.until - Optional. UNIX timestamp of the end time to get the metric for.
+   *                  - `since`: Optional. UNIX timestamp of the start time to get the metric for.
+   *                  - `until`: Optional. UNIX timestamp of the end time to get the metric for.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/reference/messaging-insights-api#metrics
    *
@@ -3202,8 +3181,8 @@ export default class MessengerClient {
    * Retrieves the number of people who have sent a message to your business, not including people who have blocked or reported your business on Messenger. (This number only includes connections made since October 2016.)
    *
    * @param options - Optional arguments.
-   * @param options.since - Optional. UNIX timestamp of the start time to get the metric for.
-   * @param options.until - Optional. UNIX timestamp of the end time to get the metric for.
+   *                  - `since`: Optional. UNIX timestamp of the start time to get the metric for.
+   *                  - `until`: Optional. UNIX timestamp of the end time to get the metric for.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/reference/messaging-insights-api#metrics
    *
@@ -3246,8 +3225,8 @@ export default class MessengerClient {
    * Retrieves the number of messaging conversations on Facebook Messenger that began with people who had never messaged with your business before.
    *
    * @param options - Optional arguments.
-   * @param options.since - Optional. UNIX timestamp of the start time to get the metric for.
-   * @param options.until - Optional. UNIX timestamp of the end time to get the metric for.
+   *                  - `since`: Optional. UNIX timestamp of the start time to get the metric for.
+   *                  - `until`: Optional. UNIX timestamp of the end time to get the metric for.
    *
    * @see https://developers.facebook.com/docs/messenger-platform/reference/messaging-insights-api#metrics
    *
@@ -3288,11 +3267,11 @@ export default class MessengerClient {
    * Sets values of NLP configs.
    *
    * @param config - Configuration of NLP.
-   * @param config.nlpEnabled - Either enable NLP or disable NLP for that Page.
-   * @param config.model - Specifies the NLP model to use. Either one of `{CHINESE, CROATIAN, DANISH, DUTCH, ENGLISH, FRENCH_STANDARD, GERMAN_STANDARD, HEBREW, HUNGARIAN, IRISH, ITALIAN_STANDARD, KOREAN, NORWEGIAN_BOKMAL, POLISH, PORTUGUESE, ROMANIAN, SPANISH, SWEDISH, VIETNAMESE}`, or `CUSTOM`.
-   * @param config.customToken - Access token from Wit.
-   * @param config.verbose - Specifies whether verbose mode if enabled, which returns extra information like the position of the detected entity in the query.
-   * @param config.nest - The number of entities to return, in descending order of confidence. Minimum 1. Maximum 8. Defaults to 1.
+   *                 - `nlpEnabled`: Either enable NLP or disable NLP for that Page.
+   *                 - `model`: Specifies the NLP model to use. Either one of `{CHINESE, CROATIAN, DANISH, DUTCH, ENGLISH, FRENCH_STANDARD, GERMAN_STANDARD, HEBREW, HUNGARIAN, IRISH, ITALIAN_STANDARD, KOREAN, NORWEGIAN_BOKMAL, POLISH, PORTUGUESE, ROMANIAN, SPANISH, SWEDISH, VIETNAMESE}`, or `CUSTOM`.
+   *                 - `customToken`: Access token from Wit.
+   *                 - `verbose`: Specifies whether verbose mode if enabled, which returns extra information like the position of the detected entity in the query.
+   *                 - `nest`: The number of entities to return, in descending order of confidence. Minimum 1. Maximum 8. Defaults to 1.
    * @returns
    *
    * @see https://developers.facebook.com/docs/messenger-platform/built-in-nlp
@@ -3304,7 +3283,9 @@ export default class MessengerClient {
    * ```
    */
   // FIXME: [type] return type
-  setNLPConfigs(config: MessengerTypes.MessengerNLPConfig = {}): Promise<any> {
+  setNLPConfigs(
+    config: MessengerTypes.MessengerNLPConfig = {}
+  ): Promise<unknown> {
     return this.axios
       .post(
         `/me/nlp_configs?${querystring.stringify(
@@ -3331,7 +3312,7 @@ export default class MessengerClient {
    * ```
    */
   // FIXME: [type] return type
-  enableNLP(): Promise<any> {
+  enableNLP(): Promise<unknown> {
     return this.setNLPConfigs({ nlpEnabled: true });
   }
 
@@ -3349,7 +3330,7 @@ export default class MessengerClient {
    * ```
    */
   // FIXME: [type] return type
-  disableNLP(): Promise<any> {
+  disableNLP(): Promise<unknown> {
     return this.setNLPConfigs({ nlpEnabled: false });
   }
 
@@ -3357,10 +3338,10 @@ export default class MessengerClient {
    * Logs custom events by using the [Application Activities Graph API](https://developers.facebook.com/docs/graph-api/reference/application/activities/) endpoint.
    *
    * @param activity - Event activity
-   * @param activity.appId - ID of the app.
-   * @param activity.pageId - ID of the page.
-   * @param activity.pageScopedUserId - Facebook page-scoped user ID.
-   * @param activity.events - Custom events.
+   *                   - `appId`: ID of the app.
+   *                   - `pageId`: ID of the page.
+   *                   - `pageScopedUserId`: Facebook page-scoped user ID.
+   *                   - `events`: Custom events.
    * @returns
    *
    * @see https://developers.facebook.com/docs/app-events/bots-for-messenger#logging-custom-events
@@ -3445,10 +3426,10 @@ export default class MessengerClient {
    * Given a user ID for a bot in Messenger, retrieve the IDs for apps owned by the same business
    *
    * @param params - Parameters
-   * @param params.userId - Page-scoped user ID.
-   * @param params.appSecret - Secret of the app.
-   * @param params.app - The app to retrieve the IDs.
-   * @param params.page - The page to retrieve the IDs.
+   *                 - `userId`: Page-scoped user ID.
+   *                 - `appSecret`: Secret of the app.
+   *                 - `app`: The app to retrieve the IDs.
+   *                 - `page`: The page to retrieve the IDs.
    * @returns User IDs in pagination result
    *
    * @see https://developers.facebook.com/docs/messenger-platform/identity/id-matching
@@ -3531,10 +3512,10 @@ export default class MessengerClient {
    * Given a user ID for a Page (associated with a bot), retrieve the IDs for other Pages owned by the same business
    *
    * @param params - Parameters
-   * @param params.userId - Page-scoped user ID.
-   * @param params.appSecret - Secret of the app.
-   * @param params.app - The app to retrieve the IDs.
-   * @param params.page - The page to retrieve the IDs.
+   *                 - `userId`: Page-scoped user ID.
+   *                 - `appSecret`: Secret of the app.
+   *                 - `app`: The app to retrieve the IDs.
+   *                 - `page`: The page to retrieve the IDs.
    * @returns User IDs in pagination result
    *
    * @see https://developers.facebook.com/docs/messenger-platform/identity/id-matching
@@ -3615,8 +3596,8 @@ export default class MessengerClient {
    * Creates a Persona.
    *
    * @param persona - Data of the new persona
-   * @param persona.name - Name of the persona.
-   * @param persona.profilePictureUrl - Profile picture of the persona.
+   *                  - `name`: Name of the persona.
+   *                  - `profilePictureUrl`: Profile picture of the persona.
    * @returns - ID of the persona
    *
    * @see https://developers.facebook.com/docs/messenger-platform/send-messages/personas/#create

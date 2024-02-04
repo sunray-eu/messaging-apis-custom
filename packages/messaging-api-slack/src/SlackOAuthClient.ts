@@ -704,8 +704,9 @@ export default class SlackOAuthClient {
       }
 
       return data;
-    } catch (err: any) {
-      throw new AxiosError(err.message, err);
+    } catch (err) {
+      const errObj = err as AxiosError;
+      throw new AxiosError(errObj.message, errObj);
     }
   }
 
@@ -1188,7 +1189,7 @@ export default class SlackOAuthClient {
    *
    * @param userId - User to get info on.
    * @param options - Other optional parameters.
-   * @param options.includeLocale - Set this to true to receive the locale for this user. Defaults to false
+   *                  - `includeLocale`: Set this to true to receive the locale for this user. Defaults to false
    *
    * @see https://api.slack.com/methods/users.info
    *
@@ -1216,7 +1217,7 @@ export default class SlackOAuthClient {
    * Lists all users in a Slack team.
    *
    * @param options - Optional parameters.
-   * @param options.cursor - Paginate through collections of data by setting the `cursor` parameter to a `nextCursor` attribute returned by a previous request's `responseMetadata`.
+   *                  - `cursor`: Paginate through collections of data by setting the `cursor` parameter to a `nextCursor` attribute returned by a previous request's `responseMetadata`.
    *
    * @see https://api.slack.com/methods/users.list
    *
