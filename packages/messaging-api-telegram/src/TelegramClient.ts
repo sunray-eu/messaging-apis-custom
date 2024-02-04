@@ -987,7 +987,7 @@ export default class TelegramClient {
    * @param userId - Unique identifier of the target user
    * @param permissions - New user permissions
    * @param options - Other optional parameters.
-   * @param options.untilDate - Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever
+   *                  - `options`: object containing `untilDate` Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever
    * @returns Returns True on success.
    *
    * @see https://core.telegram.org/bots/api#restrictchatmember
@@ -1052,10 +1052,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#setchatpermissions
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   setChatPermissions(
     chatId: string | number,
@@ -1246,7 +1242,7 @@ export default class TelegramClient {
    * Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.).
    *
    * @param chatId - Unique identifier for the target chat or username of the target supergroup or channel (in the format `@channelusername`)
-   * @return Returns a Chat object on success.
+   * @returns Chat object on success.
    *
    * @see https://core.telegram.org/bots/api#getchat
    *
@@ -1414,10 +1410,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#answercallbackquery
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   answerCallbackQuery(
     callbackQueryId: string,
@@ -1434,9 +1426,9 @@ export default class TelegramClient {
    *
    * @param text - New text of the message
    * @param options - Options for other optional parameters. One of chatId, messageId or inlineMessageId is required.
-   * @param options.chatId - Unique identifier for the target chat or username of the target channel.
-   * @param options.messageId - Identifier of the sent message.
-   * @param options.inlineMessageId - Identifier of the inline message.
+   *                  - `options`: object containing `chatId` Unique identifier for the target chat or username of the target channel.
+   *                  - `options`: object containing `messageId` Identifier of the sent message.
+   *                  - `options`: object containing `inlineMessageId` Identifier of the inline message.
    * @returns On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.
    *
    * @see https://core.telegram.org/bots/api#editmessagetext
@@ -1462,9 +1454,9 @@ export default class TelegramClient {
    *
    * @param caption - New caption of the message
    * @param options - Options for other optional parameters. One of chatId, messageId or inlineMessageId is required.
-   * @param options.chatId - Unique identifier for the target chat or username of the target channel.
-   * @param options.messageId - Identifier of the sent message.
-   * @param options.inlineMessageId - Identifier of the inline message.
+   *                  - `options`: object containing `chatId` Unique identifier for the target chat or username of the target channel.
+   *                  - `options`: object containing `messageId` Identifier of the sent message.
+   *                  - `options`: object containing `inlineMessageId` Identifier of the inline message.
    * @returns On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.
    *
    * @see https://core.telegram.org/bots/api#editmessagecaption
@@ -1493,10 +1485,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#editmessagemedia
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   editMessageMedia(
     media: TelegramTypes.InputMedia,
@@ -1513,9 +1501,9 @@ export default class TelegramClient {
    *
    * @param replyMarkup - A JSON-serialized object for an inline keyboard.
    * @param options - Options for other optional parameters. One of chatId, messageId or inlineMessageId is required.
-   * @param options.chatId - Unique identifier for the target chat or username of the target channel.
-   * @param options.messageId - Identifier of the sent message.
-   * @param options.inlineMessageId - Identifier of the inline message.
+   *                  - `options`: object containing `chatId` Unique identifier for the target chat or username of the target channel.
+   *                  - `options`: object containing `messageId` Identifier of the sent message.
+   *                  - `options`: object containing `inlineMessageId` Identifier of the inline message.
    * @returns On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.
    *
    * @see https://core.telegram.org/bots/api#editmessagereplymarkup
@@ -1553,10 +1541,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#stoppoll
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   stopPoll(
     chatId: string | number,
@@ -1636,10 +1620,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#getstickerset
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   getStickerSet(name: string): Promise<TelegramTypes.StickerSet> {
     return this.request('/getStickerSet', { name });
@@ -1661,10 +1641,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#createnewstickerset
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   createNewStickerSet(
     userId: number,
@@ -1696,10 +1672,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#addstickertoset
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   addStickerToSet(
     userId: number,
@@ -1726,10 +1698,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#setstickerpositioninset
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   setStickerPositionInSet(sticker: string, position: number): Promise<boolean> {
     return this.request('setStickerPositionInSet', {
@@ -1746,10 +1714,6 @@ export default class TelegramClient {
    *
    * @see https://core.telegram.org/bots/api#deletestickerfromset
    *
-   * @example
-   *
-   * ```js
-   * ```
    */
   deleteStickerFromSet(sticker: string): Promise<boolean> {
     return this.request('/deleteStickerFromSet', { sticker });
@@ -1806,13 +1770,13 @@ export default class TelegramClient {
    * Use this method to send invoices.
    *
    * @param chatId - Unique identifier for the target private chat
-   * @param product.title - name, 1-32 characters
-   * @param product.description - Product description, 1-255 characters
-   * @param product.payload - Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
-   * @param product.providerToken - Payments provider token, obtained via Botfather
-   * @param product.startParameter - Unique deep-linking parameter that can be used to generate this invoice when used as a start parameter
-   * @param product.currency - Three-letter ISO 4217 currency code, see more on currencies
-   * @param product.prices - Price breakdown, a list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
+   *                  - `product`: object containing `title` name, 1-32 characters
+   *                  - `product`: object containing `description` Product description, 1-255 characters
+   *                  - `product`: object containing `payload` Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
+   *                  - `product`: object containing `providerToken` Payments provider token, obtained via Botfather
+   *                  - `product`: object containing `startParameter` Unique deep-linking parameter that can be used to generate this invoice when used as a start parameter
+   *                  - `product`: object containing `currency` Three-letter ISO 4217 currency code, see more on currencies
+   *                  - `product`: object containing `prices` Price breakdown, a list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
    * @param options - Options for other optional parameters.
    * @returns On success, the sent Message is returned.
    *

@@ -134,9 +134,9 @@ export default class ViberClient {
    *
    * @param url - Account webhook URL to receive callbacks & messages from users.
    * @param options - The optional parameters.
-   * @param options.eventTypes - Indicates the types of Viber events that the account owner would like to be notified about. Don’t include this parameter in your request to get all events. Possible values: `delivered`, `seen`, `failed`, `subscribed`, `unsubscribed` and `conversation_started`.
-   * @param options.sendName - Indicates whether or not the bot should receive the user name. Default `false`.
-   * @param options.sendPhoto - Indicates whether or not the bot should receive the user photo. Default `false`.
+   *                  - `options`: object containing `eventTypes` Indicates the types of Viber events that the account owner would like to be notified about. Don’t include this parameter in your request to get all events. Possible values: `delivered`, `seen`, `failed`, `subscribed`, `unsubscribed` and `conversation_started`.
+   *                  - `options`: object containing `sendName` Indicates whether or not the bot should receive the user name. Default `false`.
+   *                  - `options`: object containing `sendPhoto` Indicates whether or not the bot should receive the user photo. Default `false`.
    * @returns Status
    *
    * @see https://developers.viber.com/docs/api/rest-bot-api/#setting-a-webhook
@@ -217,7 +217,7 @@ export default class ViberClient {
    * });
    * ```
    *
-   * @note Maximum total JSON size of the request is 30kb.
+   * @remarks Maximum total JSON size of the request is 30kb.
    */
   sendMessage(
     receiver: string,
@@ -267,9 +267,9 @@ export default class ViberClient {
    *
    * @param receiver - Unique Viber user id.
    * @param picture - The picture of the message.
-   * @param picture.text - Description of the photo. Can be an empty string if irrelevant. Max 120 characters.
-   * @param picture.media - URL of the image (JPEG). Max size 1 MB. Only JPEG format is supported. Other image formats as well as animated GIFs can be sent as URL messages or file messages.
-   * @param picture.thumbnail - URL of a reduced size image (JPEG). Max size 100 kb. Recommended: 400x400. Only JPEG format is supported.
+   *                  - `picture`: object containing `text` Description of the photo. Can be an empty string if irrelevant. Max 120 characters.
+   *                  - `picture`: object containing `media` URL of the image (JPEG). Max size 1 MB. Only JPEG format is supported. Other image formats as well as animated GIFs can be sent as URL messages or file messages.
+   *                  - `picture`: object containing `thumbnail` URL of a reduced size image (JPEG). Max size 100 kb. Recommended: 400x400. Only JPEG format is supported.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -306,10 +306,10 @@ export default class ViberClient {
    *
    * @param receiver - Unique Viber user id.
    * @param video - The video of the message.
-   * @param video.media - URL of the video (MP4, H264). Max size 50 MB. Only MP4 and H264 are supported.
-   * @param video.size - Size of the video in bytes.
-   * @param video.duration - Video duration in seconds; will be displayed to the receiver. Max 180 seconds.
-   * @param video.thumbnail - URL of a reduced size image (JPEG). Max size 100 kb. Recommended: 400x400. Only JPEG format is supported.
+   *                  - `video`: object containing `media` URL of the video (MP4, H264). Max size 50 MB. Only MP4 and H264 are supported.
+   *                  - `video`: object containing `size` Size of the video in bytes.
+   *                  - `video`: object containing `duration` Video duration in seconds; will be displayed to the receiver. Max 180 seconds.
+   *                  - `video`: object containing `thumbnail` URL of a reduced size image (JPEG). Max size 100 kb. Recommended: 400x400. Only JPEG format is supported.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -348,9 +348,9 @@ export default class ViberClient {
    *
    * @param receiver - Unique Viber user id.
    * @param file - The file of the message.
-   * @param file.media - URL of the file. Max size 50 MB. See [forbidden file formats](https://developers.viber.com/docs/api/rest-bot-api/#forbiddenFileFormats) for unsupported file types.
-   * @param file.size - Size of the file in bytes.
-   * @param file.fileName - Name of the file. File name should include extension. Max 256 characters (including file extension).
+   *                  - `file`: object containing `media` URL of the file. Max size 50 MB. See [forbidden file formats](https://developers.viber.com/docs/api/rest-bot-api/#forbiddenFileFormats) for unsupported file types.
+   *                  - `file`: object containing `size` Size of the file in bytes.
+   *                  - `file`: object containing `fileName` Name of the file. File name should include extension. Max 256 characters (including file extension).
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -385,8 +385,8 @@ export default class ViberClient {
    *
    * @param receiver - Unique Viber user id.
    * @param contact - The contact of the message.
-   * @param contact.name - Name of the contact. Max 28 characters.
-   * @param contact.phoneNumber - Phone number of the contact. Max 18 characters.
+   *                  - `contact`: object containing `name` Name of the contact. Max 28 characters.
+   *                  - `contact`: object containing `phoneNumber` Phone number of the contact. Max 18 characters.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -420,8 +420,8 @@ export default class ViberClient {
    *
    * @param receiver - Unique Viber user id.
    * @param location - The location of the message.
-   * @param location.lat - Latitude (±90°) within valid ranges.
-   * @param location.lon - Longitude (±180°) within valid ranges.
+   *                  - `location`: object containing `lat` Latitude (±90°) within valid ranges.
+   *                  - `location`: object containing `lon` Longitude (±180°) within valid ranges.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -515,9 +515,9 @@ export default class ViberClient {
    *
    * @param receiver - Unique Viber user id.
    * @param richMedia - The rich media of the message.
-   * @param richMedia.buttonsGroupColumns - Number of columns per carousel content block. Default 6 columns. Possible values: 1 - 6.
-   * @param richMedia.buttonsGroupRows - Number of rows per carousel content block. Default 7 rows. Possible values: 1 - 7.
-   * @param richMedia.buttons - Array of buttons.
+   *                  - `richMedia`: object containing `buttonsGroupColumns` Number of columns per carousel content block. Default 6 columns. Possible values: 1 - 6.
+   *                  - `richMedia`: object containing `buttonsGroupRows` Number of rows per carousel content block. Default 7 rows. Possible values: 1 - 7.
+   *                  - `richMedia`: object containing `buttons` Array of buttons.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -777,9 +777,9 @@ export default class ViberClient {
    *
    * @param broadcastList - This mandatory parameter defines the recipients for the message. Every user must be subscribed and have a valid user id. The maximum list length is 300 receivers.
    * @param file - The file of the message.
-   * @param file.media - URL of the file. Max size 50 MB. See [forbidden file formats](https://developers.viber.com/docs/api/rest-bot-api/#forbiddenFileFormats) for unsupported file types.
-   * @param file.size - Size of the file in bytes.
-   * @param file.fileName - Name of the file. File name should include extension. Max 256 characters (including file extension).
+   *                  - `file`: object containing `media` URL of the file. Max size 50 MB. See [forbidden file formats](https://developers.viber.com/docs/api/rest-bot-api/#forbiddenFileFormats) for unsupported file types.
+   *                  - `file`: object containing `size` Size of the file in bytes.
+   *                  - `file`: object containing `fileName` Name of the file. File name should include extension. Max 256 characters (including file extension).
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -817,8 +817,8 @@ export default class ViberClient {
    *
    * @param broadcastList - This mandatory parameter defines the recipients for the message. Every user must be subscribed and have a valid user id. The maximum list length is 300 receivers.
    * @param contact - The contact of the message.
-   * @param contact.name - Name of the contact. Max 28 characters.
-   * @param contact.phoneNumber - Phone number of the contact. Max 18 characters.
+   *                  - `contact`: object containing `name` Name of the contact. Max 28 characters.
+   *                  - `contact`: object containing `phoneNumber` Phone number of the contact. Max 18 characters.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
@@ -855,8 +855,8 @@ export default class ViberClient {
    *
    * @param broadcastList - This mandatory parameter defines the recipients for the message. Every user must be subscribed and have a valid user id. The maximum list length is 300 receivers.
    * @param location - The location of the message.
-   * @param location.lat - Latitude (±90°) within valid ranges.
-   * @param location.lon - Longitude (±180°) within valid ranges.
+   *                  - `location`: object containing `lat` Latitude (±90°) within valid ranges.
+   *                  - `location`: object containing `lon` Longitude (±180°) within valid ranges.
    * @param options - Other optional parameters.
    * @returns Status and message token
    *
