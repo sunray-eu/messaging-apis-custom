@@ -711,6 +711,7 @@ export type BatchRequestOptions = {
   name?: string;
   dependsOn?: string;
   omitResponseOnSuccess?: boolean;
+  accessToken?: string;
 };
 
 export type Model =
