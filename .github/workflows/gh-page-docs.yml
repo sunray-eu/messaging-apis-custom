@@ -20,11 +20,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install npm dependencies
+      - name: Install yarn dependencies
         run: yarn --frozen-lockfile
 
       - name: Build doc files
-        run: npm run typedoc
+        run: yarn typedoc
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5

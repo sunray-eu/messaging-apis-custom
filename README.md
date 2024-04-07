@@ -259,3 +259,9 @@ Every release, along with the migration instructions, is documented on the [CHAN
 ## License
 
 MIT © [Yoctol](https://github.com/Yoctol/messaging-apis)
+
+# Known issues
+
+## Node version 20
+
+Because of bug in [node/ts](https://github.com/sindresorhus/type-fest/issues/784) keeping version 20
