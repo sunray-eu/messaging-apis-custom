@@ -3,12 +3,12 @@
   "version": "1.0.4",
   "description": "Axios error wrapper that aim to provide clear error message to developers",
   "license": "MIT",
-  "type": "module",
   "repository": "github:sunray-eu/messaging-apis-new",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "type-fest": "4.7.1"
   },
   "keywords": [
