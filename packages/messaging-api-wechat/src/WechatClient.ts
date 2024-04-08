@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import AxiosError from 'axios-error';
+import AxiosError from '@sunray-eu/axios-error';
 import FormData from 'form-data';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import warning from 'warning';
@@ -10,7 +10,7 @@ import {
   createRequestInterceptor,
   onRequest,
   snakecaseKeys,
-} from 'messaging-api-common';
+} from '@sunray-eu/messaging-api-common';
 import { invariant } from 'ts-invariant';
 
 import * as WechatTypes from './WechatTypes';

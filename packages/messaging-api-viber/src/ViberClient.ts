@@ -1,4 +1,4 @@
-import AxiosError from 'axios-error';
+import AxiosError from '@sunray-eu/axios-error';
 import axios, { AxiosInstance } from 'axios';
 import warning from 'warning';
 import {
@@ -9,7 +9,7 @@ import {
   pascalcaseKeysDeep,
   snakecaseKeys,
   snakecaseKeysDeep,
-} from 'messaging-api-common';
+} from '@sunray-eu/messaging-api-common';
 import { invariant } from 'ts-invariant';
 
 import * as ViberTypes from './ViberTypes';

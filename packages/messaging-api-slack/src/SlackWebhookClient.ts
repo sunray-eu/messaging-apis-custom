@@ -4,7 +4,7 @@ import {
   OnRequestFunction,
   createRequestInterceptor,
   snakecaseKeysDeep,
-} from 'messaging-api-common';
+} from '@sunray-eu/messaging-api-common';
 import { invariant } from 'ts-invariant';
 
 import * as SlackTypes from './SlackTypes';

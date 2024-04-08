@@ -3,7 +3,7 @@ import fs from 'fs';
 import querystring from 'querystring';
 import url from 'url';
 
-import AxiosError from 'axios-error';
+import AxiosError from '@sunray-eu/axios-error';
 import FormData from 'form-data';
 import appendQuery from 'append-query';
 import axios, {
@@ -21,7 +21,7 @@ import {
   camelcaseKeysDeep,
   createRequestInterceptor,
   snakecaseKeysDeep,
-} from 'messaging-api-common';
+} from '@sunray-eu/messaging-api-common';
 import { invariant } from 'ts-invariant';
 
 import * as Messenger from './Messenger';

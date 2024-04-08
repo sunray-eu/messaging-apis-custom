@@ -1,4 +1,4 @@
-import { MessengerClient } from 'messaging-api-messenger';
+import { MessengerClient } from '@sunray-eu/messaging-api-messenger';
 
 import BatchRequestError from '../BatchRequestError';
 import FacebookBatchQueue from '../FacebookBatchQueue';

@@ -1,4 +1,4 @@
-import { OnRequestFunction } from 'messaging-api-common';
+import { OnRequestFunction } from '@sunray-eu/messaging-api-common';
 
 export type ClientConfig = {
   appId: string;

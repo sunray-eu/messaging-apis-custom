@@ -1,5 +1,8 @@
 import { JsonValue } from 'type-fest';
-import { MessengerClient, MessengerTypes } from 'messaging-api-messenger';
+import {
+  MessengerClient,
+  MessengerTypes,
+} from '@sunray-eu/messaging-api-messenger';
 
 import BatchRequestError from './BatchRequestError';
 import {

@@ -1,14 +1,14 @@
 import querystring from 'querystring';
 import { Readable } from 'stream';
 
-import AxiosError from 'axios-error';
+import AxiosError from '@sunray-eu/axios-error';
 import axios, { AxiosInstance, AxiosError as BaseAxiosError } from 'axios';
 import imageType from 'image-type';
 import warning from 'warning';
 import {
   OnRequestFunction,
   createRequestInterceptor,
-} from 'messaging-api-common';
+} from '@sunray-eu/messaging-api-common';
 import { invariant } from 'ts-invariant';
 
 import * as Line from './Line';

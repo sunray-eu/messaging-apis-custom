@@ -1,4 +1,7 @@
-import { MaxLengthArray, OnRequestFunction } from 'messaging-api-common';
+import {
+  MaxLengthArray,
+  OnRequestFunction,
+} from '@sunray-eu/messaging-api-common';
 
 export type ClientConfig = {
   accessToken: string;

@@ -1,6 +1,9 @@
 import FormData from 'form-data';
 import omit from 'lodash/omit';
-import { camelcaseKeysDeep, snakecaseKeysDeep } from 'messaging-api-common';
+import {
+  camelcaseKeysDeep,
+  snakecaseKeysDeep,
+} from '@sunray-eu/messaging-api-common';
 
 import * as MessengerTypes from './MessengerTypes';
 

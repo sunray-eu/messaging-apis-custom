@@ -1,6 +1,6 @@
 import querystring from 'querystring';
 
-import AxiosError from 'axios-error';
+import AxiosError from '@sunray-eu/axios-error';
 import axios, {
   AxiosInstance,
   AxiosResponse,
