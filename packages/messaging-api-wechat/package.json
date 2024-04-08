@@ -1,6 +1,6 @@
 {
   "name": "@sunray-eu/messaging-api-wechat",
-  "version": "1.0.6",
+  "version": "1.2.0",
   "description": "Messaging API client for WeChat",
   "license": "MIT",
   "repository": {
