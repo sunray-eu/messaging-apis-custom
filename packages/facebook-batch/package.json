@@ -1,10 +1,14 @@
 {
-  "name": "facebook-batch",
+  "name": "@sunray-eu/facebook-batch",
   "version": "1.1.0",
   "description": "Gracefully batching facebook requests.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunray-eu/messaging-apis-new.git",
+    "directory": "packages/facebook-batch"
+  },
   "type": "module",
-  "repository": "github:sunray-eu/messaging-apis-new",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
@@ -20,5 +24,9 @@
   ],
   "engines": {
     "node": ">=21.7.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   }
 }

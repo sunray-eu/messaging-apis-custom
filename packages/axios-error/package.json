@@ -1,9 +1,13 @@
 {
-  "name": "axios-error",
+  "name": "@sunray-eu/axios-error",
   "version": "1.0.4",
   "description": "Axios error wrapper that aim to provide clear error message to developers",
   "license": "MIT",
-  "repository": "github:sunray-eu/messaging-apis-new",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunray-eu/messaging-apis-new.git",
+    "directory": "packages/axios-error"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,5 +22,9 @@
   ],
   "engines": {
     "node": ">=21.7.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   }
 }

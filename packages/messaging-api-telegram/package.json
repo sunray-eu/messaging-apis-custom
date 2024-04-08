@@ -1,9 +1,13 @@
 {
-  "name": "messaging-api-telegram",
+  "name": "@sunray-eu/messaging-api-telegram",
   "version": "1.1.0",
   "description": "Messaging API client for Telegram",
   "license": "MIT",
-  "repository": "github:sunray-eu/messaging-apis-new",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunray-eu/messaging-apis-new.git",
+    "directory": "packages/messaging-api-telegram"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,5 +29,9 @@
   ],
   "engines": {
     "node": ">=21.7.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   }
 }

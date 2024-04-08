@@ -2,12 +2,24 @@
   "private": true,
   "name": "messaging-apis",
   "license": "MIT",
-  "repository": "github:sunray-eu/messaging-apis-new",
+  "homepage": "https://github.com/sunray-eu/messaging-apis-new",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunray-eu/messaging-apis-new.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sunray-eu/messaging-apis-new/issues"
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "tsc --build tsconfig.build.json",
     "build:clean": "tsc --build tsconfig.build.json --clean",
+    "ci:release": "lerna publish from-package --yes",
+    "ci:versionup:major": "lerna version major --no-push --no-git-tag-version --yes && npm run commit-version",
+    "ci:versionup:minor": "lerna version minor --no-push --no-git-tag-version --yes && npm run commit-version",
+    "ci:versionup:patch": "lerna version patch --no-push --no-git-tag-version --yes && npm run commit-version",
     "clean": "git clean -dfqX -- ./node_modules **/{dist,node_modules}/ ./packages/*/tsconfig*tsbuildinfo ./.yarn",
+    "commit-version": "git add . && git commit -m \"chore(release): v`node -p 'require(\"./lerna.json\").version'`\"",
     "postinstall": "husky && lerna run prepare && yarn build",
     "lint": "eslint packages examples --ext=js,ts",
     "lint:fix": "yarn lint:fix:md && yarn lint --fix",
@@ -15,11 +27,13 @@
     "lint:staged": "lint-staged",
     "prepublishOnly": "yarn clean && yarn",
     "publish": "lerna publish",
+    "release": "lerna publish from-package",
     "test": "yarn build && yarn lint && yarn testonly",
     "testonly": "jest",
     "testonly:cov": "jest --coverage",
     "testonly:watch": "jest --watch",
     "typedoc": "typedoc --entryPointStrategy packages .",
+    "versionup": "lerna version",
     "watch": "tsc --build tsconfig.build.json --watch"
   },
   "workspaces": [
