@@ -445,7 +445,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint-community/regexpp@npm:^4.5.1, @eslint-community/regexpp@npm:^4.6.1":
+"@eslint-community/regexpp@npm:^4.10.0, @eslint-community/regexpp@npm:^4.6.1":
   version: 4.10.0
   resolution: "@eslint-community/regexpp@npm:4.10.0"
   checksum: c5f60ef1f1ea7649fa7af0e80a5a79f64b55a8a8fa5086de4727eb4c86c652aedee407a9c143b8995d2c0b2d75c1222bec9ba5d73dbfc1f314550554f0979ef4
@@ -1522,6 +1522,131 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sunray-eu/axios-error@workspace:packages/axios-error":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/axios-error@workspace:packages/axios-error"
+  dependencies:
+    axios: "npm:^1.6.8"
+    type-fest: "npm:4.7.1"
+  languageName: unknown
+  linkType: soft
+
+"@sunray-eu/facebook-batch@workspace:packages/facebook-batch":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/facebook-batch@workspace:packages/facebook-batch"
+  dependencies:
+    messaging-api-messenger: "npm:1.1.0"
+    type-fest: "npm:4.7.1"
+  languageName: unknown
+  linkType: soft
+
+"@sunray-eu/messaging-api-common@workspace:packages/messaging-api-common":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/messaging-api-common@workspace:packages/messaging-api-common"
+  dependencies:
+    "@types/debug": "npm:^4.1.12"
+    "@types/lodash": "npm:^4.17.0"
+    "@types/url-join": "npm:^4.0.3"
+    axios: "npm:^1.6.8"
+    change-case: "npm:^5.4.4"
+    debug: "npm:^4.3.4"
+    lodash: "npm:^4.17.21"
+    map-obj: "npm:^5.0.2"
+    type-fest: "npm:4.7.1"
+    url-join: "npm:^5.0.0"
+  languageName: unknown
+  linkType: soft
+
+"@sunray-eu/messaging-api-line@workspace:packages/messaging-api-line":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/messaging-api-line@workspace:packages/messaging-api-line"
+  dependencies:
+    "@types/warning": "npm:^3.0.3"
+    axios: "npm:^1.6.8"
+    axios-error: "npm:1.0.4"
+    image-type: "npm:^5.2.0"
+    messaging-api-common: "npm:1.0.4"
+    ts-invariant: "npm:^0.10.3"
+    type-fest: "npm:4.7.1"
+    warning: "npm:^4.0.3"
+  languageName: unknown
+  linkType: soft
+
+"@sunray-eu/messaging-api-messenger@workspace:packages/messaging-api-messenger":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/messaging-api-messenger@workspace:packages/messaging-api-messenger"
+  dependencies:
+    "@types/append-query": "npm:^2.0.3"
+    "@types/lodash": "npm:^4.17.0"
+    "@types/warning": "npm:^3.0.3"
+    append-query: "npm:^2.1.1"
+    axios: "npm:^1.6.8"
+    axios-error: "npm:1.0.4"
+    form-data: "npm:^4.0.0"
+    lodash: "npm:^4.17.21"
+    messaging-api-common: "npm:1.0.4"
+    ts-invariant: "npm:^0.10.3"
+    warning: "npm:^4.0.3"
+  languageName: unknown
+  linkType: soft
+
+"@sunray-eu/messaging-api-slack@workspace:packages/messaging-api-slack":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/messaging-api-slack@workspace:packages/messaging-api-slack"
+  dependencies:
+    "@types/lodash": "npm:^4.17.0"
+    "@types/warning": "npm:^3.0.3"
+    axios: "npm:^1.6.8"
+    axios-error: "npm:1.0.4"
+    lodash: "npm:^4.17.21"
+    messaging-api-common: "npm:1.0.4"
+    ts-invariant: "npm:^0.10.3"
+    warning: "npm:^4.0.3"
+  languageName: unknown
+  linkType: soft
+
+"@sunray-eu/messaging-api-telegram@workspace:packages/messaging-api-telegram":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/messaging-api-telegram@workspace:packages/messaging-api-telegram"
+  dependencies:
+    "@types/lodash": "npm:^4.17.0"
+    "@types/warning": "npm:^3.0.3"
+    axios: "npm:^1.6.8"
+    axios-error: "npm:1.0.4"
+    lodash: "npm:^4.17.21"
+    messaging-api-common: "npm:1.0.4"
+    ts-invariant: "npm:^0.10.3"
+    warning: "npm:^4.0.3"
+  languageName: unknown
+  linkType: soft
+
+"@sunray-eu/messaging-api-viber@workspace:packages/messaging-api-viber":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/messaging-api-viber@workspace:packages/messaging-api-viber"
+  dependencies:
+    "@types/warning": "npm:^3.0.3"
+    axios: "npm:^1.6.8"
+    axios-error: "npm:1.0.4"
+    messaging-api-common: "npm:1.0.4"
+    ts-invariant: "npm:^0.10.3"
+    warning: "npm:^4.0.3"
+  languageName: unknown
+  linkType: soft
+
+"@sunray-eu/messaging-api-wechat@workspace:packages/messaging-api-wechat":
+  version: 0.0.0-use.local
+  resolution: "@sunray-eu/messaging-api-wechat@workspace:packages/messaging-api-wechat"
+  dependencies:
+    "@types/warning": "npm:^3.0.3"
+    axios: "npm:^1.6.8"
+    axios-error: "npm:1.0.4"
+    form-data: "npm:^4.0.0"
+    messaging-api-common: "npm:1.0.4"
+    ts-invariant: "npm:^0.10.3"
+    warning: "npm:^4.0.3"
+  languageName: unknown
+  linkType: soft
+
 "@tokenizer/token@npm:^0.3.0":
   version: 0.3.0
   resolution: "@tokenizer/token@npm:0.3.0"
@@ -1570,7 +1695,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/append-query@npm:^2.0.3":
+"@types/append-query@npm:^2.0.0, @types/append-query@npm:^2.0.3":
   version: 2.0.3
   resolution: "@types/append-query@npm:2.0.3"
   checksum: 5d253404ea0c2fce87a5b28f4141e1560ee53b68ab1cdd473a8766b48844a93be9824848e3227283a458ebb35e022de325d304ea6d59d0eea945ed38a623b484
@@ -1625,7 +1750,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/debug@npm:^4.1.12":
+"@types/debug@npm:^4.1.12, @types/debug@npm:^4.1.5":
   version: 4.1.12
   resolution: "@types/debug@npm:4.1.12"
   dependencies:
@@ -1678,7 +1803,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/json-schema@npm:^7.0.12":
+"@types/json-schema@npm:^7.0.15":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
   checksum: a996a745e6c5d60292f36731dd41341339d4eeed8180bb09226e5c8d23759067692b1d88e5d91d72ee83dfc00d3aca8e7bd43ea120516c17922cbcb7c3e252db
@@ -1692,7 +1817,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.17.0":
+"@types/lodash@npm:^4.14.156, @types/lodash@npm:^4.17.0":
   version: 4.17.0
   resolution: "@types/lodash@npm:4.17.0"
   checksum: 4c5b41c9a6c41e2c05d08499e96f7940bcf194dcfa84356235b630da920c2a5e05f193618cea76006719bec61c76617dff02defa9d29934f9f6a76a49291bd8f
@@ -1759,7 +1884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/semver@npm:^7.5.0":
+"@types/semver@npm:^7.5.8":
   version: 7.5.8
   resolution: "@types/semver@npm:7.5.8"
   checksum: 8663ff927234d1c5fcc04b33062cb2b9fcfbe0f5f351ed26c4d1e1581657deebd506b41ff7fdf89e787e3d33ce05854bc01686379b89e9c49b564c4cfa988efa
@@ -1780,14 +1905,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/url-join@npm:^4.0.3":
+"@types/url-join@npm:^4.0.0, @types/url-join@npm:^4.0.3":
   version: 4.0.3
   resolution: "@types/url-join@npm:4.0.3"
   checksum: 7f0f86693070355ce731ec3861d47c03eaae09ab0ea1a72dde6b38a2a17089941acc59bac9ea2472376b6f96e189478da0a7ed29e2d282d1543382e92408d6ca
   languageName: node
   linkType: hard
 
-"@types/warning@npm:^3.0.3":
+"@types/warning@npm:^3.0.0, @types/warning@npm:^3.0.3":
   version: 3.0.3
   resolution: "@types/warning@npm:3.0.3"
   checksum: 82c1235bd05d7f6940f80012404844e225d589ad338aa4585b231a2c8deacc695b683f4168757c82c10047b81854cbeaaeefd60536dd67bb48f8a65e20410652
@@ -1818,125 +1943,125 @@ __metadata:
   linkType: hard
 
 "@typescript-eslint/eslint-plugin@npm:^7.5.0":
-  version: 7.5.0
-  resolution: "@typescript-eslint/eslint-plugin@npm:7.5.0"
+  version: 7.6.0
+  resolution: "@typescript-eslint/eslint-plugin@npm:7.6.0"
   dependencies:
-    "@eslint-community/regexpp": "npm:^4.5.1"
-    "@typescript-eslint/scope-manager": "npm:7.5.0"
-    "@typescript-eslint/type-utils": "npm:7.5.0"
-    "@typescript-eslint/utils": "npm:7.5.0"
-    "@typescript-eslint/visitor-keys": "npm:7.5.0"
+    "@eslint-community/regexpp": "npm:^4.10.0"
+    "@typescript-eslint/scope-manager": "npm:7.6.0"
+    "@typescript-eslint/type-utils": "npm:7.6.0"
+    "@typescript-eslint/utils": "npm:7.6.0"
+    "@typescript-eslint/visitor-keys": "npm:7.6.0"
     debug: "npm:^4.3.4"
     graphemer: "npm:^1.4.0"
-    ignore: "npm:^5.2.4"
+    ignore: "npm:^5.3.1"
     natural-compare: "npm:^1.4.0"
-    semver: "npm:^7.5.4"
-    ts-api-utils: "npm:^1.0.1"
+    semver: "npm:^7.6.0"
+    ts-api-utils: "npm:^1.3.0"
   peerDependencies:
     "@typescript-eslint/parser": ^7.0.0
     eslint: ^8.56.0
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 932a7b5a09c0138ef5a0bf00f8e6039fa209d4047092ffc187de048543c21f7ce24dc14f25f4c87b6f3bbb62335fc952e259e271fde88baf793217bde6460cfa
+  checksum: c3ca611c6658dfc05e6457e87c66cdc6f038cf9bbb345f3168d171491bc1439f815a49529a1511940141a387873e10dfc7ab68fd172cf54c34f8a3aa8c558e13
   languageName: node
   linkType: hard
 
 "@typescript-eslint/parser@npm:^7.5.0":
-  version: 7.5.0
-  resolution: "@typescript-eslint/parser@npm:7.5.0"
+  version: 7.6.0
+  resolution: "@typescript-eslint/parser@npm:7.6.0"
   dependencies:
-    "@typescript-eslint/scope-manager": "npm:7.5.0"
-    "@typescript-eslint/types": "npm:7.5.0"
-    "@typescript-eslint/typescript-estree": "npm:7.5.0"
-    "@typescript-eslint/visitor-keys": "npm:7.5.0"
+    "@typescript-eslint/scope-manager": "npm:7.6.0"
+    "@typescript-eslint/types": "npm:7.6.0"
+    "@typescript-eslint/typescript-estree": "npm:7.6.0"
+    "@typescript-eslint/visitor-keys": "npm:7.6.0"
     debug: "npm:^4.3.4"
   peerDependencies:
     eslint: ^8.56.0
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 65521202ff024e79594272fbb7e4731ecf9d2fdd2f58fc81450bfd2bca94ce9c17b0eadd7338c01701f5cf16d38b6c025ed3fc322380b1e4b5424b7484098cda
+  checksum: 69450c15180f7ee5a9d9c2e8ed7aa781a3b63635c099de1f102167c247d71c55b152934187e854baa5c9ea3dcbc0c9f5983379139e6cfa1ccbb900b9f23dab37
   languageName: node
   linkType: hard
 
-"@typescript-eslint/scope-manager@npm:7.5.0":
-  version: 7.5.0
-  resolution: "@typescript-eslint/scope-manager@npm:7.5.0"
+"@typescript-eslint/scope-manager@npm:7.6.0":
+  version: 7.6.0
+  resolution: "@typescript-eslint/scope-manager@npm:7.6.0"
   dependencies:
-    "@typescript-eslint/types": "npm:7.5.0"
-    "@typescript-eslint/visitor-keys": "npm:7.5.0"
-  checksum: a017b151a6b39ef591f8e2e65598e005e1b4b2d5494e4b91bddb5856b3a4d57dd8a58d2bc7a140e627eb574f93a2c8fe55f1307aa264c928ffd31d9e190bc5dd
+    "@typescript-eslint/types": "npm:7.6.0"
+    "@typescript-eslint/visitor-keys": "npm:7.6.0"
+  checksum: 1c1e75fd4fa2dabcab0457ca2ec872752c112fec27bf11edb5bf13c547ad5f3ca5a3b424e19c6916dfc8bd348cde258db8abfd12c9ed93b4bc4df9ef9e3db9f5
   languageName: node
   linkType: hard
 
-"@typescript-eslint/type-utils@npm:7.5.0":
-  version: 7.5.0
-  resolution: "@typescript-eslint/type-utils@npm:7.5.0"
+"@typescript-eslint/type-utils@npm:7.6.0":
+  version: 7.6.0
+  resolution: "@typescript-eslint/type-utils@npm:7.6.0"
   dependencies:
-    "@typescript-eslint/typescript-estree": "npm:7.5.0"
-    "@typescript-eslint/utils": "npm:7.5.0"
+    "@typescript-eslint/typescript-estree": "npm:7.6.0"
+    "@typescript-eslint/utils": "npm:7.6.0"
     debug: "npm:^4.3.4"
-    ts-api-utils: "npm:^1.0.1"
+    ts-api-utils: "npm:^1.3.0"
   peerDependencies:
     eslint: ^8.56.0
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 12915d4d1872638f5281e222a0d191676c478f250699c84864862e95a59e708222acefbf7ffdafc0872a007261219a3a2b1e667ff45eeafea7c4bcc5b955262c
+  checksum: d5fa5856e24b593e8ae93f27049e7ea49c0725f9fe44e6252a8fc8228859e2db254a3c399bedaf1fdac76fae94aa9bae10a9d466032c7bdb5bdeb1da2e4e3a53
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:7.5.0":
-  version: 7.5.0
-  resolution: "@typescript-eslint/types@npm:7.5.0"
-  checksum: f3394f71f422dbd89f63b230f20e9769c12e47a287ff30ca03a80714e57ea21279b6f12a8ab14bafb00b59926f20a88894b2d1e72679f7ff298bae112679d4b3
+"@typescript-eslint/types@npm:7.6.0":
+  version: 7.6.0
+  resolution: "@typescript-eslint/types@npm:7.6.0"
+  checksum: 7ca2a307557d4d8fc9c7d43e4dc8c4841e6c5380b59dcc8b644b3d7b6a702968ff5a70b74cb7e3d3af3f3cef87e9775573b8272b1b2963d80441992ac4e7e951
   languageName: node
   linkType: hard
 
-"@typescript-eslint/typescript-estree@npm:7.5.0":
-  version: 7.5.0
-  resolution: "@typescript-eslint/typescript-estree@npm:7.5.0"
+"@typescript-eslint/typescript-estree@npm:7.6.0":
+  version: 7.6.0
+  resolution: "@typescript-eslint/typescript-estree@npm:7.6.0"
   dependencies:
-    "@typescript-eslint/types": "npm:7.5.0"
-    "@typescript-eslint/visitor-keys": "npm:7.5.0"
+    "@typescript-eslint/types": "npm:7.6.0"
+    "@typescript-eslint/visitor-keys": "npm:7.6.0"
     debug: "npm:^4.3.4"
     globby: "npm:^11.1.0"
     is-glob: "npm:^4.0.3"
-    minimatch: "npm:9.0.3"
-    semver: "npm:^7.5.4"
-    ts-api-utils: "npm:^1.0.1"
+    minimatch: "npm:^9.0.4"
+    semver: "npm:^7.6.0"
+    ts-api-utils: "npm:^1.3.0"
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: ea3a270c725d6be273188b86110e0393052cd64d1c54a56eb5ea405e6d3fbbe84fb3b1ce1b8496a4078ac1eefd37aedcf12be91876764f6de31d5aa5131c7bcd
+  checksum: ab54ce7a61928640bf036cc1d80394de92581d90666786603b566b9a44833603e017d7e739a37aee82a007c6d1dbdc6328d7e42d1732925cc53c111e7e38961e
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:7.5.0":
-  version: 7.5.0
-  resolution: "@typescript-eslint/utils@npm:7.5.0"
+"@typescript-eslint/utils@npm:7.6.0":
+  version: 7.6.0
+  resolution: "@typescript-eslint/utils@npm:7.6.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.4.0"
-    "@types/json-schema": "npm:^7.0.12"
-    "@types/semver": "npm:^7.5.0"
-    "@typescript-eslint/scope-manager": "npm:7.5.0"
-    "@typescript-eslint/types": "npm:7.5.0"
-    "@typescript-eslint/typescript-estree": "npm:7.5.0"
-    semver: "npm:^7.5.4"
+    "@types/json-schema": "npm:^7.0.15"
+    "@types/semver": "npm:^7.5.8"
+    "@typescript-eslint/scope-manager": "npm:7.6.0"
+    "@typescript-eslint/types": "npm:7.6.0"
+    "@typescript-eslint/typescript-estree": "npm:7.6.0"
+    semver: "npm:^7.6.0"
   peerDependencies:
     eslint: ^8.56.0
-  checksum: c815ed6909769648953d6963c069038f7cac0c979051b25718feb30e0d3337b9647b75b8de00ac03fe960f0cc8dc4e8a81d4aac4719090a99785e0068712bd24
+  checksum: 1552004d9c451347f11398648ec7b22381d5b335f10e8d2dfdfbcb024ef93c9a23ec5731ee271495b4b546ab5db0a817bd13c4c4db8be825ed90b80a89dfd0f7
   languageName: node
   linkType: hard
 
-"@typescript-eslint/visitor-keys@npm:7.5.0":
-  version: 7.5.0
-  resolution: "@typescript-eslint/visitor-keys@npm:7.5.0"
+"@typescript-eslint/visitor-keys@npm:7.6.0":
+  version: 7.6.0
+  resolution: "@typescript-eslint/visitor-keys@npm:7.6.0"
   dependencies:
-    "@typescript-eslint/types": "npm:7.5.0"
-    eslint-visitor-keys: "npm:^3.4.1"
-  checksum: eecf02b8dd54e83738a143aca87b902af4b357028a90fd34ed7a2f40a3ae2f6a188b9ba53903f23c80e868f1fffbb039e9ddb63525438d659707cc7bfb269317
+    "@typescript-eslint/types": "npm:7.6.0"
+    eslint-visitor-keys: "npm:^3.4.3"
+  checksum: b5ca6a9258889ef103165884e99b51124b2a3dad250cf7cee2fb13525f76922256a6146a8dcef74cad6548a52409ff89259809c7fa7c8be07059bb7454e7fa8f
   languageName: node
   linkType: hard
 
@@ -2154,7 +2279,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"append-query@npm:^2.1.1":
+"append-query@npm:^2.1.0, append-query@npm:^2.1.1":
   version: 2.1.1
   resolution: "append-query@npm:2.1.1"
   dependencies:
@@ -2339,14 +2464,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios-error@npm:1.0.4, axios-error@workspace:packages/axios-error":
-  version: 0.0.0-use.local
-  resolution: "axios-error@workspace:packages/axios-error"
+"axios-error@npm:1.0.4, axios-error@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "axios-error@npm:1.0.4"
   dependencies:
-    axios: "npm:^1.6.8"
-    type-fest: "npm:4.7.1"
-  languageName: unknown
-  linkType: soft
+    axios: "npm:^0.21.1"
+    type-fest: "npm:^0.15.1"
+  checksum: d04de506d986475dbcf5c9a225e49bf15014dd5e80d6415db24f0d487c93cf0a7e03380718956684c882cdf2313476b5377470c4d23c6fd5ce0671e6dc052716
+  languageName: node
+  linkType: hard
 
 "axios-mock-adapter@npm:^1.22.0":
   version: 1.22.0
@@ -2357,6 +2483,15 @@ __metadata:
   peerDependencies:
     axios: ">= 0.17.0"
   checksum: d3c3631fb50116df57d11d604fa2c3dc80e769f0429728f9961c983662f60533a780f73a93fb7b20dae87995e9ae7c340619827267aeed9fdee02aded696d17a
+  languageName: node
+  linkType: hard
+
+"axios@npm:^0.21.1":
+  version: 0.21.4
+  resolution: "axios@npm:0.21.4"
+  dependencies:
+    follow-redirects: "npm:^1.14.0"
+  checksum: fbcff55ec68f71f02d3773d467db2fcecdf04e749826c82c2427a232f9eba63242150a05f15af9ef15818352b814257541155de0281f8fb2b7e8a5b79f7f2142
   languageName: node
   linkType: hard
 
@@ -2639,6 +2774,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"camel-case@npm:^4.1.1":
+  version: 4.1.2
+  resolution: "camel-case@npm:4.1.2"
+  dependencies:
+    pascal-case: "npm:^3.1.2"
+    tslib: "npm:^2.0.3"
+  checksum: bf9eefaee1f20edbed2e9a442a226793bc72336e2b99e5e48c6b7252b6f70b080fc46d8246ab91939e2af91c36cdd422e0af35161e58dd089590f302f8f64c8a
+  languageName: node
+  linkType: hard
+
 "camelcase-keys@npm:^6.2.2":
   version: 6.2.2
   resolution: "camelcase-keys@npm:6.2.2"
@@ -2665,9 +2810,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001587":
-  version: 1.0.30001606
-  resolution: "caniuse-lite@npm:1.0.30001606"
-  checksum: fc9816f7d073e4f655c00acf9d6625f923e722430545b0aabefb9dc01347f3093608eb18841cf981acbd464fcac918a708908549738a8cd9517a14ac005bf8fc
+  version: 1.0.30001607
+  resolution: "caniuse-lite@npm:1.0.30001607"
+  checksum: 3416b83475b6297a46d4ede1694b351a2899fb409dfd0190b96776d9b49a45f46dd967e673dd0cd3c3fef68549ef708b06de5d73b4c381e205d19c36fcfcfa35
   languageName: node
   linkType: hard
 
@@ -3396,6 +3541,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dot-case@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "dot-case@npm:3.0.4"
+  dependencies:
+    no-case: "npm:^3.0.4"
+    tslib: "npm:^2.0.3"
+  checksum: 5b859ea65097a7ea870e2c91b5768b72ddf7fa947223fd29e167bcdff58fe731d941c48e47a38ec8aa8e43044c8fbd15cd8fa21689a526bc34b6548197cd5b05
+  languageName: node
+  linkType: hard
+
 "dot-prop@npm:^5.1.0":
   version: 5.3.0
   resolution: "dot-prop@npm:5.3.0"
@@ -3445,9 +3600,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.668":
-  version: 1.4.729
-  resolution: "electron-to-chromium@npm:1.4.729"
-  checksum: 9f093b873a5e02da5fd5db5a1038c3a3f84bd43ff6d0e894280848717e5892953cc814a4ddf1de2acbfa9af4fe356c714f036f39b82d52bc6c8c3aed6e97fbde
+  version: 1.4.730
+  resolution: "electron-to-chromium@npm:1.4.730"
+  checksum: c524b8d61797de6c597ce3adf069bbde7f2c68d25d1c83a8ab28ff5d977f4520f60e9f33ea05fcd6efca222ecc05933e395258641a833c3585d76a6bbb0b4990
   languageName: node
   linkType: hard
 
@@ -4073,15 +4228,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"facebook-batch@workspace:packages/facebook-batch":
-  version: 0.0.0-use.local
-  resolution: "facebook-batch@workspace:packages/facebook-batch"
-  dependencies:
-    messaging-api-messenger: "npm:1.1.0"
-    type-fest: "npm:4.7.1"
-  languageName: unknown
-  linkType: soft
-
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -4244,7 +4390,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.15.6":
+"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.6":
   version: 1.15.6
   resolution: "follow-redirects@npm:1.15.6"
   peerDependenciesMeta:
@@ -4270,6 +4416,17 @@ __metadata:
     cross-spawn: "npm:^7.0.0"
     signal-exit: "npm:^4.0.1"
   checksum: 9700a0285628abaeb37007c9a4d92bd49f67210f09067638774338e146c8e9c825c5c877f072b2f75f41dc6a2d0be8664f79ffc03f6576649f54a84fb9b47de0
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "form-data@npm:3.0.1"
+  dependencies:
+    asynckit: "npm:^0.4.0"
+    combined-stream: "npm:^1.0.8"
+    mime-types: "npm:^2.1.12"
+  checksum: 1ccc3ae064a080a799923f754d49fcebdd90515a8924f0f54de557540b50e7f1fe48ba5f2bd0435a5664aa2d49729107e6aaf2155a9abf52339474c5638b4485
   languageName: node
   linkType: hard
 
@@ -4980,7 +5137,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ignore@npm:^5.0.4, ignore@npm:^5.2.0, ignore@npm:^5.2.4":
+"ignore@npm:^5.0.4, ignore@npm:^5.2.0, ignore@npm:^5.3.1":
   version: 5.3.1
   resolution: "ignore@npm:5.3.1"
   checksum: 703f7f45ffb2a27fb2c5a8db0c32e7dee66b33a225d28e8db4e1be6474795f606686a6e3bcc50e1aa12f2042db4c9d4a7d60af3250511de74620fbed052ea4cd
@@ -6449,7 +6606,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.21":
+"lodash@npm:^4.17.15, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -6487,6 +6644,15 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 655d110220983c1a4b9c0c679a2e8016d4b67f6e9c7b5435ff5979ecdb20d0813f4dec0a08674fcbdd4846a3f07edbb50a36811fd37930b94aaa0d9daceb017e
+  languageName: node
+  linkType: hard
+
+"lower-case@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "lower-case@npm:2.0.2"
+  dependencies:
+    tslib: "npm:^2.0.3"
+  checksum: 3d925e090315cf7dc1caa358e0477e186ffa23947740e4314a7429b6e62d72742e0bbe7536a5ae56d19d7618ce998aba05caca53c2902bd5742fdca5fc57fd7b
   languageName: node
   linkType: hard
 
@@ -6613,7 +6779,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"map-obj@npm:^4.0.0":
+"map-obj@npm:^4.0.0, map-obj@npm:^4.1.0":
   version: 4.3.0
   resolution: "map-obj@npm:4.3.0"
   checksum: 1c19e1c88513c8abdab25c316367154c6a0a6a0f77e3e8c391bb7c0e093aefed293f539d026dc013d86219e5e4c25f23b0003ea588be2101ccd757bacc12d43b
@@ -6669,112 +6835,43 @@ __metadata:
   languageName: node
   linkType: hard
 
-"messaging-api-common@npm:1.0.4, messaging-api-common@workspace:packages/messaging-api-common":
-  version: 0.0.0-use.local
-  resolution: "messaging-api-common@workspace:packages/messaging-api-common"
+"messaging-api-common@npm:1.0.4, messaging-api-common@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "messaging-api-common@npm:1.0.4"
   dependencies:
-    "@types/debug": "npm:^4.1.12"
-    "@types/lodash": "npm:^4.17.0"
-    "@types/url-join": "npm:^4.0.3"
-    axios: "npm:^1.6.8"
-    change-case: "npm:^5.4.4"
-    debug: "npm:^4.3.4"
-    lodash: "npm:^4.17.21"
-    map-obj: "npm:^5.0.2"
-    type-fest: "npm:4.7.1"
-    url-join: "npm:^5.0.0"
-  languageName: unknown
-  linkType: soft
+    "@types/debug": "npm:^4.1.5"
+    "@types/lodash": "npm:^4.14.156"
+    "@types/url-join": "npm:^4.0.0"
+    axios: "npm:^0.21.1"
+    camel-case: "npm:^4.1.1"
+    debug: "npm:^4.1.1"
+    lodash: "npm:^4.17.15"
+    map-obj: "npm:^4.1.0"
+    pascal-case: "npm:^3.1.1"
+    snake-case: "npm:^3.0.3"
+    url-join: "npm:^4.0.1"
+  checksum: 55604c9700a1f2d7668f394ae9ef685a23fa397e2aabb5919ed48430a6f7b91f6d24cbaaacd37335fee13487aeb51b53607da0bf1fee39efff49a82e70074fb4
+  languageName: node
+  linkType: hard
 
-"messaging-api-line@workspace:packages/messaging-api-line":
-  version: 0.0.0-use.local
-  resolution: "messaging-api-line@workspace:packages/messaging-api-line"
+"messaging-api-messenger@npm:1.1.0":
+  version: 1.1.0
+  resolution: "messaging-api-messenger@npm:1.1.0"
   dependencies:
-    "@types/warning": "npm:^3.0.3"
-    axios: "npm:^1.6.8"
-    axios-error: "npm:1.0.4"
-    image-type: "npm:^5.2.0"
-    messaging-api-common: "npm:1.0.4"
-    ts-invariant: "npm:^0.10.3"
-    type-fest: "npm:4.7.1"
+    "@types/append-query": "npm:^2.0.0"
+    "@types/lodash": "npm:^4.14.156"
+    "@types/warning": "npm:^3.0.0"
+    append-query: "npm:^2.1.0"
+    axios: "npm:^0.21.1"
+    axios-error: "npm:^1.0.4"
+    form-data: "npm:^3.0.0"
+    lodash: "npm:^4.17.15"
+    messaging-api-common: "npm:^1.0.4"
+    ts-invariant: "npm:^0.4.4"
     warning: "npm:^4.0.3"
-  languageName: unknown
-  linkType: soft
-
-"messaging-api-messenger@npm:1.1.0, messaging-api-messenger@workspace:packages/messaging-api-messenger":
-  version: 0.0.0-use.local
-  resolution: "messaging-api-messenger@workspace:packages/messaging-api-messenger"
-  dependencies:
-    "@types/append-query": "npm:^2.0.3"
-    "@types/lodash": "npm:^4.17.0"
-    "@types/warning": "npm:^3.0.3"
-    append-query: "npm:^2.1.1"
-    axios: "npm:^1.6.8"
-    axios-error: "npm:1.0.4"
-    form-data: "npm:^4.0.0"
-    lodash: "npm:^4.17.21"
-    messaging-api-common: "npm:1.0.4"
-    ts-invariant: "npm:^0.10.3"
-    warning: "npm:^4.0.3"
-  languageName: unknown
-  linkType: soft
-
-"messaging-api-slack@workspace:packages/messaging-api-slack":
-  version: 0.0.0-use.local
-  resolution: "messaging-api-slack@workspace:packages/messaging-api-slack"
-  dependencies:
-    "@types/lodash": "npm:^4.17.0"
-    "@types/warning": "npm:^3.0.3"
-    axios: "npm:^1.6.8"
-    axios-error: "npm:1.0.4"
-    lodash: "npm:^4.17.21"
-    messaging-api-common: "npm:1.0.4"
-    ts-invariant: "npm:^0.10.3"
-    warning: "npm:^4.0.3"
-  languageName: unknown
-  linkType: soft
-
-"messaging-api-telegram@workspace:packages/messaging-api-telegram":
-  version: 0.0.0-use.local
-  resolution: "messaging-api-telegram@workspace:packages/messaging-api-telegram"
-  dependencies:
-    "@types/lodash": "npm:^4.17.0"
-    "@types/warning": "npm:^3.0.3"
-    axios: "npm:^1.6.8"
-    axios-error: "npm:1.0.4"
-    lodash: "npm:^4.17.21"
-    messaging-api-common: "npm:1.0.4"
-    ts-invariant: "npm:^0.10.3"
-    warning: "npm:^4.0.3"
-  languageName: unknown
-  linkType: soft
-
-"messaging-api-viber@workspace:packages/messaging-api-viber":
-  version: 0.0.0-use.local
-  resolution: "messaging-api-viber@workspace:packages/messaging-api-viber"
-  dependencies:
-    "@types/warning": "npm:^3.0.3"
-    axios: "npm:^1.6.8"
-    axios-error: "npm:1.0.4"
-    messaging-api-common: "npm:1.0.4"
-    ts-invariant: "npm:^0.10.3"
-    warning: "npm:^4.0.3"
-  languageName: unknown
-  linkType: soft
-
-"messaging-api-wechat@workspace:packages/messaging-api-wechat":
-  version: 0.0.0-use.local
-  resolution: "messaging-api-wechat@workspace:packages/messaging-api-wechat"
-  dependencies:
-    "@types/warning": "npm:^3.0.3"
-    axios: "npm:^1.6.8"
-    axios-error: "npm:1.0.4"
-    form-data: "npm:^4.0.0"
-    messaging-api-common: "npm:1.0.4"
-    ts-invariant: "npm:^0.10.3"
-    warning: "npm:^4.0.3"
-  languageName: unknown
-  linkType: soft
+  checksum: 82d91a806ae469829421ecf2b579b02a6d590b20446001f9e15e6e748ed28a9c5c2826cd3a75c0b49022330b2bf5e9096b3d30c2754e6c63ab5a4a9cab4a0a84
+  languageName: node
+  linkType: hard
 
 "messaging-apis@workspace:.":
   version: 0.0.0-use.local
@@ -6902,7 +6999,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^9.0.0, minimatch@npm:^9.0.1, minimatch@npm:^9.0.3":
+"minimatch@npm:^9.0.0, minimatch@npm:^9.0.1, minimatch@npm:^9.0.3, minimatch@npm:^9.0.4":
   version: 9.0.4
   resolution: "minimatch@npm:9.0.4"
   dependencies:
@@ -7153,6 +7250,16 @@ __metadata:
   version: 2.6.2
   resolution: "neo-async@npm:2.6.2"
   checksum: c2f5a604a54a8ec5438a342e1f356dff4bc33ccccdb6dc668d94fe8e5eccfc9d2c2eea6064b0967a767ba63b33763f51ccf2cd2441b461a7322656c1f06b3f5d
+  languageName: node
+  linkType: hard
+
+"no-case@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "no-case@npm:3.0.4"
+  dependencies:
+    lower-case: "npm:^2.0.2"
+    tslib: "npm:^2.0.3"
+  checksum: 8ef545f0b3f8677c848f86ecbd42ca0ff3cd9dd71c158527b344c69ba14710d816d8489c746b6ca225e7b615108938a0bda0a54706f8c255933703ac1cf8e703
   languageName: node
   linkType: hard
 
@@ -7936,6 +8043,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pascal-case@npm:^3.1.1, pascal-case@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "pascal-case@npm:3.1.2"
+  dependencies:
+    no-case: "npm:^3.0.4"
+    tslib: "npm:^2.0.3"
+  checksum: 05ff7c344809fd272fc5030ae0ee3da8e4e63f36d47a1e0a4855ca59736254192c5a27b5822ed4bae96e54048eec5f6907713cfcfff7cdf7a464eaf7490786d8
+  languageName: node
+  linkType: hard
+
 "path-exists@npm:^3.0.0":
   version: 3.0.0
   resolution: "path-exists@npm:3.0.0"
@@ -8657,7 +8774,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.0.0, semver@npm:^7.1.1, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.3.8, semver@npm:^7.5.3, semver@npm:^7.5.4":
+"semver@npm:^7.0.0, semver@npm:^7.1.1, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.3.8, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0":
   version: 7.6.0
   resolution: "semver@npm:7.6.0"
   dependencies:
@@ -8831,6 +8948,16 @@ __metadata:
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
   checksum: a16775323e1404dd43fabafe7460be13a471e021637bc7889468eb45ce6a6b207261f454e4e530a19500cc962c4cc5348583520843b363f4193cee5c00e1e539
+  languageName: node
+  linkType: hard
+
+"snake-case@npm:^3.0.3":
+  version: 3.0.4
+  resolution: "snake-case@npm:3.0.4"
+  dependencies:
+    dot-case: "npm:^3.0.4"
+    tslib: "npm:^2.0.3"
+  checksum: ab19a913969f58f4474fe9f6e8a026c8a2142a01f40b52b79368068343177f818cdfef0b0c6b9558f298782441d5ca8ed5932eb57822439fad791d866e62cecd
   languageName: node
   linkType: hard
 
@@ -9404,7 +9531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-api-utils@npm:^1.0.1":
+"ts-api-utils@npm:^1.3.0":
   version: 1.3.0
   resolution: "ts-api-utils@npm:1.3.0"
   peerDependencies:
@@ -9419,6 +9546,15 @@ __metadata:
   dependencies:
     tslib: "npm:^2.1.0"
   checksum: 2fbc178d5903d325ee0b87fad38827eac11888b6e86979b06754fd4bcdcf44c2a99b8bcd5d59d149c0464ede55ae810b02a2aee6835ad10efe4dd0e22efd68c0
+  languageName: node
+  linkType: hard
+
+"ts-invariant@npm:^0.4.4":
+  version: 0.4.4
+  resolution: "ts-invariant@npm:0.4.4"
+  dependencies:
+    tslib: "npm:^1.9.3"
+  checksum: 73783533764fb453bd71ceeaed238e7b4ccc0e2b12a631bf779d357b2520c71bace2be98a3ef2e96848d44a6d2202e1cad1e6cac74d5a09c3abac58f9225bf8f
   languageName: node
   linkType: hard
 
@@ -9478,7 +9614,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2":
+"tslib@npm:^1.9.3":
+  version: 1.14.1
+  resolution: "tslib@npm:1.14.1"
+  checksum: 69ae09c49eea644bc5ebe1bca4fa4cc2c82b7b3e02f43b84bd891504edf66dbc6b2ec0eef31a957042de2269139e4acff911e6d186a258fb14069cd7f6febce2
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
@@ -9527,6 +9670,13 @@ __metadata:
   version: 4.7.1
   resolution: "type-fest@npm:4.7.1"
   checksum: e2cae05a6a5be98e5e5cfecee8782db1eb74594ceb1d85b5bfdb9b9ca5e236342f97435d3ff9edddd8eb92898af7f13555f85d1a53a69c362b0f56f2cceb8151
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^0.15.1":
+  version: 0.15.1
+  resolution: "type-fest@npm:0.15.1"
+  checksum: 2eff115f870aa2802b1624f6a74069b2237124356ad3302896775c875c92d2365ddefcba72e8bd1c1cade26010a5c41b20797686df621cab32c8739dcf26eb8d
   languageName: node
   linkType: hard
 
@@ -9639,8 +9789,8 @@ __metadata:
   linkType: hard
 
 "typedoc@npm:^0.25.12":
-  version: 0.25.12
-  resolution: "typedoc@npm:0.25.12"
+  version: 0.25.13
+  resolution: "typedoc@npm:0.25.13"
   dependencies:
     lunr: "npm:^2.3.9"
     marked: "npm:^4.3.0"
@@ -9650,7 +9800,7 @@ __metadata:
     typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x
   bin:
     typedoc: bin/typedoc
-  checksum: 35157a90954ed67243bc1ad430781de381431959c62e24f8a8688c4ebae62c2ee11d404002dfd43a0df3bf96721d94fce928423fe1f91f1ed40c99f29c5276aa
+  checksum: 13878e6a9fc2b65d65e3b514efa11b43bdfd57149861cefc4a969ec213f4bc4b36ee9239d0b654ae18bcbbd5174206d409383f9000b7bdea22da1945f7ac91de
   languageName: node
   linkType: hard
 
@@ -9781,6 +9931,13 @@ __metadata:
   dependencies:
     punycode: "npm:^2.1.0"
   checksum: 4ef57b45aa820d7ac6496e9208559986c665e49447cb072744c13b66925a362d96dd5a46c4530a6b8e203e5db5fe849369444440cb22ecfc26c679359e5dfa3c
+  languageName: node
+  linkType: hard
+
+"url-join@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "url-join@npm:4.0.1"
+  checksum: ac65e2c7c562d7b49b68edddcf55385d3e922bc1dd5d90419ea40b53b6de1607d1e45ceb71efb9d60da02c681d13c6cb3a1aa8b13fc0c989dfc219df97ee992d
   languageName: node
   linkType: hard
 
