@@ -1,6 +1,6 @@
 {
   "name": "@sunray-eu/messaging-api-messenger",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Messaging API client for Messenger",
   "license": "MIT",
   "repository": {
@@ -13,8 +13,8 @@
   "browser": "lib/browser.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@sunray-eu/axios-error": "^1.2.0",
-    "@sunray-eu/messaging-api-common": "^1.2.0",
+    "@sunray-eu/axios-error": "^1.3.0",
+    "@sunray-eu/messaging-api-common": "^1.3.0",
     "@types/append-query": "^2.0.3",
     "@types/lodash": "^4.17.0",
     "@types/warning": "^3.0.3",
