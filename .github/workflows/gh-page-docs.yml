@@ -24,7 +24,7 @@ jobs:
           persist-credentials: false
 
       - name: Enable corepack
-        run: corepack enable yarn
+        run: corepack enable --install-directory ~/.corepack yarn
 
       - name: Setup yarn
         run: yarn set version berry
