@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Enable corepack
-        run: corepack enable --install-directory ~/.corepack yarn
+        run: corepack enable
 
       - name: Setup yarn
         run: yarn set version berry
