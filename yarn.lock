@@ -1522,7 +1522,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sunray-eu/axios-error@npm:1.0.4, @sunray-eu/axios-error@workspace:packages/axios-error":
+"@sunray-eu/axios-error@npm:^1.2.0, @sunray-eu/axios-error@workspace:packages/axios-error":
   version: 0.0.0-use.local
   resolution: "@sunray-eu/axios-error@workspace:packages/axios-error"
   dependencies:
@@ -1535,12 +1535,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sunray-eu/facebook-batch@workspace:packages/facebook-batch"
   dependencies:
-    "@sunray-eu/messaging-api-messenger": "npm:1.1.0"
+    "@sunray-eu/messaging-api-messenger": "npm:^1.2.0"
     type-fest: "npm:4.7.1"
   languageName: unknown
   linkType: soft
 
-"@sunray-eu/messaging-api-common@npm:1.0.4, @sunray-eu/messaging-api-common@workspace:packages/messaging-api-common":
+"@sunray-eu/messaging-api-common@npm:^1.2.0, @sunray-eu/messaging-api-common@workspace:packages/messaging-api-common":
   version: 0.0.0-use.local
   resolution: "@sunray-eu/messaging-api-common@workspace:packages/messaging-api-common"
   dependencies:
@@ -1561,8 +1561,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sunray-eu/messaging-api-line@workspace:packages/messaging-api-line"
   dependencies:
-    "@sunray-eu/axios-error": "npm:1.0.4"
-    "@sunray-eu/messaging-api-common": "npm:1.0.4"
+    "@sunray-eu/axios-error": "npm:^1.2.0"
+    "@sunray-eu/messaging-api-common": "npm:^1.2.0"
     "@types/warning": "npm:^3.0.3"
     axios: "npm:^1.6.8"
     image-type: "npm:^5.2.0"
@@ -1572,12 +1572,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sunray-eu/messaging-api-messenger@npm:1.1.0, @sunray-eu/messaging-api-messenger@workspace:packages/messaging-api-messenger":
+"@sunray-eu/messaging-api-messenger@npm:^1.2.0, @sunray-eu/messaging-api-messenger@workspace:packages/messaging-api-messenger":
   version: 0.0.0-use.local
   resolution: "@sunray-eu/messaging-api-messenger@workspace:packages/messaging-api-messenger"
   dependencies:
-    "@sunray-eu/axios-error": "npm:1.0.4"
-    "@sunray-eu/messaging-api-common": "npm:1.0.4"
+    "@sunray-eu/axios-error": "npm:^1.2.0"
+    "@sunray-eu/messaging-api-common": "npm:^1.2.0"
     "@types/append-query": "npm:^2.0.3"
     "@types/lodash": "npm:^4.17.0"
     "@types/warning": "npm:^3.0.3"
@@ -1594,8 +1594,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sunray-eu/messaging-api-slack@workspace:packages/messaging-api-slack"
   dependencies:
-    "@sunray-eu/axios-error": "npm:1.0.4"
-    "@sunray-eu/messaging-api-common": "npm:1.0.4"
+    "@sunray-eu/axios-error": "npm:^1.2.0"
+    "@sunray-eu/messaging-api-common": "npm:^1.2.0"
     "@types/lodash": "npm:^4.17.0"
     "@types/warning": "npm:^3.0.3"
     axios: "npm:^1.6.8"
@@ -1609,8 +1609,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sunray-eu/messaging-api-telegram@workspace:packages/messaging-api-telegram"
   dependencies:
-    "@sunray-eu/axios-error": "npm:1.0.4"
-    "@sunray-eu/messaging-api-common": "npm:1.0.4"
+    "@sunray-eu/axios-error": "npm:^1.2.0"
+    "@sunray-eu/messaging-api-common": "npm:^1.2.0"
     "@types/lodash": "npm:^4.17.0"
     "@types/warning": "npm:^3.0.3"
     axios: "npm:^1.6.8"
@@ -1624,8 +1624,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sunray-eu/messaging-api-viber@workspace:packages/messaging-api-viber"
   dependencies:
-    "@sunray-eu/axios-error": "npm:1.0.4"
-    "@sunray-eu/messaging-api-common": "npm:1.0.4"
+    "@sunray-eu/axios-error": "npm:^1.2.0"
+    "@sunray-eu/messaging-api-common": "npm:^1.2.0"
     "@types/warning": "npm:^3.0.3"
     axios: "npm:^1.6.8"
     ts-invariant: "npm:^0.10.3"
@@ -1637,8 +1637,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sunray-eu/messaging-api-wechat@workspace:packages/messaging-api-wechat"
   dependencies:
-    "@sunray-eu/axios-error": "npm:1.0.4"
-    "@sunray-eu/messaging-api-common": "npm:1.0.4"
+    "@sunray-eu/axios-error": "npm:^1.2.0"
+    "@sunray-eu/messaging-api-common": "npm:^1.2.0"
     "@types/warning": "npm:^3.0.3"
     axios: "npm:^1.6.8"
     form-data: "npm:^4.0.0"
