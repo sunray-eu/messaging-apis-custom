@@ -265,6 +265,8 @@ MIT © [Yoctol](https://github.com/Yoctol/messaging-apis)
 # Migration to ESM TODO
 
 - Repair tests and linting
+- Update docs
+- Update README
 
 ## Node version 20
 
