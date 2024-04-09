@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "messaging-apis",
+  "version": "1.1.0",
   "license": "MIT",
   "homepage": "https://github.com/sunray-eu/messaging-apis-new",
   "repository": {
@@ -26,7 +27,6 @@
     "lint:fix:md": "prettier --write **/*.md",
     "lint:staged": "lint-staged",
     "prepublishOnly": "yarn clean && yarn",
-    "publish": "lerna publish",
     "release": "lerna publish from-package",
     "test": "yarn build && yarn lint && yarn testonly",
     "testonly": "jest",
@@ -36,9 +36,11 @@
     "versionup": "lerna version",
     "watch": "tsc --build tsconfig.build.json --watch"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
