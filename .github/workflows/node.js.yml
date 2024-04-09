@@ -43,7 +43,7 @@ jobs:
         run: yarn build
 
       - name: Run lint rules
-        run: yarn lint -- --report-unused-disable-directives
+        run: yarn lint --report-unused-disable-directives
 
       # TODO: Fix tests
       # - name: Run tests
