@@ -23,6 +23,12 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Enable corepack
+        run: corepack enable yarn
+
+      - name: Setup yarn
+        run: yarn set version berry
+
       - name: Install yarn dependencies
         run: yarn --frozen-lockfile
 
