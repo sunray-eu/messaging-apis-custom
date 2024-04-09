@@ -59,6 +59,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+        # Instal yarn berry
+      - name: Enable corepack
+        run: corepack enable yarn
+
+      - name: Setup latest yarn
+        run: yarn set version berry
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
