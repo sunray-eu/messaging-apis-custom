@@ -1,3 +1,7 @@
+# 1.2.0 / 2024-04-08
+
+- Pre-release version, stabilizing and optimizing workflows
+
 # 1.1.0 / 2021-10-04
 
 ### messaging-api-line
