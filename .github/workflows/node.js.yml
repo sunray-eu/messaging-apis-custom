@@ -46,6 +46,7 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == 12 }}
         run: yarn lint -- --report-unused-disable-directives
 
+      # TODO: Fix tests
       # - name: Run tests
       #   run: yarn testonly:cov -- --colors
 
