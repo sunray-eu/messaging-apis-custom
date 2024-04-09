@@ -18,7 +18,6 @@ jobs:
   build:
     name: Node.js, version from .nvmrc on ubuntu-latest
     runs-on: ubuntu-latest
-
     steps:
       - name: Prepare git
         run: git config --global core.autocrlf false
