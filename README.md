@@ -262,6 +262,10 @@ MIT © [Yoctol](https://github.com/Yoctol/messaging-apis)
 
 # Known issues
 
+# Migration to ESM TODO
+
+- Repair tests and linting
+
 ## Node version 20
 
 Because of bug in [node/ts](https://github.com/sindresorhus/type-fest/issues/784) keeping version 20
