@@ -1,0 +1,324 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@sunray-eu/messaging-api-messenger | messaging-apis - v1.1.0</title><meta name="description" content="Documentation for messaging-apis"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">messaging-apis - v1.1.0</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb"><li><a href="../index.html">messaging-apis</a></li><li><a href="_sunray_eu_messaging_api_messenger.html">@sunray-eu/messaging-api-messenger</a></li></ul><h1>Module @sunray-eu/messaging-api-messenger</h1></div><section class="tsd-panel tsd-typography"><a id="md:messaging-api-messenger" class="tsd-anchor"></a><h1><a href="#md:messaging-api-messenger">messaging-api-messenger</a></h1><blockquote>
+<p>Messaging API client for Messenger</p>
+</blockquote>
+<img src="https://static.xx.fbcdn.net/rsrc.php/v3/yh/r/p6_sqYxQ9ch.png" alt="Messenger" width="150" />
+
+<a id="md:table-of-contents" class="tsd-anchor"></a><h2><a href="#md:table-of-contents">Table of Contents</a></h2><ul>
+<li><a href="#md:installation">Installation</a></li>
+<li><a href="#md:usage">Usage</a></li>
+<li><a href="#md:api-reference">API Reference</a><ul>
+<li><a href="#md:send-api">Send API</a><ul>
+<li><a href="#md:content-types">Content Types</a></li>
+<li><a href="#md:templates">Templates</a></li>
+<li><a href="#md:quick-replies">Quick Replies</a></li>
+<li><a href="#md:sender-actions">Sender Actions</a></li>
+<li><a href="#md:attachment-upload-api">Attachment Upload API</a></li>
+<li><a href="#md:message-batching">Message Batching</a></li>
+</ul>
+</li>
+<li><a href="#md:custom-labels">Custom Labels</a></li>
+<li><a href="#md:user-profile-api">User Profile API</a></li>
+<li><a href="#md:messenger-profile-api">Messenger Profile API</a><ul>
+<li><a href="#md:persistent-menu">Persistent Menu</a></li>
+<li><a href="#md:get-started-button">Get Started Button</a></li>
+<li><a href="#md:greeting-text">Greeting Text</a></li>
+<li><a href="#md:domain-whitelist">Whitelisted Domains</a></li>
+<li><a href="#md:account-linking-url">Account Linking URL</a></li>
+</ul>
+</li>
+<li><a href="#md:handover-protocol-api">Handover Protocol API</a></li>
+<li><a href="#md:page-messaging-insights-api">Page Messaging Insights API</a></li>
+<li><a href="#md:built-in-nlp-api">Built-in NLP API</a></li>
+<li><a href="#md:event-logging-api">Event Logging API</a></li>
+<li><a href="#md:id-matching-api">ID Matching API</a></li>
+<li><a href="#md:persona-api">Persona API</a></li>
+<li><a href="#md:others">Others</a></li>
+</ul>
+</li>
+<li><a href="#md:debug-tips">Debug Tips</a></li>
+<li><a href="#md:testing">Testing</a></li>
+</ul>
+<a id="md:installation" class="tsd-anchor"></a><h2><a href="#md:installation">Installation</a></h2><pre><code class="language-sh"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">i</span><span class="hl-1"> </span><span class="hl-3">--save</span><span class="hl-1"> </span><span class="hl-2">messaging-api-messenger</span>
+</code><button>Copy</button></pre>
+<p>or</p>
+<pre><code class="language-sh"><span class="hl-0">yarn</span><span class="hl-1"> </span><span class="hl-2">add</span><span class="hl-1"> </span><span class="hl-2">messaging-api-messenger</span>
+</code><button>Copy</button></pre>
+<br />
+
+<a id="md:usage" class="tsd-anchor"></a><h2><a href="#md:usage">Usage</a></h2><a id="md:initialize" class="tsd-anchor"></a><h3><a href="#md:initialize">Initialize</a></h3><pre><code class="language-js"><span class="hl-3">const</span><span class="hl-1"> { </span><span class="hl-4">MessengerClient</span><span class="hl-1"> } = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&#39;messaging-api-messenger&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">MessengerClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-6">accessToken:</span><span class="hl-1"> </span><span class="hl-4">ACCESS_TOKEN</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-6">appId:</span><span class="hl-1"> </span><span class="hl-4">APP_ID</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-6">appSecret:</span><span class="hl-1"> </span><span class="hl-4">APP_SECRET</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-6">version:</span><span class="hl-1"> </span><span class="hl-2">&#39;6.0&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button>Copy</button></pre>
+<p>If the <code>version</code> option is not specified, <code>6.0</code> will be used by default.</p>
+<a id="md:verifying-graph-api-calls-with-appsecret_proof" class="tsd-anchor"></a><h3><a href="#md:verifying-graph-api-calls-with-appsecret_proof">Verifying Graph API Calls with <code>appsecret_proof</code></a></h3><p>If <code>appSecret</code> is provided, <code>MessengerClient</code> will enable this feature automatically and include <code>appsecret_proof</code> in every Graph API requests. To skip it, set the <code>skipAppSecretProof</code> option to <code>true</code>:</p>
+<pre><code class="language-js"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">MessengerClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-6">accessToken:</span><span class="hl-1"> </span><span class="hl-4">ACCESS_TOKEN</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-6">appId:</span><span class="hl-1"> </span><span class="hl-4">APP_ID</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-6">appSecret:</span><span class="hl-1"> </span><span class="hl-4">APP_SECRET</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-6">skipAppSecretProof:</span><span class="hl-1"> </span><span class="hl-3">true</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button>Copy</button></pre>
+<a id="md:error-handling" class="tsd-anchor"></a><h3><a href="#md:error-handling">Error Handling</a></h3><p><code>messaging-api-messenger</code> uses <a href="https://github.com/axios/axios">axios</a> as HTTP client. We use <a href="https://github.com/Yoctol/messaging-apis/tree/master/packages/axios-error">axios-error</a> package to wrap API error instances for better formatting error messages. Directly calling <code>console.log</code> with the error instance will return formatted message. If you&#39;d like to get the axios <code>request</code>, <code>response</code>, or <code>config</code>, you can still get them via those keys on the error instance.</p>
+<pre><code class="language-js"><span class="hl-6">client</span><span class="hl-1">.</span><span class="hl-0">sendRawBody</span><span class="hl-1">(</span><span class="hl-6">body</span><span class="hl-1">).</span><span class="hl-0">catch</span><span class="hl-1">((</span><span class="hl-6">error</span><span class="hl-1">) </span><span class="hl-3">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-6">error</span><span class="hl-1">); </span><span class="hl-5">// formatted error message</span><br/><span class="hl-1">  </span><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-6">error</span><span class="hl-1">.</span><span class="hl-6">stack</span><span class="hl-1">); </span><span class="hl-5">// error stack trace</span><br/><span class="hl-1">  </span><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-6">error</span><span class="hl-1">.</span><span class="hl-6">config</span><span class="hl-1">); </span><span class="hl-5">// axios request config</span><br/><span class="hl-1">  </span><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-6">error</span><span class="hl-1">.</span><span class="hl-6">request</span><span class="hl-1">); </span><span class="hl-5">// HTTP request</span><br/><span class="hl-1">  </span><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-6">error</span><span class="hl-1">.</span><span class="hl-6">response</span><span class="hl-1">); </span><span class="hl-5">// HTTP response</span><br/><span class="hl-1">});</span>
+</code><button>Copy</button></pre>
+<br />
+
+<a id="md:api-reference" class="tsd-anchor"></a><h2><a href="#md:api-reference">API Reference</a></h2><p>All methods return a Promise.</p>
+<br />
+
+<a id="send-api" />
+
+<a id="md:send-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:send-api---official-docs">Send API - <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference">Official Docs</a></a></h3><ul>
+<li><a href="/messaging_api_messenger.MessengerClient.html#sendrawbody">sendRawBody</a></li>
+<li><a href="/messaging_api_messenger.MessengerClient.html#sendmessage">sendMessage</a></li>
+</ul>
+<a id="content-types" />
+
+<a id="md:content-types---content-types" class="tsd-anchor"></a><h3><a href="#md:content-types---content-types">Content Types - <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference/contenttypes">Content types</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendtext">sendText</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendattachment">sendAttachment</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendaudio">sendAudio</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendimage">sendImage</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendvideo">sendVideo</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendfile">sendFile</a></li>
+</ul>
+<a id="templates" />
+
+<a id="md:templates---official-docs" class="tsd-anchor"></a><h3><a href="#md:templates---official-docs">Templates - <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference/templates">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendtemplate">sendTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendbuttontemplate">sendButtonTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendgenerictemplate">sendGenericTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendmediatemplate">sendMediaTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendreceipttemplate">sendReceiptTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendairlineboardingpasstemplate">sendAirlineBoardingPassTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendairlinecheckintemplate">sendAirlineCheckinTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendairlineitinerarytemplate">sendAirlineItineraryTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendairlineupdatetemplate">sendAirlineUpdateTemplate</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendonetimenotifreqtemplate">sendOneTimeNotifReqTemplate</a></li>
+</ul>
+<br />
+
+<a id="quick-replies" />
+
+<a id="md:quick-replies---official-docs" class="tsd-anchor"></a><h3><a href="#md:quick-replies---official-docs">Quick Replies - <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies">Official Docs</a></a></h3><img src="https://user-images.githubusercontent.com/3382565/37411344-91c8ad54-27dd-11e8-82fc-fd9adf896301.png" alt="Quick Replies" width="750" />
+
+<p>To send messages with quick replies to the specified user using the <a href="https://developers.facebook.com/docs/messenger-platform/reference/send-api#request">Send API</a>, pass <code>quickReplies</code> option to send message methods, for example, with <code>sendText</code>:</p>
+<pre><code class="language-js"><span class="hl-7">await</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1">.</span><span class="hl-0">sendText</span><span class="hl-1">(</span><span class="hl-4">USER_ID</span><span class="hl-1">, </span><span class="hl-2">&#39;Pick a color:&#39;</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-6">quickReplies:</span><span class="hl-1"> [</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">      </span><span class="hl-6">contentType:</span><span class="hl-1"> </span><span class="hl-2">&#39;text&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-6">title:</span><span class="hl-1"> </span><span class="hl-2">&#39;Red&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-6">payload:</span><span class="hl-1"> </span><span class="hl-2">&#39;DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">});</span>
+</code><button>Copy</button></pre>
+<p>with the <code>sendImage</code> option:</p>
+<pre><code class="language-js"><span class="hl-7">await</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1">.</span><span class="hl-0">sendImage</span><span class="hl-1">(</span><span class="hl-4">USER_ID</span><span class="hl-1">, </span><span class="hl-2">&#39;https://example.com/vr.jpg&#39;</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-6">quickReplies:</span><span class="hl-1"> [</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">      </span><span class="hl-6">contentType:</span><span class="hl-1"> </span><span class="hl-2">&#39;text&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-6">title:</span><span class="hl-1"> </span><span class="hl-2">&#39;Red&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-6">payload:</span><span class="hl-1"> </span><span class="hl-2">&#39;DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">});</span>
+</code><button>Copy</button></pre>
+<p>It works with all of message sending methods.</p>
+<br />
+
+<a id="sender-actions" />
+
+<a id="md:sender-actions---official-docs" class="tsd-anchor"></a><h3><a href="#md:sender-actions---official-docs">Sender Actions - <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference/sender-actions">Official Docs</a></a></h3><img src="https://user-images.githubusercontent.com/3382565/37411363-9b65ecaa-27dd-11e8-8f51-7aac7fd0bd2f.png" alt="Sender Actions" width="250" />
+
+<ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendsenderaction">sendSenderAction</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#markseen">markSeen</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#typingon">typingOn</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#typingoff">typingOff</a></li>
+</ul>
+<a id="attachment-upload-api" />
+
+<a id="md:attachment-upload-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:attachment-upload-api---official-docs">Attachment Upload API - <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference/attachment-upload">Official Docs</a></a></h3><blockquote>
+<p>Note: Only attachments that were uploaded with the <code>isReusable</code> property set to <code>true</code> can be sent to other message recipients.</p>
+</blockquote>
+<ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#uploadattachment">uploadAttachment</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#uploadaudio">uploadAudio</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#uploadimage">uploadImage</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#uploadvideo">uploadVideo</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#uploadfile">uploadFile</a></li>
+</ul>
+<br />
+
+<a id="message-batching" />
+
+<a id="md:message-batching---official-docs" class="tsd-anchor"></a><h3><a href="#md:message-batching---official-docs">Message Batching - <a href="https://developers.facebook.com/docs/graph-api/making-multiple-requests">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#sendbatch">sendBatch</a></li>
+</ul>
+<p>There are a bunch of factory methods can be used to create batch requests:</p>
+<ul>
+<li><code>MessengerBatch.sendRequest</code></li>
+<li><code>MessengerBatch.sendMessage</code></li>
+<li><code>MessengerBatch.sendText</code></li>
+<li><code>MessengerBatch.sendAttachment</code></li>
+<li><code>MessengerBatch.sendAudio</code></li>
+<li><code>MessengerBatch.sendImage</code></li>
+<li><code>MessengerBatch.sendVideo</code></li>
+<li><code>MessengerBatch.sendFile</code></li>
+<li><code>MessengerBatch.sendTemplate</code></li>
+<li><code>MessengerBatch.sendButtonTemplate</code></li>
+<li><code>MessengerBatch.sendGenericTemplate</code></li>
+<li><code>MessengerBatch.sendReceiptTemplate</code></li>
+<li><code>MessengerBatch.sendMediaTemplate</code></li>
+<li><code>MessengerBatch.sendAirlineBoardingPassTemplate</code></li>
+<li><code>MessengerBatch.sendAirlineCheckinTemplate</code></li>
+<li><code>MessengerBatch.sendAirlineItineraryTemplate</code></li>
+<li><code>MessengerBatch.sendAirlineUpdateTemplate</code></li>
+<li><code>MessengerBatch.sendSenderAction</code></li>
+<li><code>MessengerBatch.typingOn</code></li>
+<li><code>MessengerBatch.typingOff</code></li>
+<li><code>MessengerBatch.markSeen</code></li>
+<li><code>MessengerBatch.getUserProfile</code></li>
+<li><code>MessengerBatch.passThreadControl</code></li>
+<li><code>MessengerBatch.passThreadControlToPageInbox</code></li>
+<li><code>MessengerBatch.takeThreadControl</code></li>
+<li><code>MessengerBatch.requestThreadControl</code></li>
+<li><code>MessengerBatch.associateLabel</code></li>
+<li><code>MessengerBatch.dissociateLabel</code></li>
+<li><code>MessengerBatch.getAssociatedLabels</code></li>
+</ul>
+<p>Those methods have exactly same argument signature with the methods on client.</p>
+<br />
+
+<a id="custom-labels" />
+
+<a id="md:custom-labels---official-docs" class="tsd-anchor"></a><h3><a href="#md:custom-labels---official-docs">Custom Labels - <a href="https://developers.facebook.com/docs/messenger-platform/identity/custom-labels">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#createlabel">createLabel</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#associatelabel">associateLabel</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#dissociatelabel">dissociateLabel</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getassociatedlabels">getAssociatedLabels</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getlabeldetails">getLabelDetails</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getlabellist">getLabelList</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#deletelabel">deleteLabel</a></li>
+</ul>
+<br />
+
+<a id="user-profile-api" />
+
+<a id="md:user-profile-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:user-profile-api---official-docs">User Profile API - <a href="https://developers.facebook.com/docs/messenger-platform/user-profile">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getuserprofile">getUserProfile</a></li>
+</ul>
+<br />
+
+<a id="messenger-profile-api" />
+
+<a id="md:messenger-profile-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:messenger-profile-api---official-docs">Messenger Profile API - <a href="https://developers.facebook.com/docs/messenger-platform/messenger-profile">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getmessengerprofile">getMessengerProfile</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#setmessengerprofile">setMessengerProfile</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#deletemessengerprofile">deleteMessengerProfile</a></li>
+</ul>
+<a id="persistent-menu" />
+
+<a id="md:persistent-menu---official-docs" class="tsd-anchor"></a><h3><a href="#md:persistent-menu---official-docs">Persistent Menu - <a href="https://developers.facebook.com/docs/messenger-platform/messenger-profile/persistent-menu">Official Docs</a></a></h3><p><img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.2365-6/16686128_804279846389859_443648268883197952_n.png?oh=adde03b0bc7dd524a58cf46016e0267d&oe=59FC90D6" alt=""></p>
+<ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getpersistentmenu">getPersistentMenu</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#setpersistentmenu">setPersistentMenu</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#deletepersistentmenu">deletePersistentMenu</a></li>
+</ul>
+<a id="get-started-button" />
+
+<a id="md:get-started-button---official-docs" class="tsd-anchor"></a><h3><a href="#md:get-started-button---official-docs">Get Started Button - <a href="https://developers.facebook.com/docs/messenger-platform/messenger-profile/get-started-button">Official Docs</a></a></h3><img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.2365-6/14302685_243106819419381_1314180151_n.png?oh=9487042d8c0067eb2fda1efa45d0e17b&oe=59F7185C" alt="Get Started Button" width="500" />
+
+<ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getgetstarted">getGetStarted</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#setgetstarted">setGetStarted</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#deletegetstarted">deleteGetStarted</a></li>
+</ul>
+<a id="greeting-text" />
+
+<a id="md:greeting-text---officail-docs" class="tsd-anchor"></a><h3><a href="#md:greeting-text---officail-docs">Greeting Text - <a href="https://developers.facebook.com/docs/messenger-platform/messenger-profile/greeting-text">Officail docs</a></a></h3><img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.2365-6/14287888_188235318253964_1078929636_n.png?oh=a1171ab50f04d3a244ed703eafd2dbef&oe=59F01AF5" alt="Greeting Text" width="250" />
+
+<ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getgreeting">getGreeting</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#setgreeting">setGreeting</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#deletegreeting">deleteGreeting</a></li>
+</ul>
+<a id="domain-whitelist" />
+
+<a id="md:whitelisted-domains---official-docs" class="tsd-anchor"></a><h3><a href="#md:whitelisted-domains---official-docs">Whitelisted Domains - <a href="https://developers.facebook.com/docs/messenger-platform/messenger-profile/domain-whitelisting">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getwhitelisteddomains">getWhitelistedDomains</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#setwhitelisteddomains">setWhitelistedDomains</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#deletewhitelisteddomains">deleteWhitelistedDomains</a></li>
+</ul>
+<a id="account-linking-url" />
+
+<a id="md:account-linking-url---official-docs" class="tsd-anchor"></a><h3><a href="#md:account-linking-url---official-docs">Account Linking URL - <a href="https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/account-linking-url">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getaccountlinkingurl">getAccountLinkingURL</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#setaccountlinkingurl">setAccountLinkingURL</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#deleteaccountlinkingurl">deleteAccountLinkingURL</a></li>
+</ul>
+<a id="md:handover-protocol-api" class="tsd-anchor"></a><h3><a href="#md:handover-protocol-api">Handover Protocol API</a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#passthreadcontrol">passThreadControl</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#passthreadcontroltopageinbox">passThreadControlToPageInbox</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#takethreadcontrol">takeThreadControl</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#requestthreadcontrol">requestThreadControl</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getthreadowner">getThreadOwner</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getsecondaryreceivers">getSecondaryReceivers</a></li>
+</ul>
+<br />
+
+<a id="page-messaging-insights-api" />
+
+<a id="md:page-messaging-insights-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:page-messaging-insights-api---official-docs">Page Messaging Insights API - <a href="https://developers.facebook.com/docs/messenger-platform/insights/page-messaging">Official Docs</a></a></h3><p>Requirements for insights API:</p>
+<ul>
+<li><p>The page token must have <code>read_insights</code> permission.</p>
+</li>
+<li><p>Insights are only generated for a Facebook Page that has more than <code>30</code> people that like it.</p>
+</li>
+<li><p><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getinsights">getInsights</a></p>
+</li>
+<li><p><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getblockedconversations">getBlockedConversations</a></p>
+</li>
+<li><p><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getreportedconversations">getReportedConversations</a></p>
+</li>
+<li><p><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#gettotalmessagingconnections">getTotalMessagingConnections</a></p>
+</li>
+<li><p><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getnewconversations">getNewConversations</a></p>
+</li>
+</ul>
+<br />
+
+<a id="built-in-nlp-api" />
+
+<a id="md:built-in-nlp-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:built-in-nlp-api---official-docs">Built-in NLP API - <a href="https://developers.facebook.com/docs/messenger-platform/built-in-nlp">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#setnlpconfigs">setNLPConfigs</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#enablenlp">enableNLP</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#disablenlp">disableNLP</a></li>
+</ul>
+<br />
+
+<a id="event-logging-api" />
+
+<a id="md:event-logging-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:event-logging-api---official-docs">Event Logging API - <a href="https://developers.facebook.com/docs/app-events/bots-for-messenger#logging-custom-events">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#logcustomevents">logCustomEvents</a></li>
+</ul>
+<a id="id-matching-api" />
+
+<a id="md:id-matching-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:id-matching-api---official-docs">ID Matching API - <a href="https://developers.facebook.com/docs/messenger-platform/identity/id-matching">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getidsforapps">getIdsForApps</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getidsforpages">getIdsForPages</a></li>
+</ul>
+<br />
+
+<a id="persona-api" />
+
+<a id="md:persona-api---official-docs" class="tsd-anchor"></a><h3><a href="#md:persona-api---official-docs">Persona API - <a href="https://developers.facebook.com/docs/messenger-platform/send-messages/personas">Official Docs</a></a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#createpersona">createPersona</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getpersona">getPersona</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getpersonas">getPersonas</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getallpersonas">getAllPersonas</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#deletepersona">deletePersona</a></li>
+</ul>
+<br />
+
+<a id="md:others" class="tsd-anchor"></a><h3><a href="#md:others">Others</a></h3><ul>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#debugtoken">debugToken</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#createsubscription">createSubscription</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getsubscriptions">getSubscriptions</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getpagesubscription">getPageSubscription</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getpageinfo">getPageInfo</a></li>
+<li><a href="https://bottenderjs.github.io/messaging-apis/latest/classes/messaging_api_messenger.MessengerClient.html#getmessagingfeaturereview">getMessagingFeatureReview</a></li>
+</ul>
+<br />
+
+<a id="md:debug-tips" class="tsd-anchor"></a><h2><a href="#md:debug-tips">Debug Tips</a></h2><a id="md:log-requests-details" class="tsd-anchor"></a><h3><a href="#md:log-requests-details">Log Requests Details</a></h3><p>To enable default request debugger, use following <code>DEBUG</code> env variable:</p>
+<pre><code class="language-sh"><span class="hl-6">DEBUG</span><span class="hl-1">=</span><span class="hl-2">messaging-api:request</span>
+</code><button>Copy</button></pre>
+<p>If you want to use a custom request logging function, just provide your own <code>onRequest</code>:</p>
+<pre><code class="language-js"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">MessengerClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-6">accessToken:</span><span class="hl-1"> </span><span class="hl-4">ACCESS_TOKEN</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-0">onRequest</span><span class="hl-6">:</span><span class="hl-1"> ({ </span><span class="hl-6">method</span><span class="hl-1">, </span><span class="hl-6">url</span><span class="hl-1">, </span><span class="hl-6">headers</span><span class="hl-1">, </span><span class="hl-6">body</span><span class="hl-1"> }) </span><span class="hl-3">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-5">/* */</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">});</span>
+</code><button>Copy</button></pre>
+<a id="md:testing" class="tsd-anchor"></a><h2><a href="#md:testing">Testing</a></h2><a id="md:point-requests-to-your-dummy-server" class="tsd-anchor"></a><h3><a href="#md:point-requests-to-your-dummy-server">Point Requests to Your Dummy Server</a></h3><p>To avoid sending requests to real Messenger server, specify the <code>origin</code> option when constructing your client:</p>
+<pre><code class="language-js"><span class="hl-3">const</span><span class="hl-1"> { </span><span class="hl-4">MessengerClient</span><span class="hl-1"> } = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&#39;messaging-api-messenger&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">MessengerClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-6">accessToken:</span><span class="hl-1"> </span><span class="hl-4">ACCESS_TOKEN</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-6">origin:</span><span class="hl-1"> </span><span class="hl-2">&#39;https://mydummytestserver.com&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button>Copy</button></pre>
+<blockquote>
+<p>Warning: Don&#39;t do this on your production server.</p>
+</blockquote>
+</section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-index-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><h4 class="uppercase">Member Visibility</h4><form><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></form></div><div class="tsd-theme-toggle"><h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:messaging-api-messenger"><span>messaging-<wbr/>api-<wbr/>messenger</span></a><ul><li><a href="#md:table-of-contents"><span>Table of <wbr/>Contents</span></a></li><li><a href="#md:installation"><span>Installation</span></a></li><li><a href="#md:usage"><span>Usage</span></a></li><li><ul><li><a href="#md:initialize"><span>Initialize</span></a></li><li><a href="#md:verifying-graph-api-calls-with-appsecret_proof"><span>Verifying <wbr/>Graph API <wbr/>Calls with appsecret_<wbr/>proof</span></a></li><li><a href="#md:error-handling"><span>Error <wbr/>Handling</span></a></li></ul></li><li><a href="#md:api-reference"><span>API <wbr/>Reference</span></a></li><li><ul><li><a href="#md:send-api---official-docs"><span>Send API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:content-types---content-types"><span>Content <wbr/>Types -<wbr/> <wbr/>Content types</span></a></li><li><a href="#md:templates---official-docs"><span>Templates -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:quick-replies---official-docs"><span>Quick <wbr/>Replies -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:sender-actions---official-docs"><span>Sender <wbr/>Actions -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:attachment-upload-api---official-docs"><span>Attachment <wbr/>Upload API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:message-batching---official-docs"><span>Message <wbr/>Batching -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:custom-labels---official-docs"><span>Custom <wbr/>Labels -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:user-profile-api---official-docs"><span>User <wbr/>Profile API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:messenger-profile-api---official-docs"><span>Messenger <wbr/>Profile API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:persistent-menu---official-docs"><span>Persistent <wbr/>Menu -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:get-started-button---official-docs"><span>Get <wbr/>Started <wbr/>Button -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:greeting-text---officail-docs"><span>Greeting <wbr/>Text -<wbr/> <wbr/>Officail docs</span></a></li><li><a href="#md:whitelisted-domains---official-docs"><span>Whitelisted <wbr/>Domains -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:account-linking-url---official-docs"><span>Account <wbr/>Linking URL -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:handover-protocol-api"><span>Handover <wbr/>Protocol API</span></a></li><li><a href="#md:page-messaging-insights-api---official-docs"><span>Page <wbr/>Messaging <wbr/>Insights API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:built-in-nlp-api---official-docs"><span>Built-<wbr/>in NLP API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:event-logging-api---official-docs"><span>Event <wbr/>Logging API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:id-matching-api---official-docs"><span>ID <wbr/>Matching API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:persona-api---official-docs"><span>Persona API -<wbr/> <wbr/>Official <wbr/>Docs</span></a></li><li><a href="#md:others"><span>Others</span></a></li></ul></li><li><a href="#md:debug-tips"><span>Debug <wbr/>Tips</span></a></li><li><ul><li><a href="#md:log-requests-details"><span>Log <wbr/>Requests <wbr/>Details</span></a></li></ul></li><li><a href="#md:testing"><span>Testing</span></a></li><li><ul><li><a href="#md:point-requests-to-your-dummy-server"><span>Point <wbr/>Requests to <wbr/>Your <wbr/>Dummy <wbr/>Server</span></a></li></ul></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>messaging-apis - v1.1.0</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base=".."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
