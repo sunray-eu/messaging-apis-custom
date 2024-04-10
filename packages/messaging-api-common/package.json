@@ -1,6 +1,6 @@
 {
   "name": "@sunray-eu/messaging-api-common",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Helpers for common usages in Messaging API clients",
   "license": "MIT",
   "repository": {

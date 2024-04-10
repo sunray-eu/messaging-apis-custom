@@ -1,6 +1,6 @@
 {
   "name": "@sunray-eu/axios-error",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Axios error wrapper that aim to provide clear error message to developers",
   "license": "MIT",
   "repository": {
