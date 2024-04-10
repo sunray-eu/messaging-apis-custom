@@ -33,14 +33,15 @@ jobs:
         run: yarn install --immutable
 
       - name: Update Version
-        run: |
-          git config --global user.email "${GIT_AUTHOR_EMAIL}"
-          git config --global user.name "${GIT_AUTHOR_NAME}"
-          yarn ci:versionup:${SEMVER}
+        # run: |
+        #   git config --global user.email "${GIT_AUTHOR_EMAIL}"
+        #   git config --global user.name "${GIT_AUTHOR_NAME}"
+        #   yarn ci:versionup:${SEMVER}
+        run: yarn ci:versionup:${SEMVER}
         env:
           SEMVER: ${{ github.event.inputs.semver }}
-          GIT_AUTHOR_NAME: ${{ github.actor }}
-          GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
+          # GIT_AUTHOR_NAME: ${{ github.actor }}
+          # GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
 
       - name: Set PACKAGE_VERSION
         run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
@@ -65,7 +66,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(release): v${{ env.PACKAGE_VERSION }}"
           committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          # Set by default in action
+          # author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           assignees: ${{ github.actor }}
           signoff: false
           branch: release/${{ env.PACKAGE_VERSION }}
