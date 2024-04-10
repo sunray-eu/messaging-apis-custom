@@ -1,6 +1,6 @@
 {
   "name": "@sunray-eu/facebook-batch",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Gracefully batching facebook requests.",
   "license": "MIT",
   "repository": {
@@ -12,7 +12,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@sunray-eu/messaging-api-messenger": "^1.2.0",
+    "@sunray-eu/messaging-api-messenger": "^1.2.1",
     "type-fest": "4.7.1"
   },
   "keywords": [
