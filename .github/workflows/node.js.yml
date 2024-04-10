@@ -38,7 +38,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Install yarn dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
 
       - name: Compile TypeScript files
         run: yarn build

@@ -26,7 +26,6 @@
     "lint:fix": "yarn lint:fix:md && yarn lint --fix",
     "lint:fix:md": "prettier --write **/*.md",
     "lint:staged": "lint-staged",
-    "prepublishOnly": "yarn clean && yarn",
     "release": "lerna publish from-package",
     "test": "yarn build && yarn lint && yarn testonly",
     "testonly": "jest",
