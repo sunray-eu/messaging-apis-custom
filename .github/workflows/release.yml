@@ -89,7 +89,7 @@ jobs:
       - name: Install
         run: yarn install
       - name: Publish
-        run: npm run ci:release
+        run: yarn ci:release
         env:
           # actions/setup-node create .npmrc with `NODE_AUTH_TOKEN` env if `registry-url` is defined
           # === `echo "${ registry-url }/:_authToken=${ NODE_AUTH_TOKEN }" > .npmrc`
