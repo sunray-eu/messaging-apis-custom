@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "messaging-apis",
-  "version": "1.1.0",
   "license": "MIT",
   "homepage": "https://github.com/sunray-eu/messaging-apis-new",
   "repository": {
