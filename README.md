@@ -267,6 +267,7 @@ MIT © [Yoctol](https://github.com/Yoctol/messaging-apis)
 - Repair tests and linting
 - Update docs
 - Update README
+- Add everywhere .js extensions for files
 
 ## Node version 20
 
