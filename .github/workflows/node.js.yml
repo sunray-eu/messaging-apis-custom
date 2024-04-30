@@ -6,10 +6,8 @@ name: Node.js CI
 on:
   push:
     branches:
-      - "**"
+      - main
   pull_request:
-    branches:
-      - "**"
 
 env:
   CI: true
