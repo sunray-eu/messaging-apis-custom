@@ -213,13 +213,57 @@ export type UploadOption = {
   isReusable?: boolean;
 };
 
-export type TemplateButton = {
-  type: string;
+export interface WebUrlButton {
+  type: 'web_url';
   title: string;
-  url?: string;
-  payload?: string;
+  url: string;
   webviewHeightRatio?: 'compact' | 'tall' | 'full';
-};
+  messengerExtensions?: boolean;
+  fallbackUrl?: string;
+  webviewShareButton?: 'hide' | 'show';
+}
+
+export interface PostbackButton {
+  type: 'postback';
+  title: string;
+  payload: string;
+}
+
+type PhoneNumber = string;
+export interface PhoneNumberButton {
+  type: 'phone_number';
+  title: string;
+  payload: PhoneNumber;
+}
+
+export interface AccountLinkButton {
+  type: 'account_link';
+  url: string;
+}
+
+export interface AccountUnlinkButton {
+  type: 'account_unlink';
+}
+
+export interface GamePlayButton {
+  type: 'game_play';
+  title: string;
+  // SERIALIZED_JSON_PAYLOAD
+  payload: string;
+  game_metadata: {
+    // One of bellow
+    player_id?: string;
+    context_id?: string;
+  };
+}
+
+export type TemplateButton =
+  | WebUrlButton
+  | PostbackButton
+  | PhoneNumberButton
+  | AccountLinkButton
+  | AccountUnlinkButton
+  | GamePlayButton;
 
 export type MenuItem = TemplateButton;
 
